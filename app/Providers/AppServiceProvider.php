@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+
+use App\Models\Category;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,8 +21,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
+
+ 
+    //Controllo se la tabella categories esiste, se si, condivido la variabile categories con tutte le view
     public function boot(): void
     {
-        //
+        if (Schema::hasTable('categories')){
+            View::share('categories', Category::all());
+        }
     }
 }
