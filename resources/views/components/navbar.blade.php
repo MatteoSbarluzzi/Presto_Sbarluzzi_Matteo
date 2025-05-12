@@ -34,12 +34,25 @@
               <li>
                 <a class="dropdown-item" href="{{ route('byCategory', ['category' => $category]) }}">{{ $category->name }}</a>
               </li>
-              @if (!$loop->last) {{-- Se non è l'ultimo elemento della lista, aggiungi un divisore --}}
+              @if (!$loop->last)
                 <hr class="dropdown-divider">
               @endif
             @endforeach
           </ul>
         </li>
+
+        {{-- Link Zona Revisore per utenti revisori --}}
+        @auth
+          @if (Auth::user()->is_revisor)
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
+                 href="{{ route('revisor.index') }}">
+                Zona revisore
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{\App\Models\Article::toBeRevisionedCount()}}</span>
+              </a>
+            </li>
+          @endif
+        @endauth
 
         {{-- Dropdown autenticazione --}}
         @auth

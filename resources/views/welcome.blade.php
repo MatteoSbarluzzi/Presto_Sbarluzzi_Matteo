@@ -3,6 +3,21 @@
         <div class="row vh-100 justify-content-center align-items-center">
             <div class="col-12">
                 <h1 class="display-4">Presto.it</h1>
+
+                {{-- Messaggio di errore --}}
+                @if (session()->has('errorMessage'))
+                    <div class="alert alert-danger text-center shadow rounded w-50 mx-auto">
+                        {{ session('errorMessage') }}
+                    </div>
+                @endif
+
+                {{-- Messaggio di successo --}}
+                @if (session()->has('message'))
+                    <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
                 <div class="my-3">
                     @auth
                         <a class="btn btn-dark" href="{{ route('create.article') }}">Pubblica un articolo</a>

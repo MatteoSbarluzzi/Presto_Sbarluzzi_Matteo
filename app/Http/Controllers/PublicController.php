@@ -9,7 +9,7 @@ class PublicController extends Controller
 {
     public function homepage()
     {
-        $articles = Article::take(6)->orderBy('created_at', 'desc')->get(); //prende e visualizza solo gli ultimi 6 annunci dal più recente restituendo i risultati come collezione con get
+        $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->take(6)->get();
         return view('welcome', compact('articles'));
     }
 }
