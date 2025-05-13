@@ -48,7 +48,9 @@
               <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
                  href="{{ route('revisor.index') }}">
                 Zona revisore
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{\App\Models\Article::toBeRevisionedCount()}}</span>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ \App\Models\Article::toBeRevisionedCount() }}
+                </span>
               </a>
             </li>
           @endif
@@ -85,8 +87,17 @@
             </ul>
           </li>
         @endauth
-
       </ul>
+
+      {{-- FORM DI RICERCA --}}
+      <form class="d-flex ms-auto" role="search" action="{{ route('article.search') }}" method="GET">
+        <div class="input-group">
+          <input type="search" name="query" class="form-control" placeholder="Scrivi il nome dell'articolo" aria-label="search">
+          <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2">
+            Cerca
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </nav>

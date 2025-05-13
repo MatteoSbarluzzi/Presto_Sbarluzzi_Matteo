@@ -27,3 +27,5 @@ Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->mid
 Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');
 
 Route::patch('/undo-last-review', [RevisorController::class, 'undoLastReview'])->name('undo.last.review');
+
+Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search'); // rotta per la ricerca degli articoli
