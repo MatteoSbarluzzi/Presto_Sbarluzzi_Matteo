@@ -5,7 +5,7 @@ return [
     'all_articles' => 'Tutti gli articoli',
     'categories' => 'Categorie',
     'revisor_zone' => 'Zona revisore',
-    
+
     'hello_user' => 'Ciao, :name',
     'hello_guest' => 'Ciao, utente',
     'search' => 'Cerca',
@@ -42,7 +42,7 @@ return [
     'accept' => 'Accetta',
     'reject' => 'Rifiuta',
     'undo_last_review' => 'Annulla ultima revisione',
-    
+
     'categories_list' => [
         'immobili' => 'Immobili',
         'elettronica' => 'Elettronica',
@@ -55,9 +55,10 @@ return [
         'casa' => 'Casa',
         'libri_e_riviste' => 'Libri e Riviste',
     ],
-    
+
     'image_for_article' => 'Immagine per l’articolo',
-    
+    'photo_preview' => 'Anteprima foto',
+
     'revisor_request' => 'Richiesta revisore',
     'user_info' => 'Informazioni utente',
     'name' => 'Nome',
@@ -65,5 +66,4 @@ return [
     'make_revisor' => 'Nomina revisore',
     'password' => 'Password',
     'confirm_password' => 'Conferma password',
-    
 ];

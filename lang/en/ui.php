@@ -57,14 +57,13 @@ return [
     ],
 
     'image_for_article' => 'Image for the article',
+    'photo_preview' => 'Photo preview',
 
-    // New keys for revisor email
     'revisor_request' => 'Revisor request',
     'user_info' => 'User information',
     'name' => 'Name',
     'revisor_click' => 'Click the link below to promote this user as a revisor',
     'make_revisor' => 'Make revisor',
-        'password' => 'Password',
+    'password' => 'Password',
     'confirm_password' => 'Confirm password',
-
 ];

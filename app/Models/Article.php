@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Image;
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Article extends Model
 {
@@ -55,5 +57,11 @@ class Article extends Model
             'description' => $this->description,
             'category' => $this->category // Stiamo richiamando la relazione category() per ottenere i dati della categoria associata all'articolo, non il nome di una colonna nella tabella
         ];
+    }
+
+    // Un singolo oggetto di classe Article può avere più oggetti di classe Image
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class);
     }
 }

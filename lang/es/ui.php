@@ -57,13 +57,13 @@ return [
     ],
 
     'image_for_article' => 'Imagen para el artículo',
+    'photo_preview' => 'Vista previa de la foto',
 
     'revisor_request' => 'Solicitud de revisor',
     'user_info' => 'Información del usuario',
     'name' => 'Nombre',
     'revisor_click' => 'Haz clic en el enlace a continuación para nombrar a este usuario como revisor',
     'make_revisor' => 'Nombrar revisor',
-        'password' => 'Contraseña',
+    'password' => 'Contraseña',
     'confirm_password' => 'Confirmar contraseña',
-
 ];
