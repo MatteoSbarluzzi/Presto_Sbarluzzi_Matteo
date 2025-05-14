@@ -37,9 +37,11 @@ class CreateArticleForm extends Component
         ]);
 
         $this->cleanForm(); // Pulisce il form dopo la creazione dell'articolo
-        session()->flash('success', 'Articolo creato con successo.');
+
+        // Usiamo una traduzione localizzata per il messaggio di successo
+        session()->flash('success', __('messages.article_created_successfully'));
     }
-    
+
     public function cleanForm()
     {
         // Pulisce i campi del form

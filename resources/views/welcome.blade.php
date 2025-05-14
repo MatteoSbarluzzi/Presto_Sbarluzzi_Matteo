@@ -2,7 +2,7 @@
     <div class="container-fluid text-center bg-body-tertiary">
         <div class="row vh-100 justify-content-center align-items-center">
             <div class="col-12">
-                <h1 class="display-4">Presto.it</h1>
+                <h1 class="display-4">{{ __('ui.homepage_title') }}</h1>
 
                 {{-- Messaggio di errore --}}
                 @if (session()->has('errorMessage'))
@@ -20,7 +20,7 @@
 
                 <div class="my-3">
                     @auth
-                        <a class="btn btn-dark" href="{{ route('create.article') }}">Pubblica un articolo</a>
+                        <a class="btn btn-dark" href="{{ route('create.article') }}">{{ __('ui.publish_article') }}</a>
                     @endauth
                 </div>
             </div>
@@ -37,7 +37,7 @@
         @empty
             <div class="col-12">
                 <h3 class="text-center">
-                    Non sono ancora stati creati articoli
+                    {{ __('ui.no_articles_yet') }}
                 </h3>
             </div>
         @endforelse

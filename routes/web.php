@@ -29,3 +29,5 @@ Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->n
 Route::patch('/undo-last-review', [RevisorController::class, 'undoLastReview'])->name('undo.last.review');
 
 Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search'); // rotta per la ricerca degli articoli
+
+Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');

@@ -20,4 +20,10 @@ class PublicController extends Controller
         $articles = Article::search($search)->where('is_accepted', true)->paginate(10); //massimo 10 articoli per pagina
         return view('article.searched', ['articles' => $articles, 'query' => $search]);
     }
+
+    public function setLanguage($lang)
+    {
+        session()->put('locale', $lang); //memorizza la lingua selezionata nella sessione
+        return redirect()->back();
+    }
 }
