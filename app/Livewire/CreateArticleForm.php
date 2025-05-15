@@ -7,13 +7,15 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use App\Jobs\ResizeImage;
 
 class CreateArticleForm extends Component
 {
     use WithFileUploads; // Importa il trait per la gestione dei file caricati
 
     public $images = []; // Array per memorizzare le immagini caricate
-    public $temporary_images; //Gestire immagini temporanee appena caricate
+    public $temporary_images; // Gestire immagini temporanee appena caricate
 
     // Validazione in tempo reale non appena l'utente modifica il valore di una proprietà
     #[Validate('required|min:4')]
@@ -42,16 +44,22 @@ class CreateArticleForm extends Component
             'user_id' => Auth::id()
         ]);
 
-       // se l’utente ha inserito delle immagini, per ognuna di queste creiamo, tramite la funzione di relazione con article ($this->article->images() ), un oggetto di classe Image, il file sarà salvato nello storage e il percorso dell'immagine sarà salvato nella tabella images del database
-       if (count($this->images) > 0){
-            foreach ($this->images as $image){
-                $this->article->images()->create(['path' => $image->store('images', 'public')]);
+        if (count($this->images) > 0) {
+            foreach ($this->images as $image) {
+                $newFileName = "articles/{$this->article->id}"; // Costruisce il nome del file per l'immagine con la struttura "articles/{id_articolo}"
+                $newImage = $this->article->images()->create([ // Crea un nuovo record collegato all'articolo corrente nella tabella images tramite la relazione one-to-many tra articoli e immagini
+                    'path' => $image->store($newFileName, 'public')
+                ]);
+                dispatch(new ResizeImage($newImage->path, 300, 300)); // Crea un nuovo oggetto di classe ResizeImage e passa al costruttore i parametri reali: il path dell’immagine appena salvata e le dimensioni che vogliamo per il crop.
             }
-       }
+            File::deleteDirectory(storage_path('/app/livewire-tmp')); // Elimina la directory temporanea di Livewire, utilizzata per caricare temporaneamente le immagini prima del salvataggio
+        }
 
-        // Usiamo una traduzione localizzata per il messaggio di successo
-        session()->flash('success', __('messages.article_created_successfully'));
+        session()->flash('success', __('messages.article_created_successfully')); // Imposta un messaggio di successo nella sessione
+
         $this->cleanForm(); // Pulisce il form dopo la creazione dell'articolo
+
+        return redirect()->route('homepage'); // Reindirizza l'utente alla homepage
     }
 
     public function cleanForm()
@@ -69,24 +77,23 @@ class CreateArticleForm extends Component
         return view('livewire.create-article-form');
     }
 
-    public function updatedTemporaryImages() // viene chiamato quando una proprietà pubblica di un componente viene modificata sul client. Questo hook fornisce un punto di accesso per reagire alle modifiche delle proprietà prima che il componente venga aggiornato sul server
+    public function updatedTemporaryImages() // Viene chiamato quando una proprietà pubblica di un componente viene modificata sul client. Questo hook fornisce un punto di accesso per reagire alle modifiche delle proprietà prima che il componente venga aggiornato sul server
     {
         if ($this->validate([
                 'temporary_images.*' => 'image|max:1024',
                 'temporary_images' => 'max:6' 
         ])) {
             foreach ($this->temporary_images as $image) {
-                $this->images[] = $image; //sugar syntax, images è il nome dell'array che stiamo modificando, dopo l'uguale c'è il nome della variabile che stiamo assegnando; array_push($this->images, $image) nella sintassi classica
+                $this->images[] = $image; // Aggiunge l'immagine all'array delle immagini caricate
             }
         }
     }
 
     public function removeImage($key)
     {
-        //Facciamo un controllo: se l’immagine selezionata è presente nell’array $images viene eliminata dall’array (e quindi non sarà né visualizzata né salvata
+        // Controlla se l’immagine selezionata è presente nell’array $images e la elimina
         if (in_array($key, array_keys($this->images))){
             unset($this->images[$key]); 
-            //in_array() verifica se un dato (il primo parametro) è presente all’interno di un array (secondo parametro);  array_keys() : restituisce tutte le chiavi o indici dell’array passato come parametro;  unset() : elimina dati elementi dall’interno di un array
         }
     }
 }

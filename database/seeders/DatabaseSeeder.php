@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,9 +24,10 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        foreach ($this->categories as $category){
+        foreach ($this->categories as $categoryName){
             Category::create([
-                'name' => $category
+                'name' => $categoryName,
+                'slug' => Str::slug($categoryName, '_'), 
             ]);
         }
     }

@@ -26,6 +26,8 @@ return [
     'logout' => 'Logout',
     'no_articles_to_review' => 'No articles to review',
     'no_articles_yet' => 'No articles yet',
+    'no_articles' => 'No available articles',
+    'no_articles_category' => 'No articles for this category',
     'back_home' => 'Back to home',
     'article_detail' => 'Article detail: :title',
     'title' => 'Title',
@@ -42,6 +44,9 @@ return [
     'accept' => 'Accept',
     'reject' => 'Reject',
     'undo_last_review' => 'Undo last review',
+
+    'search_results' => 'Search results for ":query"',
+    'no_search_results' => 'No results found',
 
     'categories_list' => [
         'immobili' => 'Real Estate',

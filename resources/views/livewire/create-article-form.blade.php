@@ -30,16 +30,17 @@
         @enderror
     </div>
 
+    {{-- Selezione categoria --}}
     <div class="mb-3">
-        <select id="category" wire:model.blur="category" class="form-control @error('category') is-invalid @enderror">
-            <option value="" disabled selected>{{ __('ui.select_category') }}</option>
+        <label for="category" class="form-label">{{ __('ui.select_category') }}</label>
+        <select id="category" wire:model.defer="category" class="form-control @error('category') is-invalid @enderror">
+            <option value="">{{ __('ui.select_category') }}</option> {{-- Opzione vuota come placeholder --}}
             @foreach($categories as $category)
                 <option value="{{ $category->id }}">
                     {{ __('ui.categories_list.' . $category->slug) }}
                 </option>
             @endforeach
         </select>
-
         @error('category')
             <p class="fst-italic text-danger">{{ $message }}</p>
         @enderror
@@ -47,10 +48,9 @@
 
     {{-- Inserimento immagini --}}
     <div class="mb-3">
-        <input type="file" wire:model.live="temporary_images" multiple
-               class="form-control shadow @error('temporary_images.*') is-invalid @enderror" placeholder="Img" /> {{-- input serve per caricare file, multiple per caricarle contemporaneamente; Livewire associa i file caricati alla proprietà temporary_images del componente in tempo reale --}}
-
-        {{-- applica una classe bootstrap se ci sono errori di validazione --}}
+        <label for="temporary_images" class="form-label">{{ __('ui.image_for_article') }}:</label>
+        <input type="file" id="temporary_images" wire:model.live="temporary_images" multiple
+               class="form-control shadow @error('temporary_images.*') is-invalid @enderror" placeholder="Img" />
         @error('temporary_images.*')
             <p class="fst-italic text-danger">{{ $message }}</p>
         @enderror
@@ -68,9 +68,7 @@
                     @foreach ($images as $key => $image)
                         <div class="col d-flex flex-column align-items-center my-3">
                             <div class="img-preview mx-auto shadow rounded"
-                                 style="background-image: url({{ $image->temporaryUrl() }}); width: 150px; height: 150px; background-size: cover; background-position: center;"></div> {{-- Genera un url temporaneo per visualizzare le immagini --}}
-                            {{-- Per ogni immagine oltre alla preview genera anche un bottone che farà partire il metodo removeImage() passandogli come parametro reale la chiave dell’immagine ciclata in 
-quel momento --}}
+                                 style="background-image: url({{ $image->temporaryUrl() }}); width: 150px; height: 150px; background-size: cover; background-position: center;"></div>
                             <button type="button" class="btn mt-1 btn-danger"
                                     wire:click="removeImage({{ $key }})">X</button>
                         </div>

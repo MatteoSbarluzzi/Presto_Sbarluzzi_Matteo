@@ -26,6 +26,8 @@ return [
     'logout' => 'Cerrar sesión',
     'no_articles_to_review' => 'No hay artículos para revisar',
     'no_articles_yet' => 'Aún no hay artículos',
+    'no_articles' => 'No hay artículos disponibles',
+    'no_articles_category' => 'No hay artículos en esta categoría',
     'back_home' => 'Volver a inicio',
     'article_detail' => 'Detalle del artículo :title',
     'title' => 'Título',
@@ -42,6 +44,9 @@ return [
     'accept' => 'Aceptar',
     'reject' => 'Rechazar',
     'undo_last_review' => 'Deshacer última revisión',
+
+    'search_results' => 'Resultados de la búsqueda para ":query"',
+    'no_search_results' => 'No se encontraron resultados',
 
     'categories_list' => [
         'immobili' => 'Inmuebles',

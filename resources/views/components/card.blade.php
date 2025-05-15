@@ -1,6 +1,6 @@
 <div class="card mx-auto card-w shadow text-center mb-3 h-100">
     {{-- $article->images->isNotEmpty() : controlliamo che la collezione delle immagini relazionate all’articolo non sia vuota --}}
-    <img src="{{ $article->images->isNotEmpty() ? Storage::url($article->images->first()->path) : 'https://picsum.photos/200' }}" {{-- Storage::url... verifica  se la condizione è rispettata, e quindi c'è almeno una immagine, verrà 
+    <img src="{{ $article->images->isNotEmpty() ? $article->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}" {{-- getUrl... verifica  se la condizione è rispettata, e quindi c'è almeno una immagine, verrà 
 eseguito questo codice altrimenti quella di lorem picsum di default. Inoltre al metodo statico della classe Storage 
 url() , utilizzato per generare un URL pubblico per un file archiviato 
 nel sistema di storage, passiamo il path della prima immagine della collezione relazionata all’articolo --}} 

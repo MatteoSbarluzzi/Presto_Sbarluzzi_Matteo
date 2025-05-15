@@ -34,7 +34,7 @@
     @foreach ($categories as $category)
       <li>
         <a class="dropdown-item" href="{{ route('byCategory', ['category' => $category]) }}">
-          {{ __('ui.categories_list.' . Str::slug($category->name, '_')) }}
+          {{ __('ui.categories_list.' . $category->slug) }}
         </a>
       </li>
       @if (!$loop->last)

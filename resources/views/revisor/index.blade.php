@@ -32,15 +32,12 @@
                 <div class="col-md-8">
                     <div class="row justify-content-center">
 
-                        {{-- Se l’articolo 
-$article_to_check ha delle immagini (ovvero se il 
-ognuna delle immagini creiamo una colonna e un tag 
-count() della collezione restituisce un numero maggiore di 0), per 
-img, altrimenti, se non vi è alcuna immagine, vedremo sempre l'immagine segnaposto --}}
+                        {{-- Se l’articolo $article_to_check ha delle immagini (ovvero se il ognuna delle immagini creiamo una colonna e un tag count() della collezione restituisce un numero maggiore di 0), per img, altrimenti, se non vi è alcuna immagine, vedremo sempre l'immagine segnaposto --}}
                         @if ($article_to_check->images->count())
                             @foreach ($article_to_check->images as $key => $image)
-                                <div class="col-6 col-md-4 mb-4">
-                                    <img src="{{ Storage::url($image->path) }}" class="img-fluid rounded shadow"
+                                <div class="col-6 col-md-4 mb-4 text-center">
+                                    {{-- uso corretto del metodo di istanza getUrl() --}}
+                                    <img src="{{ $image->getUrl(300, 300) }}" class="img-fluid rounded shadow"
                                          alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
                                 </div>
                             @endforeach
