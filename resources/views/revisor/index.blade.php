@@ -32,20 +32,91 @@
                 <div class="col-md-8">
                     <div class="row justify-content-center">
 
-                        {{-- Se l’articolo $article_to_check ha delle immagini (ovvero se il ognuna delle immagini creiamo una colonna e un tag count() della collezione restituisce un numero maggiore di 0), per img, altrimenti, se non vi è alcuna immagine, vedremo sempre l'immagine segnaposto --}}
+                        {{-- Se l’articolo $article_to_check ha delle immagini, generiamo una card per ogni immagine associata.
+                             Questo ci permette di mostrare, oltre all’immagine, anche le etichette (labels) e le icone salvate nel database 
+                             dai job GoogleVisionSafeSearch e GoogleVisionLabelImage. --}}
                         @if ($article_to_check->images->count())
                             @foreach ($article_to_check->images as $key => $image)
-                                <div class="col-6 col-md-4 mb-4 text-center">
-                                    {{-- uso corretto del metodo di istanza getUrl() --}}
-                                    <img src="{{ $image->getUrl(300, 300) }}" class="img-fluid rounded shadow"
-                                         alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
+                                <div class="col-12 mb-4">
+                                    <div class="card shadow">
+                                        <div class="row g-0 align-items-center">
+                                            
+                                            {{-- Colonna immagine (300x300) ritagliata dallo storage --}}
+                                            <div class="col-md-4">
+                                                {{-- uso corretto del metodo di istanza getUrl() --}}
+                                                <img src="{{ $image->getUrl(300, 300) }}"
+                                                     class="img-fluid rounded-start"
+                                                     alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
+                                            </div>
+
+                                            {{-- Colonna centrale: mostra le etichette (labels) restituite da Google Vision --}}
+                                            <div class="col-md-5 ps-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Labels</h5>
+                                                    
+                                                    {{-- Se ci sono etichette, le mostriamo come badge, altrimenti messaggio "No labels" --}}
+                                                    @if ($image->labels)
+                                                        @foreach ($image->labels as $label)
+                                                            <span class="badge bg-dark text-light me-1">{{ $label }}</span>
+                                                        @endforeach
+                                                    @else
+                                                        <p class="fst-italic">No labels</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            {{-- Colonna destra: mostra le icone SafeSearch generate dal job GoogleVisionSafeSearch --}}
+                                            <div class="col-md-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Ratings</h5>
+
+                                                    {{-- Ogni riga mostra una valutazione AI con l’icona (salvata come classe CSS nel DB) e il nome del tipo --}}
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-2">
+                                                            <div class="text-center mx-auto"><i class="{{ $image->adult }}"></i></div>
+                                                        </div>
+                                                        <div class="col-10">adult</div>
+                                                    </div>
+
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-2">
+                                                            <div class="text-center mx-auto"><i class="{{ $image->violence }}"></i></div>
+                                                        </div>
+                                                        <div class="col-10">violence</div>
+                                                    </div>
+
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-2">
+                                                            <div class="text-center mx-auto"><i class="{{ $image->spoof }}"></i></div>
+                                                        </div>
+                                                        <div class="col-10">spoof</div>
+                                                    </div>
+
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-2">
+                                                            <div class="text-center mx-auto"><i class="{{ $image->racy }}"></i></div>
+                                                        </div>
+                                                        <div class="col-10">racy</div>
+                                                    </div>
+
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-2">
+                                                            <div class="text-center mx-auto"><i class="{{ $image->medical }}"></i></div>
+                                                        </div>
+                                                        <div class="col-10">medical</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             @endforeach
                         @else
+                            {{-- Se non vi è alcuna immagine, mostriamo immagini segnaposto (6 placeholder) --}}
                             @for ($i = 0; $i < 6; $i++)
                                 <div class="col-6 col-md-4 mb-4 text-center">
-                                    <img src="https://picsum.photos/300" alt="immagine segnaposto"
-                                         class="img-fluid rounded shadow">
+                                    <img src="https://picsum.photos/300" alt="immagine segnaposto" class="img-fluid rounded shadow">
                                 </div>
                             @endfor
                         @endif
@@ -53,6 +124,7 @@
                     </div>
                 </div>
 
+                {{-- Colonna destra: dettagli dell’articolo e bottoni accetta/rifiuta --}}
                 <div class="col-md-4 ps-4 d-flex flex-column justify-content-between">
                     <div>
                         <h1>{{ $article_to_check->title }}</h1>
@@ -62,6 +134,7 @@
                         <p class="h6">{{ $article_to_check->description }}</p>
                     </div>
 
+                    {{-- Bottoni accetta/rifiuta con metodo PATCH --}}
                     <div class="d-flex pb-4 justify-content-around">
                         <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST">
                             @csrf
@@ -77,6 +150,7 @@
                 </div>
             </div>
         @else
+            {{-- Messaggio visibile quando non ci sono articoli da revisionare --}}
             <div class="row justify-content-center align-items-center height-custom text-center">
                 <div class="col-12">
                     <h1 class="fst-italic display-4">

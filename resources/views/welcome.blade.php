@@ -28,10 +28,10 @@
     </div>
 
     {{-- Sezione Articoli --}}
-    <div class="row height-custom justify-content-center align-items-center py-5">
+    <div class="row height-custom justify-content-center align-items-stretch py-5">
         {{-- Verifichiamo che la collezione articles non sia vuota, così creiamo dinamicamente una card per ogni oggetto della collezione --}}
         @forelse ($articles as $article)
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mb-4 d-flex">
                 <x-card :article="$article"/>
             </div>
         @empty

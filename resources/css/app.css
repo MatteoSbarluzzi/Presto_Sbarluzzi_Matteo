@@ -1,2 +1,4 @@
-@import "bootstrap/dist/css/bootstrap";
 @import "./style.css";
+@import "bootstrap/dist/css/bootstrap";
+@import "bootstrap-icons";
+

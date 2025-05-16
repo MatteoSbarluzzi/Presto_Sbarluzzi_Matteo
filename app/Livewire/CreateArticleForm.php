@@ -4,11 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Component;
+use App\Jobs\ResizeImage;
+use App\Jobs\GoogleVisionSafeSearch;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
+use App\Jobs\GoogleVisionLabelImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Jobs\ResizeImage;
 
 class CreateArticleForm extends Component
 {
@@ -44,13 +46,16 @@ class CreateArticleForm extends Component
             'user_id' => Auth::id()
         ]);
 
+        // Salva le immagini caricate e lancia i job di elaborazione
         if (count($this->images) > 0) {
             foreach ($this->images as $image) {
                 $newFileName = "articles/{$this->article->id}"; // Costruisce il nome del file per l'immagine con la struttura "articles/{id_articolo}"
                 $newImage = $this->article->images()->create([ // Crea un nuovo record collegato all'articolo corrente nella tabella images tramite la relazione one-to-many tra articoli e immagini
-                    'path' => $image->store($newFileName, 'public')
-                ]);
+                    'path' => $image->store($newFileName, 'public')]);
                 dispatch(new ResizeImage($newImage->path, 300, 300)); // Crea un nuovo oggetto di classe ResizeImage e passa al costruttore i parametri reali: il path dell’immagine appena salvata e le dimensioni che vogliamo per il crop.
+                dispatch(new GoogleVisionSafeSearch($newImage->id));
+                dispatch(new GoogleVisionLabelImage($newImage->id));
+                
             }
             File::deleteDirectory(storage_path('/app/livewire-tmp')); // Elimina la directory temporanea di Livewire, utilizzata per caricare temporaneamente le immagini prima del salvataggio
         }
