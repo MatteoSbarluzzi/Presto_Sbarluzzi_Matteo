@@ -8,7 +8,6 @@
 
         <div class="row height-custom justify-content-center py-5">
             {{-- Immagini Carousel dinamico --}}
-            {{-- Se ci sono delle immagini, viene generato un carosello in cui, per ognuna delle immagini, viene generata una slide, ma solo se ce ne sono più di una, altrimenti vediamo quella di default --}}
             <div class="col-12 col-md-6 mb-3">
                 @if ($article->images->count() > 0)
                     <div id="carouselExample" class="carousel slide">
@@ -39,11 +38,36 @@
 
             {{-- Dettagli Articolo --}}
             <div class="col-12 col-md-6 mb-3 height-custom text-center">
-                <h2 class="display-5"><span class="fw-bold">{{ __('ui.title') }}: </span> {{ $article->title }}</h2>
+                <h2 class="display-5">
+                    <span class="fw-bold">{{ __('ui.title') }}: </span> {{ $article->title }}
+                </h2>
                 <div class="d-flex flex-column justify-content-center h-75">
                     <h4 class="fw-bold">{{ __('ui.price') }}: {{ $article->price }} €</h4>
                     <h5>{{ __('ui.description') }}:</h5>
                     <p>{{ $article->description }}</p>
+
+                    {{-- Etichetta categoria --}}
+                    <span class="badge rounded-pill text-info border border-info px-3 py-2 my-2 w-auto align-self-center">
+                        {{ __('ui.categories_list.' . Illuminate\Support\Str::slug($article->category->name, '_')) }}
+                    </span>
+                </div>
+
+                {{-- BOTTONI CHIUSURA E CANCELLA --}}
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
+                        {{ __('ui.close_article_detail') }}
+                    </a>
+
+                    @auth
+                        @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
+                            <form method="POST" action="{{ route('article.destroy', $article) }}"
+                                  onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">{{ __('ui.delete') }}</button>
+                            </form>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>

@@ -1,24 +1,42 @@
-<div class="card mx-auto card-w shadow text-center mb-3 h-100">
-    {{-- $article->images->isNotEmpty() : controlliamo che la collezione delle immagini relazionate all’articolo non sia vuota --}}
-    <img src="{{ $article->images->isNotEmpty() ? $article->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}" {{-- getUrl... verifica  se la condizione è rispettata, e quindi c'è almeno una immagine, verrà 
-eseguito questo codice altrimenti quella di lorem picsum di default. Inoltre al metodo statico della classe Storage 
-url() , utilizzato per generare un URL pubblico per un file archiviato 
-nel sistema di storage, passiamo il path della prima immagine della collezione relazionata all’articolo --}} 
-         class="card-img-top" 
-         alt="Immagine dell'articolo {{ $article->title }}">
+<div class="card h-100 shadow text-center d-flex flex-column mx-auto mb-3" style="width: 100%; max-width: 300px;">
+    
+    {{-- Immagine in ratio 1:1 --}}
+    <div class="ratio ratio-1x1">
+        <img 
+            src="{{ $article->images->isNotEmpty() ? $article->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}" 
+            class="img-fluid object-fit-cover rounded-top" 
+            alt="Immagine dell'articolo {{ $article->title }}">
+    </div>
 
     <div class="card-body d-flex flex-column justify-content-between">
         <div>
             <h4 class="card-title">{{ $article->title }}</h4>
             <h6 class="card-subtitle text-body-secondary">{{ $article->price }} €</h6>
         </div>
-        <div class="d-flex justify-content-evenly align-items-center mt-5">
-            <a href="{{ route('article.show', compact('article')) }}" class="btn btn-primary">{{ __('ui.detail') }}</a>
-            
+
+        <div class="mt-4">
+            {{-- Bottoni azione affiancati --}}
+            <div class="d-flex justify-content-center gap-2 mb-3">
+                <a href="{{ route('article.show', compact('article')) }}" class="btn btn-primary">
+                    {{ __('ui.detail') }}
+                </a>
+
+                @auth
+                    @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
+                        <form method="POST" action="{{ route('article.destroy', $article) }}" onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">{{ __('ui.delete') }}</button>
+                        </form>
+                    @endif
+                @endauth
+            </div>
+
+            {{-- Etichetta categoria --}}
             @php use Illuminate\Support\Str; @endphp
-            <a href="{{ route('byCategory', ['category' => $article->category]) }}" class="btn btn-outline-info">
+            <span class="badge rounded-pill text-info border border-info px-3 py-2">
                 {{ __('ui.categories_list.' . Str::slug($article->category->name, '_')) }}
-            </a>
+            </span>
         </div>
     </div>
-</div>
+</div>  

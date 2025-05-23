@@ -1,89 +1,124 @@
 <!-- Footer -->
 <footer class="bg-body-tertiary text-center">
-  <!-- Grid container -->
   <div class="container p-4">
 
-    <!-- Sezione: Diventa Revisore (centrata) -->
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-6 text-center">
-        <h5>{{ __('ui.want_to_become_revisor') }}</h5>
-        <p>{{ __('ui.click_button_below') }}</p>
-        <a href="{{ route('become.revisor') }}" class="btn btn-success">{{ __('ui.become_revisor') }}</a>
-      </div>
-    </div>
-    <!-- Fine Sezione: Diventa Revisore -->
-
-    <!-- Section: Social media -->
+    <!-- Sezione descrizione -->
     <section class="mb-4">
-      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-google"></i>
-      </a>
-      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-github"></i>
-      </a>
+      <p>{{ __('ui.description_footer') }}</p>
     </section>
 
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <div class="row d-flex justify-content-center">
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>{{ __('ui.newsletter_text') }}</strong>
-            </p>
-          </div>
+    <!-- Sezione: colonne principali -->
+    <div class="container">
+      <div class="row">
 
-          <div class="col-md-5 col-12">
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" id="form5Example24" class="form-control" />
-              <label class="form-label" for="form5Example24">{{ __('ui.email_address') }}</label>
-            </div>
-          </div>
+        <!-- Colonna Contatti -->
+        <div class="col-md-3 mb-3">
+          <h5>{{ __('ui.contact') }}</h5>
+          <p>{{ __('ui.location') }}: Firenze (FI)</p>
+          <p>{{ __('ui.address') }}: Via della Liberazione, 11</p>
+          <p>{{ __('ui.email') }}: info@presto.it</p>
+          <p>{{ __('ui.phone') }}: +39 123 456 789</p>
+          <p>{{ __('ui.fax') }}: 06 1234 5678</p>
+          <p>{{ __('ui.vat_number') }}: 12345678901</p>
+        </div>
 
-          <div class="col-auto">
-            <button data-mdb-ripple-init type="submit" class="btn btn-outline mb-4">
-              {{ __('ui.subscribe') }}
-            </button>
+        <!-- Colonna Fatturazione -->
+        <div class="col-md-3 mb-3 text-center">
+          <h5>{{ __('ui.billing_and_orders') }}</h5>
+          <p>
+            <a href="{{ route('shipping') }}" class="text-dark text-decoration-none">
+              {{ __('ui.shipping_and_returns') }}
+            </a>
+          </p>
+          <p>
+            <a href="{{ route('reviews') }}" class="text-dark text-decoration-none">
+              {{ __('ui.customer_reviews') }}
+            </a>
+          </p>
+          <p class="text-dark">{{ __('ui.payment_methods') }}</p>
+          <div class="mt-4 text-center">
+            <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" class="me-2" title="{{ __('ui.visa') }}" />
+            <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard" class="me-2" title="{{ __('ui.mastercard') }}" />
+            <img src="https://img.icons8.com/color/48/000000/amex.png" alt="American Express" class="me-2" title="{{ __('ui.amex') }}" />
+            <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal" class="me-2" title="{{ __('ui.paypal') }}" />
+            <i class="bi bi-bank fs-3 me-2" title="{{ __('ui.bank_transfer') }}"></i>
+            <img src="https://img.icons8.com/color/48/000000/google-pay.png" alt="Google Pay" class="me-2" title="{{ __('ui.google_pay') }}" />
+            <img src="https://img.icons8.com/ios-filled/50/000000/apple-pay.png" alt="Apple Pay" class="me-2" title="{{ __('ui.apple_pay') }}" />
+            <!-- Bitcoin -->
+<img src="https://img.icons8.com/color/48/000000/bitcoin--v1.png" alt="Bitcoin" class="me-2" title="Bitcoin" />
+
+
           </div>
         </div>
-      </form>
-    </section>
 
-    <!-- Section: Text -->
-    <section class="mb-4">
-      <p>
-        {{ __('ui.lorem_footer') }}
-      </p>
-    </section>
+        <!-- Colonna Social -->
+        <div class="col-md-3 mb-3 d-flex flex-column align-items-center">
+          <h5>{{ __('ui.follow_us') }}</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a href="https://facebook.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+                <i class="bi bi-facebook fs-5 me-2"></i> Facebook
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://x.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+                <i class="bi bi-twitter-x fs-5 me-2"></i> X
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://instagram.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+                <i class="bi bi-instagram fs-5 me-2"></i> Instagram
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://tiktok.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+                <i class="bi bi-tiktok fs-5 me-2"></i> TikTok
+              </a>
+            </li>
+            <li class="mb-2">
+              <a href="https://linkedin.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+                <i class="bi bi-linkedin fs-5 me-2"></i> LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
 
-    <!-- Section: Links -->
-    <section class="">
-      <div class="row">
-        @for ($i = 0; $i < 4; $i++)
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
-            <ul class="list-unstyled mb-0">
-              <li><a class="text-body" href="#!">Link 1</a></li>
-              <li><a class="text-body" href="#!">Link 2</a></li>
-              <li><a class="text-body" href="#!">Link 3</a></li>
-              <li><a class="text-body" href="#!">Link 4</a></li>
-            </ul>
+        <!-- Colonna Newsletter + Revisore -->
+        <div class="col-md-3 mb-3">
+          <h5>{{ __('ui.newsletter_text') }}</h5>
+        <form method="POST" action="{{ route('newsletter.subscribe') }}">
+    @csrf
+    <div class="text-center">
+
+        <div class="mx-auto mb-3" style="max-width: 400px;">
+            <input type="email" name="email" class="form-control" placeholder="{{ __('ui.email_placeholder') }}" required />
+        </div>
+
+        <button type="submit" class="btn btn-outline">
+            {{ __('ui.subscribe') }}
+        </button>
+    </div>
+</form>
+
+
+
+
+
+          <hr class="my-4">
+
+          <div class="text-center">
+            <h5>{{ __('ui.work_with_us') }}</h5>
+<p class="small">{{ __('ui.click_button_below') }}</p>
+<a href="{{ route('become.revisor') }}" class="btn btn-success btn-sm">
+    {{ __('ui.want_to_become_revisor') }}
+</a>
+
           </div>
-        @endfor
+        </div>
+
       </div>
-    </section>
+    </div>
+
   </div>
 
   <!-- Copyright -->
@@ -91,4 +126,4 @@
     © 2025 Copyright:
     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Presto.it</a>
   </div>
-</footer>
+</footer> 

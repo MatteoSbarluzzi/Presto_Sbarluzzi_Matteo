@@ -4,30 +4,44 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\RevisorController;
+use App\Http\Controllers\ReviewController;
 
+// Homepage
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 
+// Articoli
 Route::get('/create/article', [ArticleController::class, 'create'])->name('create.article');
-
 Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show'); // cambiato da /show/article a /article
 
-Route::get('/show/article/{article}', [ArticleController::class, 'show'])->name('article.show');
-
+// Articoli per categoria
 Route::get('/category/{category}', [ArticleController::class, 'byCategory'])->name('byCategory');
 
-Route::get('revisor/index', [RevisorController::class, 'index'])->name('revisor.index');
+// Ricerca
+Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search');
 
-Route::patch('/accept/{article}', [RevisorController::class, 'accept'])->name('accept'); //patch serve per aggiornare solo una parte della risorsa, possiamo dunque aggiornarla con solo i dati che ci interessano
-Route::patch('/reject/{article}', [RevisorController::class, 'reject'])->name('reject'); 
+// Revisore
+Route::get('/revisor/index', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
 
-Route::get('revisor/index', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
-
-Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor'); // logica per far partire l'email (rotta protetta da auth)
-
-Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');
-
+Route::patch('/accept/{article}', [RevisorController::class, 'accept'])->name('accept'); // patch serve per aggiornare solo una parte della risorsa
+Route::patch('/reject/{article}', [RevisorController::class, 'reject'])->name('reject');
 Route::patch('/undo-last-review', [RevisorController::class, 'undoLastReview'])->name('undo.last.review');
 
-Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search'); // rotta per la ricerca degli articoli
+Route::get('/revisor/request', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');
 
+// Lingua
 Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');
+
+// Pagine statiche
+Route::get('/shipping-and-returns', [PublicController::class, 'shippingAndReturns'])->name('shipping');
+Route::get('/reviews', [PublicController::class, 'reviews'])->name('reviews');
+
+// Newsletter
+Route::post('/newsletter/subscribe', [PublicController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
+
+// Recensioni
+Route::get('/recensioni', [ReviewController::class, 'index'])->name('reviews');
+Route::post('/recensioni', [ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
+
+Route::delete('/article/{article}', [ArticleController::class, 'destroy'])->name('article.destroy')->middleware('auth');

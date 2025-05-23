@@ -1,56 +1,62 @@
 {{-- Navbar --}}
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    {{-- Brand --}}
-    <a class="navbar-brand" href="{{ route('homepage') }}">Presto.it</a>
+<nav class="navbar navbar-expand-lg fixed-top navcustom">
+  <div class="container">
 
-    {{-- Toggler per dispositivi mobili --}}
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    {{-- Logo mobile (visibile solo su schermi piccoli) --}}
+    <a class="navbar-brand d-lg-none logo-wrapper" href="{{ route('homepage') }}">
+      <img src="{{ asset('storage/images/prestoit_logo.png') }}" class="logo" alt="Presto.it logo">
+    </a>
+
+    {{-- Bottone toggle per mobile --}}
+    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    {{-- Contenuto della navbar --}}
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+    {{-- Menu responsivo --}}
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
-        {{-- Link Home --}}
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('homepage') }}">{{ __('ui.home') }}</a>
+        {{-- Logo desktop (centrato, visibile solo da lg in poi) --}}
+        <li class="nav-item logo-wrapper d-none d-lg-flex">
+          <a class="navbar-brand" href="{{ route('homepage') }}">
+            <img src="{{ asset('storage/images/prestoit_logo.png') }}" class="logo" alt="Presto.it logo">
+          </a>
         </li>
 
-        {{-- Link Tutti gli articoli --}}
+        {{-- Home --}}
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ route('article.index') }}">{{ __('ui.all_articles') }}</a>
+          <a class="nav-link active" href="{{ route('homepage') }}">{{ __('ui.home') }}</a>
         </li>
 
-{{-- Dropdown categorie --}}
-@php use Illuminate\Support\Str; @endphp
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    {{ __('ui.categories') }}
-  </a>
-  <ul class="dropdown-menu">
-    @foreach ($categories as $category)
-      <li>
-        <a class="dropdown-item" href="{{ route('byCategory', ['category' => $category]) }}">
-          {{ __('ui.categories_list.' . $category->slug) }}
-        </a>
-      </li>
-      @if (!$loop->last)
-        <hr class="dropdown-divider">
-      @endif
-    @endforeach
-  </ul>
-</li>
+        {{-- Tutti gli articoli --}}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('article.index') }}">{{ __('ui.all_articles') }}</a>
+        </li>
 
+        {{-- Categorie --}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            {{ __('ui.categories') }}
+          </a>
+          <ul class="dropdown-menu">
+            @foreach ($categories as $category)
+              <li>
+                <a class="dropdown-item" href="{{ route('byCategory', ['category' => $category]) }}">
+                  {{ __('ui.categories_list.' . $category->slug) }}
+                </a>
+              </li>
+              @if (!$loop->last)
+                <hr class="dropdown-divider">
+              @endif
+            @endforeach
+          </ul>
+        </li>
 
-        {{-- Link Zona Revisore per utenti revisori --}}
+        {{-- Zona revisore --}}
         @auth
           @if (Auth::user()->is_revisor)
             <li class="nav-item">
-              <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
-                 href="{{ route('revisor.index') }}">
+              <a class="nav-link btn btn-outline-success btn-sm position-relative" href="{{ route('revisor.index') }}">
                 {{ __('ui.revisor_zone') }}
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{ \App\Models\Article::toBeRevisionedCount() }}
@@ -60,19 +66,16 @@
           @endif
         @endauth
 
-        {{-- Dropdown autenticazione --}}
+        {{-- Autenticazione --}}
         @auth
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
               {{ __('ui.hello_user', ['name' => Auth::user()->name]) }}
             </a>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ route('create.article') }}">{{ __('ui.create') }}</a></li>
               <li>
-                <a class="dropdown-item" href="{{ route('create.article') }}">{{ __('ui.create') }}</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"
-                  onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">
                   {{ __('ui.logout') }}
                 </a>
               </li>
@@ -81,7 +84,7 @@
           </li>
         @else
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
               {{ __('ui.hello_guest') }}
             </a>
             <ul class="dropdown-menu">
@@ -92,22 +95,43 @@
           </li>
         @endauth
 
-        {{-- Lingue disponibili --}}
-        <li class="nav-item"><x-_locale lang="it" /></li>
-        <li class="nav-item"><x-_locale lang="en" /></li>
-        <li class="nav-item"><x-_locale lang="es" /></li>
+        {{-- Lingua --}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
+            @switch(app()->getLocale())
+              @case('it') <x-_locale lang="it" /> {{ __('ui.italian') }} @break
+              @case('en') <x-_locale lang="en" /> {{ __('ui.english') }} @break
+              @case('es') <x-_locale lang="es" /> {{ __('ui.spanish') }} @break
+            @endswitch
+          </a>
+          <ul class="dropdown-menu">
+            @foreach (['it', 'en', 'es'] as $lang)
+              <li>
+                <form action="{{ route('setLocale', ['lang' => $lang]) }}" method="POST" class="d-inline">
+                  @csrf
+                  <button type="submit" class="dropdown-item d-flex align-items-center gap-2 border-0 bg-transparent w-100 text-start">
+                    <x-_locale :lang="$lang" />
+                    <span>{{ __('ui.' . ($lang == 'it' ? 'italian' : ($lang == 'en' ? 'english' : 'spanish'))) }}</span>
+                  </button>
+                </form>
+              </li>
+            @endforeach
+          </ul>
+        </li>
+
+        {{-- Form di ricerca --}}
+        <li class="nav-item">
+          <form class="d-flex" role="search" action="{{ route('article.search') }}" method="GET">
+            <div class="input-group">
+              <input type="search" name="query" class="form-control" placeholder="{{ __('ui.search_placeholder') }}" aria-label="search">
+              <button type="submit" class="input-group-text btn btn-outline-success">
+                {{ __('ui.search') }}
+              </button>
+            </div>
+          </form>
+        </li>
 
       </ul>
-
-      {{-- FORM DI RICERCA --}}
-      <form class="d-flex ms-auto" role="search" action="{{ route('article.search') }}" method="GET">
-        <div class="input-group">
-          <input type="search" name="query" class="form-control" placeholder="{{ __('ui.search_placeholder') }}" aria-label="search">
-          <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2">
-            {{ __('ui.search') }}
-          </button>
-        </div>
-      </form>
     </div>
-  </div>
+  </div>  
 </nav>

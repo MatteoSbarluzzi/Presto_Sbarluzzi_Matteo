@@ -63,7 +63,7 @@ class RevisorController extends Controller
 
         return redirect()
             ->route('homepage')
-            ->with('message', __('messages.revisor_request_sent'));
+            ->with('message', __('ui.revisor_request_thank_you'));
     }
 
     // Assegna il ruolo di revisore a un utente tramite Artisan Command personalizzato
