@@ -27,11 +27,15 @@
         </div>
     </div>
 
+    {{-- Titolo "Esplora le ultime inserzioni" --}}
+    <div class="container my-5">
+        <h2 class="text-center slide-from-bottom-slow">{{ __('ui.explore_latest_ads') }}</h2>
+    </div>
+
     {{-- Sezione Articoli --}}
     <div class="row height-custom justify-content-center align-items-stretch py-5">
-        {{-- Verifichiamo che la collezione articles non sia vuota, così creiamo dinamicamente una card per ogni oggetto della collezione --}}
         @forelse ($articles as $article)
-            <div class="col-12 col-md-3 mb-4 d-flex">
+            <div class="col-12 col-md-3 mb-4 d-flex article-fade-in">
                 <x-card :article="$article"/>
             </div>
         @empty
@@ -43,78 +47,91 @@
         @endforelse
     </div>
 
+    <div class="my-5 d-md-none"></div>
+
     {{-- Sezione Spedizioni Internazionali --}}
-    <div class="container my-5">
+    <div class="container-fluid responsive-section my-md-5">
         <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0 text-center">
-                <img src="{{ asset('images/world-map-shipping.jpg') }}" alt="Spedizioni nel mondo" class="img-fluid shadow rounded">
+            <div class="col-md-6 order-1 order-md-2 text-center slide-from-right mt-4 mt-md-0">
+                <h2 class="fw-bold">{{ __('ui.shipping_worldwide') }}</h2>
+                <p class="text-muted">{{ __('ui.shipping_description') }}</p>
             </div>
-            <div class="col-md-6 text-center text-md-start">
-                <h2 class="mb-3">{{ __('ui.shipping_worldwide') }}</h2>
-                <p class="lead">
-                    {{ __('ui.shipping_description', ['countries' => 35]) }}
-                </p>
+            <div class="col-md-6 order-2 order-md-1 text-center slide-from-left">
+                <img src="{{ asset('storage/images/logistics.png') }}" alt="Logistica" class="img-fluid shadow rounded">
             </div>
         </div>
     </div>
 
+    <div class="my-5 d-md-none"></div>
+
     {{-- Sezione Statistiche dinamiche --}}
-    <div class="container my-5">
-        <h2 class="text-center mb-4">{{ __('ui.our_numbers') }}</h2>
-        <div class="row text-center">
-            <div class="col-md-4">
-                <h3 id="firstNumber" class="display-4">0</h3>
-                <p>{{ __('ui.users_registered') }}</p>
+    <div class="container-fluid responsive-section my-md-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 slide-from-left">
+                <h2 class="mb-4 text-center mt-5">{{ __('ui.our_numbers') }}</h2>
+
+                <div class="mb-3 d-flex justify-content-between align-items-center px-3">
+                    <p class="mb-0 fs-5">{{ __('ui.users_registered') }}</p>
+                    <h3 id="firstNumber" class="display-4 mb-0">0</h3>
+                </div>
+                <div class="mb-3 d-flex justify-content-between align-items-center px-3">
+                    <p class="mb-0 fs-5">{{ __('ui.articles_published') }}</p>
+                    <h3 id="secondNumber" class="display-4 mb-0">0</h3>
+                </div>
+                <div class="d-flex justify-content-between align-items-center px-3">
+                    <p class="mb-0 fs-5">{{ __('ui.sales_record') }}</p>
+                    <h3 id="thirdNumber" class="display-4 mb-0">0</h3>
+                </div>
+
+                <div class="mt-4 d-md-none"></div>
             </div>
-            <div class="col-md-4">
-                <h3 id="secondNumber" class="display-4">0</h3>
-                <p>{{ __('ui.articles_published') }}</p>
-            </div>
-            <div class="col-md-4">
-                <h3 id="thirdNumber" class="display-4">0</h3>
-                <p>{{ __('ui.sales_record') }}</p>
+
+            <div class="col-md-6 text-center slide-from-right">
+                <img src="{{ asset('storage/images/progress.png') }}" alt="Statistiche Presto" class="img-fluid shadow rounded">
             </div>
         </div>
     </div>
 
     {{-- Sezione Recensioni --}}
     @if ($reviews->isNotEmpty())
-        <div class="container my-5">
-            <h2 class="text-center mb-4">{{ __('ui.latest_reviews') }}</h2>
+        <div class="container-fluid responsive-section my-md-5 mt-5">
+            <div class="row w-100 justify-content-center position-relative">
+                <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-12 offset-md-0 col-lg-12 offset-lg-0">
+                    <h2 class="text-center mb-4 slide-from-bottom">{{ __('ui.latest_reviews') }}</h2>
 
-            <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-
-                    @foreach ($reviews as $index => $review)
-                        <div class="carousel-item @if($index === 0) active @endif">
-                            <div class="card mx-auto shadow p-4" style="max-width: 600px;">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">{{ $review->user->name }}</h5>
-                                    <p class="card-text fst-italic">"{{ $review->content }}"</p>
-                                    <div class="mb-2">
-                                        {{-- Visualizzazione stelle valutazione --}}
-                                        @for ($i = 0; $i < 5; $i++)
-                                            <i class="bi @if($i < $review->rating) bi-star-fill @else bi-star @endif text-warning"></i>
-                                        @endfor
+                    <div class="swiper mySwiper position-relative">
+                        <div class="swiper-wrapper">
+                            @foreach ($reviews as $review)
+                                <div class="swiper-slide review-fade-in">
+                                    <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">{{ $review->user->name }}</h5>
+                                            <p class="card-text fst-italic">"{{ $review->content }}"</p>
+                                            <div class="mb-2">
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    <i class="bi @if($i < $review->rating) bi-star-fill @else bi-star @endif text-warning"></i>
+                                                @endfor
+                                            </div>
+                                            <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">{{ $review->created_at->diffForHumans() }}</small>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
 
+                        {{-- Frecce Bootstrap solo su desktop --}}
+                        <button id="prevButton" class="btn btn-dark rounded-circle arrow-button start-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
+                            <i class="bi bi-chevron-left"></i>
+                        </button>
+
+                        <button id="nextButton" class="btn btn-dark rounded-circle arrow-button end-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
+                            <i class="bi bi-chevron-right"></i>
+                        </button>
+                    </div>
                 </div>
-
-                {{-- Controlli del carosello --}}
-                <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
+
+        <div class="my-5 d-md-none"></div>
     @endif
-</x-layout> 
+</x-layout>

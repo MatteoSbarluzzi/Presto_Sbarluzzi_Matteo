@@ -1,13 +1,13 @@
 <x-layout>
-    <div class="container py-5">
-        {{-- Titolo della categoria --}}
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h1 class="display-4">
-                    {{ __('ui.category_articles', ['category' => __('ui.categories_list.' . $category->slug)]) }}
-                </h1>
-            </div>
+   <div class="container py-5">
+    {{-- Titolo della categoria --}}
+    <div class="row mb-5">
+        <div class="col-12 text-center mt-5 mt-sm-0">
+            <h1 class="display-4 slide-from-bottom-slow">
+                {{ __('ui.category_articles', ['category' => __('ui.categories_list.' . $category->slug)]) }}
+            </h1>
         </div>
+    </div>
 
         {{-- SEZIONE FILTRI E CARD --}}
         <div class="row justify-content-center align-items-start">
@@ -63,7 +63,7 @@
             <div class="col-12 col-md-9">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center" id="cardWrapper">
                     @forelse ($articles as $article)
-                        <div class="col d-flex">
+                        <div class="col d-flex article-fade-in">
                             <x-card :article="$article" />
                         </div>
                     @empty
@@ -74,10 +74,10 @@
                 </div>
 
                 {{-- Paginazione --}}
-                <div class="mt-4">
+                <div class="my-5">
                     {{ $articles->withQueryString()->links() }}
                 </div>
             </div>
         </div>
     </div>
-</x-layout> 
+</x-layout>

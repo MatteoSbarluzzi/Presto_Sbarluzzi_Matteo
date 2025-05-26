@@ -87,7 +87,6 @@ form[role="search"] .form-control {
   flex-wrap: nowrap;
   width: auto;
 }
-
 /* === HOMEPAGE === */
 #backgroundpresto {
   background-image: url('/storage/app/public/images/backgroundpresto.png');
@@ -165,24 +164,24 @@ form[role="search"] .form-control {
   .navbar .container {
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between; /* Spinge logo a sinistra e hamburger a destra */
+    justify-content: space-between;
   }
 
   .logo-wrapper {
-    margin-right: 0; /* Rimuove margine destro */
-    justify-content: flex-start; /* Allinea logo a sinistra */
-    height: 90px; /* Altezza navbar */
+    margin-right: 0;
+    justify-content: flex-start;
+    height: 90px;
   }
 
   .logo-wrapper img.logo {
-    height: 80px; /* Adatta logo alla navbar */
+    height: 80px;
     object-fit: contain;
   }
 
   .navbar-toggler {
-    margin-left: 0; /* Rimuove margine sinistro */
-    align-self: center; /* Centra verticalmente */
-    height: 90px; /* Altezza navbar */
+    margin-left: 0;
+    align-self: center;
+    height: 90px;
   }
 
   .navbar-toggler .navbar-toggler-icon {
@@ -233,12 +232,195 @@ form[role="search"] .form-control {
     width: 100%;
   }
 
-  /* Risoluzione overflow bottoni nelle card su schermi medi */
   .card-body .d-flex.justify-content-center.gap-2 {
-    min-width: auto; /* più stretto per Dettaglio */
+    min-width: auto;
   }
-  
+
   .card-body .d-flex.justify-content-center.gap-2 > * {
-    min-width: auto; /* puoi regolare questa misura */
+    min-width: auto;
+  }
+
+  #backgroundpresto {
+    height: auto;
+    min-height: 60vh;
+    padding: 100px 1rem 60px 1rem;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .welcometitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  #backgroundpresto {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .welcometitle {
+    font-size: 1.5rem;
+  }
+}
+/* === ANIMAZIONI ENTRATA BLOCCHI (SINISTRA / DESTRA) === */
+.slide-from-left, .slide-from-right {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-from-left {
+  transform: translateX(-50px);
+}
+
+.slide-from-right {
+  transform: translateX(50px);
+}
+
+.slide-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === ANIMAZIONE TITOLO RECENSIONI (dal basso) === */
+.slide-from-bottom {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-from-bottom.slide-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === ANIMAZIONE TITOLO INSERZIONI (dal basso, lenta) === */
+.slide-from-bottom-slow {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.slide-from-bottom-slow.slide-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === ANIMAZIONE CARD ARTICOLI (fade-in) === */
+.article-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.article-fade-in.slide-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === ANIMAZIONE RECENSIONI (fade-in) === */
+.review-fade-in {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.review-fade-in.slide-visible {
+  opacity: 1;
+}
+
+/* === SWIPER COVERFLOW === */
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  transform: scale(0.95);
+  filter: blur(2px) brightness(0.9);
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.swiper-slide.swiper-slide-active {
+  filter: none;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* === FRECCE BOOTSTRAP DEL CAROSELLO – visibili solo con d-lg-flex === */
+.arrow-button {
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.arrow-button:hover {
+  opacity: 1;
+}
+
+#prevButton {
+  left: 10px;
+}
+
+#nextButton {
+  right: 10px;
+}
+
+/* === SEZIONI RESPONSIVE === */
+@media (max-width: 991.98px) {
+  .swiper {
+    height: 500px;
+    overflow-x: hidden;
+  }
+
+  .review-card {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-fluid.min-vh-100 {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: block;
+    align-items: normal;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .container-fluid.min-vh-100 {
+    height: auto;
+    min-height: unset;
+    display: block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.section-responsive {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+  .section-responsive {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
   }
 }

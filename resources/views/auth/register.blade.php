@@ -1,15 +1,15 @@
 <x-layout>
-    <div class="container pt-5">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <h1 class="display-4 pt-5">
+            <div class="col-12 text-center mt-5 mb-5">
+                <h1 class="display-4 mt-5 mb-0">
                     {{ __('ui.register') }}
                 </h1>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center height-custom">
+        <div class="row justify-content-center align-items-center height-custom mb-5">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{{route('register')}}" class="bg-body-tertiary shadow rounded p-5">
+                <form method="POST" action="{{route('register')}}" class="bg-body-tertiary shadow rounded p-5 my-3">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">{{ __('ui.name') }}:</label>

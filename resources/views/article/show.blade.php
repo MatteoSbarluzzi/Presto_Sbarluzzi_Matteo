@@ -1,10 +1,16 @@
 <x-layout>
-    <div class="container">
+    <div class="container py-5">
+        <div class="d-sm-none py-3"></div>
         <div class="row height-custom justify-content-center align-items-center text-center">
-            <div class="col-12">
-                <h1 class="display-4">{{ __('ui.article_detail', ['title' => $article->title]) }}</h1>
+            <div class="col-12 mt-4">
+                <h1 class="display-4 slide-from-bottom-slow mt-sm-5">{{ __('ui.article_detail', ['title' => $article->title]) }}</h1>
             </div>
         </div>
+
+
+
+
+
 
         <div class="row height-custom justify-content-center py-5">
             {{-- Immagini Carousel dinamico --}}

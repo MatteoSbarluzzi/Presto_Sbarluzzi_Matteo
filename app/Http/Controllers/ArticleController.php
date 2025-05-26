@@ -61,7 +61,7 @@ class ArticleController extends Controller implements HasMiddleware
                 $query->orderBy('created_at', 'desc');
         }
 
-        $articles = $query->paginate(10)->withQueryString();
+        $articles = $query->paginate(12)->withQueryString();
 
         $categories = Category::all();
 
@@ -106,7 +106,7 @@ class ArticleController extends Controller implements HasMiddleware
                 $query->orderBy('created_at', 'desc');
         }
 
-        $articles = $query->paginate(10)->withQueryString();
+        $articles = $query->paginate(12)->withQueryString();
 
         return view('article.byCategory', compact('articles', 'category'));
     }

@@ -2,8 +2,10 @@
     <div class="container py-5">
         {{-- Titolo sezione --}}
         <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h1 class="display-4">{{ __('ui.all_articles') }}</h1>
+            <div class="col-12 text-center mt-4">
+                <h1 class="display-4 slide-from-bottom-slow mt-4 mt-sm-5">
+                    {{ __('ui.all_articles') }}
+                </h1>
             </div>
         </div>
 
@@ -64,7 +66,7 @@
             <div class="col-12 col-md-9">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center" id="cardWrapper">
                     @forelse ($articles as $article)
-                        <div class="col d-flex">
+                        <div class="col d-flex article-fade-in">
                             <x-card :article="$article" />
                         </div>
                     @empty
@@ -75,7 +77,7 @@
                 </div>
 
                 {{-- Paginazione --}}
-                <div class="mt-4">
+                <div class="mt-4 pt-4 d-flex justify-content-center">
                     {{ $articles->withQueryString()->links() }}
                 </div>
             </div>

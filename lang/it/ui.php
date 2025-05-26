@@ -144,4 +144,6 @@ return [
     'english' => 'Inglese',
     'spanish' => 'Spagnolo',
 
+    'explore_latest_ads' => 'Esplora le ultime inserzioni',
+
 ];
