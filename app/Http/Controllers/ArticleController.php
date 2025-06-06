@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller implements HasMiddleware
 {
-    // Solo gli utenti loggati possono accedere al metodo 'create'
     public static function middleware(): array
     {
         return [
@@ -19,22 +18,21 @@ class ArticleController extends Controller implements HasMiddleware
         ];
     }
 
-    // Mostra l'elenco degli articoli (paginati, dal più recente) con filtro prezzo dinamico
     public function index(Request $request)
     {
         $maxPrice = Article::where('is_accepted', true)->max('price') ?? 0;
-
         $query = Article::where('is_accepted', true);
 
         if ($request->filled('category') && $request->category !== 'all') {
             $category = Category::where('slug', $request->category)->first();
             if ($category) {
                 $query->where('category_id', $category->id);
+                $maxPrice = Article::where('is_accepted', true)->where('category_id', $category->id)->max('price') ?? 0;
             }
         }
 
-        if ($request->filled('word')) {
-            $query->where('title', 'like', '%' . $request->word . '%');
+        if ($request->filled('query')) {
+            $query->where('title', 'like', '%' . $request->input('query') . '%');
         }
 
         if ($request->filled('price')) {
@@ -44,6 +42,9 @@ class ArticleController extends Controller implements HasMiddleware
         switch ($request->get('sort')) {
             case 'title_asc':
                 $query->orderBy('title', 'asc');
+                break;
+            case 'title_desc':
+                $query->orderBy('title', 'desc');
                 break;
             case 'price_asc':
                 $query->orderBy('price', 'asc');
@@ -62,13 +63,11 @@ class ArticleController extends Controller implements HasMiddleware
         }
 
         $articles = $query->paginate(12)->withQueryString();
-
         $categories = Category::all();
 
         return view('article.index', compact('articles', 'categories', 'maxPrice'));
     }
 
-    // Resto dei metodi senza modifiche
     public function show(Article $article)
     {
         return view('article.show', compact('article'));
@@ -77,9 +76,10 @@ class ArticleController extends Controller implements HasMiddleware
     public function byCategory(Category $category, Request $request)
     {
         $query = $category->articles()->where('is_accepted', true);
+        $maxPrice = $query->max('price') ?? 0;
 
-        if ($request->filled('word')) {
-            $query->where('title', 'like', '%' . $request->word . '%');
+        if ($request->filled('query')) {
+            $query->where('title', 'like', '%' . $request->input('query') . '%');
         }
 
         if ($request->filled('price')) {
@@ -89,6 +89,9 @@ class ArticleController extends Controller implements HasMiddleware
         switch ($request->get('sort')) {
             case 'title_asc':
                 $query->orderBy('title', 'asc');
+                break;
+            case 'title_desc':
+                $query->orderBy('title', 'desc');
                 break;
             case 'price_asc':
                 $query->orderBy('price', 'asc');
@@ -107,8 +110,9 @@ class ArticleController extends Controller implements HasMiddleware
         }
 
         $articles = $query->paginate(12)->withQueryString();
+        $categories = Category::all();
 
-        return view('article.byCategory', compact('articles', 'category'));
+        return view('article.byCategory', compact('articles', 'category', 'categories', 'maxPrice'));
     }
 
     public function create()

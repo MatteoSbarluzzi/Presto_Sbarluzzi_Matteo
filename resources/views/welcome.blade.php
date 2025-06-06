@@ -1,17 +1,16 @@
 <x-layout>
-    <div id="backgroundpresto" class="container-fluid text-center d-flex align-items-center justify-content-center">
+    {{-- Hero Section --}}
+    <div id="backgroundpresto" class="container-fluid text-center d-flex align-items-center justify-content-center bg-dark-blue text-white py-5">
         <div class="row w-100">
             <div class="col-12">
                 <h1 class="slide-down welcometitle">{{ __('ui.homepage_title') }}</h1>
 
-                {{-- Messaggio di errore --}}
                 @if (session()->has('errorMessage'))
                     <div class="alert alert-danger text-center shadow rounded w-50 mx-auto">
                         {{ session('errorMessage') }}
                     </div>
                 @endif
 
-                {{-- Messaggio di successo --}}
                 @if (session()->has('message'))
                     <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
                         {{ session('message') }}
@@ -20,7 +19,7 @@
 
                 <div class="my-3">
                     @auth
-                        <a class="btn btn-dark slide-up" href="{{ route('create.article') }}">{{ __('ui.publish_article') }}</a>
+                        <a class="btn btn-light slide-up" href="{{ route('create.article') }}">{{ __('ui.publish_article') }}</a>
                     @endauth
                 </div>
             </div>
@@ -28,33 +27,31 @@
     </div>
 
     {{-- Titolo "Esplora le ultime inserzioni" --}}
-    <div class="container my-5">
+    <div class="container-fluid bg-sky-blue text-beige py-4">
         <h2 class="text-center slide-from-bottom-slow">{{ __('ui.explore_latest_ads') }}</h2>
     </div>
 
     {{-- Sezione Articoli --}}
-    <div class="row height-custom justify-content-center align-items-stretch py-5">
+    <div class="row height-custom justify-content-center align-items-stretch py-5 bg-sky-blue m-0">
         @forelse ($articles as $article)
             <div class="col-12 col-md-3 mb-4 d-flex article-fade-in">
                 <x-card :article="$article"/>
             </div>
         @empty
             <div class="col-12">
-                <h3 class="text-center">
+                <h3 class="text-center text-white">
                     {{ __('ui.no_articles_yet') }}
                 </h3>
             </div>
         @endforelse
     </div>
 
-    <div class="my-5 d-md-none"></div>
-
     {{-- Sezione Spedizioni Internazionali --}}
-    <div class="container-fluid responsive-section my-md-5">
+    <div class="container-fluid responsive-section bg-light-blue text-dark-blue py-5">
         <div class="row align-items-center">
             <div class="col-md-6 order-1 order-md-2 text-center slide-from-right mt-4 mt-md-0">
                 <h2 class="fw-bold">{{ __('ui.shipping_worldwide') }}</h2>
-                <p class="text-muted">{{ __('ui.shipping_description') }}</p>
+                <p>{{ __('ui.shipping_description') }}</p>
             </div>
             <div class="col-md-6 order-2 order-md-1 text-center slide-from-left">
                 <img src="{{ asset('storage/images/logistics.png') }}" alt="Logistica" class="img-fluid shadow rounded">
@@ -62,10 +59,8 @@
         </div>
     </div>
 
-    <div class="my-5 d-md-none"></div>
-
     {{-- Sezione Statistiche dinamiche --}}
-    <div class="container-fluid responsive-section my-md-5">
+    <div class="container-fluid responsive-section bg-orange text-dark-blue py-5">
         <div class="row align-items-center">
             <div class="col-md-6 slide-from-left">
                 <h2 class="mb-4 text-center mt-5">{{ __('ui.our_numbers') }}</h2>
@@ -82,8 +77,6 @@
                     <p class="mb-0 fs-5">{{ __('ui.sales_record') }}</p>
                     <h3 id="thirdNumber" class="display-4 mb-0">0</h3>
                 </div>
-
-                <div class="mt-4 d-md-none"></div>
             </div>
 
             <div class="col-md-6 text-center slide-from-right">
@@ -94,7 +87,7 @@
 
     {{-- Sezione Recensioni --}}
     @if ($reviews->isNotEmpty())
-        <div class="container-fluid responsive-section my-md-5 mt-5">
+        <div class="container-fluid responsive-section bg-beige text-white py-5">
             <div class="row w-100 justify-content-center position-relative">
                 <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-12 offset-md-0 col-lg-12 offset-lg-0">
                     <h2 class="text-center mb-4 slide-from-bottom">{{ __('ui.latest_reviews') }}</h2>
@@ -119,19 +112,16 @@
                             @endforeach
                         </div>
 
-                        {{-- Frecce Bootstrap solo su desktop --}}
-                        <button id="prevButton" class="btn btn-dark rounded-circle arrow-button start-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
+                        <button id="prevButton" class="btn btn-light rounded-circle arrow-button start-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
                             <i class="bi bi-chevron-left"></i>
                         </button>
 
-                        <button id="nextButton" class="btn btn-dark rounded-circle arrow-button end-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
+                        <button id="nextButton" class="btn btn-light rounded-circle arrow-button end-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
                             <i class="bi bi-chevron-right"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="my-5 d-md-none"></div>
     @endif
 </x-layout>

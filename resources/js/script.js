@@ -21,6 +21,7 @@ let createInterval = function (n, element, time) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // === Navbar collapse ===
     let navbarCollapse = document.querySelector('#navbarResponsive');
     let navbarToggler = document.querySelector('.navbar-toggler');
 
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === Numeri dinamici ===
     let firstNumber = document.querySelector('#firstNumber');
     let secondNumber = document.querySelector('#secondNumber');
     let thirdNumber = document.querySelector('#thirdNumber');
@@ -62,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(firstNumber);
     }
 
+    // === Animazioni dinamiche ===
     let animatedBlocks = document.querySelectorAll(
         '.slide-from-left, .slide-from-right, .slide-from-bottom, .slide-from-bottom-slow, .review-fade-in, .article-fade-in'
     );
@@ -77,36 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedBlocks.forEach(el => blockObserver.observe(el));
 
-    let categorySelect = document.querySelector('#categorySelect');
-    let sortSelect = document.querySelector('#sortSelect');
-    let priceInput = document.querySelector('#priceInput');
-    let priceValue = document.querySelector('#priceValue');
-    let wordInput = document.querySelector('#wordInput');
-
-    if (priceInput && priceValue) {
-        priceValue.textContent = priceInput.value;
-    }
-
-    function updatePage() {
-        let params = new URLSearchParams(window.location.search);
-
-        if (categorySelect) params.set('category', categorySelect.value);
-        if (sortSelect) params.set('sort', sortSelect.value);
-        if (priceInput) params.set('price', priceInput.value);
-        if (wordInput) params.set('word', wordInput.value);
-
-        let baseUrl = window.location.origin + window.location.pathname;
-        window.location.href = `${baseUrl}?${params.toString()}`;
-    }
-
-    if (categorySelect) categorySelect.addEventListener('change', updatePage);
-    if (sortSelect) sortSelect.addEventListener('change', updatePage);
-    if (priceInput) priceInput.addEventListener('input', () => {
-        priceValue.textContent = priceInput.value;
-        updatePage();
-    });
-    if (wordInput) wordInput.addEventListener('input', updatePage);
-
+    // === Slideshow Swiper ===
     let swiper = new Swiper('.mySwiper', {
         grabCursor: true,
         centeredSlides: true,
@@ -116,9 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
             disableOnInteraction: false,
         },
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '#nextButton',
+            prevEl: '#prevButton',
         },
+
         breakpoints: {
             576: {
                 direction: 'horizontal',
@@ -146,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         effect: 'coverflow'
     });
 
+    // === Comportamento responsive per sezioni dinamiche ===
     function updateResponsiveSections() {
         document.querySelectorAll('.responsive-section').forEach(section => {
             section.classList.remove('d-flex', 'align-items-center', 'min-vh-100', 'section-responsive');
@@ -160,4 +136,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateResponsiveSections();
     window.addEventListener('resize', updateResponsiveSections);
+
+    // === Filtro articoli con bottone "Applica filtri" ===
+    let applyFiltersBtn = document.querySelector('#applyFiltersBtn');
+    let filterForm = document.querySelector('#filterForm');
+    let priceInput = document.querySelector('#priceInput');
+    let priceValue = document.querySelector('#priceValue');
+
+    // ✅ Mostra dinamicamente il prezzo mentre muovi l’asticella
+    if (priceInput && priceValue) {
+        priceValue.textContent = priceInput.value;
+        priceInput.addEventListener('input', () => {
+            priceValue.textContent = priceInput.value;
+        });
+    }
+
+    if (applyFiltersBtn && filterForm) {
+        applyFiltersBtn.addEventListener('click', () => {
+            let selectedCategory = document.querySelector('#categorySelect').value;
+            let sort = document.querySelector('#sortSelect').value;
+            let price = document.querySelector('#priceInput').value;
+            let query = document.querySelector('#wordInput').value;
+
+            let params = new URLSearchParams();
+            if (sort) params.append('sort', sort);
+            if (price) params.append('price', price);
+            if (query) params.append('query', query); // 👈 modifica fatta qui
+
+            if (selectedCategory && selectedCategory !== 'all') {
+                window.location.href = `/category/${selectedCategory}?${params.toString()}`;
+            } else {
+                window.location.href = `/article/index?${params.toString()}`;
+            }
+        });
+    }
 });

@@ -145,5 +145,7 @@ return [
     'spanish' => 'Español',
 
     'explore_latest_ads' => 'Explora los últimos anuncios',
-
+    'apply_filters' => 'Aplicar filtros',
+    'reset_filters' => 'Restablecer filtros',
+    'alpha_za' => 'Título Z-A'
 ];

@@ -25,7 +25,7 @@
 
         {{-- Home --}}
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('homepage') }}">{{ __('ui.home') }}</a>
+          <a class="nav-link" href="{{ route('homepage') }}">{{ __('ui.home') }}</a>
         </li>
 
         {{-- Tutti gli articoli --}}

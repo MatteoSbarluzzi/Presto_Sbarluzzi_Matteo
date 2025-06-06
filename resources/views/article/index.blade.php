@@ -15,51 +15,60 @@
             <div class="col-12 col-md-3 px-4 sticky-filter">
                 <h4 class="mb-4">{{ __('ui.filter_by') }}</h4>
 
-                {{-- CATEGORIA: select --}}
-                <div class="mb-3">
-                    <label for="categorySelect" class="form-label">{{ __('ui.select_category') }}</label>
-                    <select id="categorySelect" class="form-select">
-                        <option value="all" @if(request('category') == 'all') selected @endif>{{ __('ui.all_categories') }}</option>
-                        @foreach ($categories as $cat)
-                            <option value="{{ $cat->slug }}" @if(request('category') == $cat->slug) selected @endif>{{ __('ui.categories_list.' . $cat->slug) }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                {{-- ORDINAMENTO --}}
-                <div class="mb-3">
-                    <label for="sortSelect" class="form-label">{{ __('ui.sort_by') }}</label>
-                    <select id="sortSelect" class="form-select">
-                        <option value="default" @if(request('sort') == 'default') selected @endif>{{ __('ui.default_order') }}</option>
-                        <option value="title_asc" @if(request('sort') == 'title_asc') selected @endif>{{ __('ui.alpha_az') }}</option>
-                        <option value="price_asc" @if(request('sort') == 'price_asc') selected @endif>{{ __('ui.price_low_high') }}</option>
-                        <option value="price_desc" @if(request('sort') == 'price_desc') selected @endif>{{ __('ui.price_high_low') }}</option>
-                        <option value="newest" @if(request('sort') == 'newest') selected @endif>{{ __('ui.newest_first') }}</option>
-                        <option value="oldest" @if(request('sort') == 'oldest') selected @endif>{{ __('ui.oldest_first') }}</option>
-                    </select>
-                </div>
-
-                {{-- PREZZO --}}
-                <div class="mb-3">
-                    <label for="priceInput" class="form-label">{{ __('ui.filter_by_price') }}</label>
-                    <input
-                        type="range"
-                        class="form-range"
-                        id="priceInput"
-                        min="0"
-                        max="{{ $maxPrice }}"
-                        value="{{ request('price', $maxPrice) }}"
-                    >
-                    <div class="text-center">
-                        <span id="priceValue">{{ request('price', $maxPrice) }}</span> €
+                <form method="GET" action="{{ route('article.index') }}" id="filterForm">
+                    {{-- CATEGORIA --}}
+                    <div class="mb-3">
+                        <label for="categorySelect" class="form-label">{{ __('ui.select_category') }}</label>
+                        <select id="categorySelect" class="form-select" name="category">
+                            <option value="all" @if(request('category') == 'all') selected @endif>{{ __('ui.all_categories') }}</option>
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->slug }}" @if(request('category') == $cat->slug) selected @endif>{{ __('ui.categories_list.' . $cat->slug) }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                </div>
 
-                {{-- PAROLA --}}
-                <div class="mb-3">
-                    <label for="wordInput" class="form-label">{{ __('ui.search_by_word') }}</label>
-                    <input type="text" id="wordInput" class="form-control" value="{{ request('word') }}" placeholder="{{ __('ui.search_placeholder') }}">
-                </div>
+                    {{-- ORDINAMENTO --}}
+                    <div class="mb-3">
+                        <label for="sortSelect" class="form-label">{{ __('ui.sort_by') }}</label>
+                        <select id="sortSelect" name="sort" class="form-select">
+                            <option value="default" @if(request('sort') == 'default') selected @endif>{{ __('ui.default_order') }}</option>
+                            <option value="title_asc" @if(request('sort') == 'title_asc') selected @endif>{{ __('ui.alpha_az') }}</option>
+                            <option value="title_desc" @if(request('sort') == 'title_desc') selected @endif>{{ __('ui.alpha_za') }}</option>
+                            <option value="price_asc" @if(request('sort') == 'price_asc') selected @endif>{{ __('ui.price_low_high') }}</option>
+                            <option value="price_desc" @if(request('sort') == 'price_desc') selected @endif>{{ __('ui.price_high_low') }}</option>
+                            <option value="oldest" @if(request('sort') == 'oldest') selected @endif>{{ __('ui.oldest_first') }}</option>
+                            <option value="newest" @if(request('sort') == 'newest') selected @endif>{{ __('ui.newest_first') }}</option>
+                        </select>
+                    </div>
+
+                    {{-- PREZZO --}}
+                    <div class="mb-3">
+                        <label for="priceInput" class="form-label">{{ __('ui.filter_by_price') }}</label>
+                        <input type="range" class="form-range" name="price" id="priceInput"
+                               min="0" max="{{ $maxPrice }}"
+                               value="{{ request('price', $maxPrice) }}">
+                        <div class="text-center">
+                            <span id="priceValue">{{ request('price', $maxPrice) }}</span> €
+                        </div>
+                    </div>
+
+                    {{-- PAROLA --}}
+                    <div class="mb-3">
+                        <label for="wordInput" class="form-label">{{ __('ui.search_by_word') }}</label>
+                        <input type="text" id="wordInput" name="query" class="form-control" value="{{ request('query') }}" placeholder="{{ __('ui.search_placeholder') }}">
+                    </div>
+
+                    {{-- BOTTONI --}}
+                    <div class="d-grid gap-2">
+                        <button type="button" id="applyFiltersBtn" class="btn btn-success">
+                            {{ __('ui.apply_filters') }}
+                        </button>
+
+                        <a href="{{ route('article.index') }}" class="btn btn-outline-danger">
+                            {{ __('ui.reset_filters') }}
+                        </a>
+                    </div>
+                </form>
             </div>
 
             {{-- COLONNA CARDS --}}

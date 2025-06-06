@@ -15,7 +15,8 @@ Route::get('/article/index', [ArticleController::class, 'index'])->name('article
 Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show'); // cambiato da /show/article a /article
 
 // Articoli per categoria
-Route::get('/category/{category}', [ArticleController::class, 'byCategory'])->name('byCategory');
+Route::get('/category/{category:slug}', [ArticleController::class, 'byCategory'])->name('byCategory');
+
 
 // Ricerca
 Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search');

@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-body-tertiary text-center">
+<footer class="bg-black text-white text-center">
   <div class="container p-4">
 
     <!-- Sezione descrizione -->
@@ -26,28 +26,25 @@
         <div class="col-md-3 mb-3 text-center">
           <h5>{{ __('ui.billing_and_orders') }}</h5>
           <p>
-            <a href="{{ route('shipping') }}" class="text-dark text-decoration-none">
+            <a href="{{ route('shipping') }}" class="text-white text-decoration-none">
               {{ __('ui.shipping_and_returns') }}
             </a>
           </p>
           <p>
-            <a href="{{ route('reviews') }}" class="text-dark text-decoration-none">
+            <a href="{{ route('reviews') }}" class="text-white text-decoration-none">
               {{ __('ui.customer_reviews') }}
             </a>
           </p>
-          <p class="text-dark">{{ __('ui.payment_methods') }}</p>
+          <p class="text-white">{{ __('ui.payment_methods') }}</p>
           <div class="mt-4 text-center">
             <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" class="me-2" title="{{ __('ui.visa') }}" />
             <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard" class="me-2" title="{{ __('ui.mastercard') }}" />
             <img src="https://img.icons8.com/color/48/000000/amex.png" alt="American Express" class="me-2" title="{{ __('ui.amex') }}" />
             <img src="https://img.icons8.com/color/48/000000/paypal.png" alt="PayPal" class="me-2" title="{{ __('ui.paypal') }}" />
-            <i class="bi bi-bank fs-3 me-2" title="{{ __('ui.bank_transfer') }}"></i>
+            <i class="bi bi-bank fs-3 me-2 text-white" title="{{ __('ui.bank_transfer') }}"></i>
             <img src="https://img.icons8.com/color/48/000000/google-pay.png" alt="Google Pay" class="me-2" title="{{ __('ui.google_pay') }}" />
-            <img src="https://img.icons8.com/ios-filled/50/000000/apple-pay.png" alt="Apple Pay" class="me-2" title="{{ __('ui.apple_pay') }}" />
-            <!-- Bitcoin -->
-<img src="https://img.icons8.com/color/48/000000/bitcoin--v1.png" alt="Bitcoin" class="me-2" title="Bitcoin" />
-
-
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/apple-pay.png" alt="Apple Pay" class="me-2" title="{{ __('ui.apple_pay') }}" />
+            <img src="https://img.icons8.com/color/48/000000/bitcoin--v1.png" alt="Bitcoin" class="me-2" title="Bitcoin" />
           </div>
         </div>
 
@@ -56,27 +53,27 @@
           <h5>{{ __('ui.follow_us') }}</h5>
           <ul class="list-unstyled">
             <li class="mb-2">
-              <a href="https://facebook.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+              <a href="https://facebook.com" target="_blank" class="text-white text-decoration-none d-flex align-items-center">
                 <i class="bi bi-facebook fs-5 me-2"></i> Facebook
               </a>
             </li>
             <li class="mb-2">
-              <a href="https://x.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+              <a href="https://x.com" target="_blank" class="text-white text-decoration-none d-flex align-items-center">
                 <i class="bi bi-twitter-x fs-5 me-2"></i> X
               </a>
             </li>
             <li class="mb-2">
-              <a href="https://instagram.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+              <a href="https://instagram.com" target="_blank" class="text-white text-decoration-none d-flex align-items-center">
                 <i class="bi bi-instagram fs-5 me-2"></i> Instagram
               </a>
             </li>
             <li class="mb-2">
-              <a href="https://tiktok.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+              <a href="https://tiktok.com" target="_blank" class="text-white text-decoration-none d-flex align-items-center">
                 <i class="bi bi-tiktok fs-5 me-2"></i> TikTok
               </a>
             </li>
             <li class="mb-2">
-              <a href="https://linkedin.com" target="_blank" class="text-dark text-decoration-none d-flex align-items-center">
+              <a href="https://linkedin.com" target="_blank" class="text-white text-decoration-none d-flex align-items-center">
                 <i class="bi bi-linkedin fs-5 me-2"></i> LinkedIn
               </a>
             </li>
@@ -86,44 +83,36 @@
         <!-- Colonna Newsletter + Revisore -->
         <div class="col-md-3 mb-3">
           <h5>{{ __('ui.newsletter_text') }}</h5>
-        <form method="POST" action="{{ route('newsletter.subscribe') }}">
-    @csrf
-    <div class="text-center">
+          <form method="POST" action="{{ route('newsletter.subscribe') }}">
+            @csrf
+            <div class="text-center">
+              <div class="mx-auto mb-3" style="max-width: 400px;">
+                <input type="email" name="email" class="form-control" placeholder="{{ __('ui.email_placeholder') }}" required />
+              </div>
+              <button type="submit" class="btn btn-outline-light">
+                {{ __('ui.subscribe') }}
+              </button>
+            </div>
+          </form>
 
-        <div class="mx-auto mb-3" style="max-width: 400px;">
-            <input type="email" name="email" class="form-control" placeholder="{{ __('ui.email_placeholder') }}" required />
-        </div>
-
-        <button type="submit" class="btn btn-outline">
-            {{ __('ui.subscribe') }}
-        </button>
-    </div>
-</form>
-
-
-
-
-
-          <hr class="my-4">
+          <hr class="my-4 bg-white">
 
           <div class="text-center">
             <h5>{{ __('ui.work_with_us') }}</h5>
-<p class="small">{{ __('ui.click_button_below') }}</p>
-<a href="{{ route('become.revisor') }}" class="btn btn-success btn-sm">
-    {{ __('ui.want_to_become_revisor') }}
-</a>
-
+            <p class="small">{{ __('ui.click_button_below') }}</p>
+            <a href="{{ route('become.revisor') }}" class="btn btn-success btn-sm">
+              {{ __('ui.want_to_become_revisor') }}
+            </a>
           </div>
         </div>
 
       </div>
     </div>
-
   </div>
 
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+  <div class="text-center p-3 bg-dark text-white">
     © 2025 Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Presto.it</a>
+    <a class="text-white fw-bold text-decoration-none" href="https://mdbootstrap.com/">Presto.it</a>
   </div>
-</footer> 
+</footer>

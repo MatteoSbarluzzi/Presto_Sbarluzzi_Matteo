@@ -145,5 +145,8 @@ return [
     'spanish' => 'Spanish',
 
     'explore_latest_ads' => 'Explore the latest listings',
+    'apply_filters' => 'Apply filters',
+    'reset_filters' => 'Reset filters',
+    'alpha_za' => 'Title Z-A'
 
 ];
