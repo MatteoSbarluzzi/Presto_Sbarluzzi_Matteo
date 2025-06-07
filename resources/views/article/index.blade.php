@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container py-5">
+    <div class="container-fluid py-5 bg-sky-blue text-beige">
         {{-- Titolo sezione --}}
         <div class="row mb-5">
             <div class="col-12 text-center mt-4">
@@ -12,7 +12,8 @@
         {{-- FILTRI + RISULTATI --}}
         <div class="row justify-content-center align-items-start">
             {{-- COLONNA FILTRI --}}
-            <div class="col-12 col-md-3 px-4 sticky-filter">
+            <div class="col-12 col-md-3 px-4 sticky-filter filter-box">
+
                 <h4 class="mb-4">{{ __('ui.filter_by') }}</h4>
 
                 <form method="GET" action="{{ route('article.index') }}" id="filterForm">

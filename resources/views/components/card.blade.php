@@ -1,5 +1,7 @@
-<div class="card h-100 shadow text-center d-flex flex-column mx-auto mb-3" style="width: 100%; max-width: 300px;">
-    
+<div class="card card-custom card-fixed-width h-100 shadow text-center d-flex flex-column mx-auto mb-3">
+
+
+
     {{-- Immagine in ratio 1:1 --}}
     <div class="ratio ratio-1x1">
         <img 
@@ -11,13 +13,12 @@
     <div class="card-body d-flex flex-column justify-content-between">
         <div>
             <h4 class="card-title">{{ $article->title }}</h4>
-            <h6 class="card-subtitle text-body-secondary">{{ $article->price }} €</h6>
+            <h6 class="card-subtitle">{{ $article->price }} €</h6>
         </div>
 
         <div class="mt-4">
-            {{-- Bottoni azione affiancati --}}
             <div class="d-flex justify-content-center gap-2 mb-3">
-                <a href="{{ route('article.show', compact('article')) }}" class="btn btn-primary">
+                <a href="{{ route('article.show', compact('article')) }}" class="btn btn-detail">
                     {{ __('ui.detail') }}
                 </a>
 
@@ -26,17 +27,16 @@
                         <form method="POST" action="{{ route('article.destroy', $article) }}" onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">{{ __('ui.delete') }}</button>
+                            <button type="submit" class="btn btn-outline-danger">{{ __('ui.delete') }}</button>
                         </form>
                     @endif
                 @endauth
             </div>
 
-            {{-- Etichetta categoria --}}
-            @php use Illuminate\Support\Str; @endphp
-            <span class="badge rounded-pill text-info border border-info px-3 py-2">
-                {{ __('ui.categories_list.' . Str::slug($article->category->name, '_')) }}
+            <span class="badge rounded-pill px-3 py-2">
+
+                {{ __($article->getTranslatedCategoryKey()) }}
             </span>
         </div>
     </div>
-</div>  
+</div>

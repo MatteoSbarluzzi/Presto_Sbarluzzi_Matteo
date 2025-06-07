@@ -23,11 +23,13 @@ class Article extends Model
         'user_id'
     ];
 
+    // Un singolo oggetto di classe Article può appartenere ad un solo utente
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    // Un singolo oggetto di classe Article può appartenere ad una sola categoria
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -63,5 +65,11 @@ class Article extends Model
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
+    }
+
+    // Metodo per ottenere la chiave di traduzione della categoria, senza PHP inline nel blade
+    public function getTranslatedCategoryKey(): string
+    {
+        return 'ui.categories_list.' . str_replace('-', '_', $this->category->slug);
     }
 }

@@ -31,68 +31,60 @@ form[role="search"] .form-control {
   font-family: 'Inter', sans-serif;
 }
 
-
-
-
-
-
 /* === VARIABILI === */
 :root {
-  --dark-blue: #002547;    /* Blu scuro, adatto per header, testo o sfondo principale */
-  --sky-blue: #005E8C;         /* Blu intermedio, colore primario per pulsanti o link */
-  --light-blue: #0084C1;   /* Blu chiaro, per hover, accenti, icone */
-  --orange: #ECAD50;          /* Giallo/arancio per elementi evidenziati o call to action */
-  --beige: #FFF6D8;/* Beige chiaro per sfondi o aree neutre */
+  --dark-blue: #002547;
+  --sky-blue: #005E8C;
+  --light-blue: #0084C1;
+  --orange: #ECAD50;
+  --beige: #FFF6D8;
 }
 
 /* === SFONDI PERSONALIZZATI === */
-.bg-dark-blue {
-  background-color: var(--dark-blue);
-  color: white;
+.bg-dark-blue { background-color: var(--dark-blue); color: white; }
+.bg-sky-blue { background-color: var(--sky-blue); color: white; }
+.bg-light-blue { background-color: var(--light-blue); color: white; }
+.bg-orange { background-color: var(--orange); color: black; }
+.bg-beige { background-color: var(--beige); color: black; }
+
+/* === COLORI TESTO PERSONALIZZATI === */
+.text-dark-blue { color: var(--dark-blue); }
+.text-sky-blue { color: var(--sky-blue); }
+.text-light-blue { color: var(--light-blue); }
+.text-orange { color: var(--orange); }
+.text-beige { color: var(--beige); }
+
+/* === FORM AUTENTICAZIONE (login/register) === */
+.auth-form {
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-.bg-sky-blue {
+.auth-form label {
+  color: var(--dark-blue);
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-form input {
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-form .btn-submit {
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form .btn-submit:hover {
   background-color: var(--sky-blue);
   color: white;
 }
-
-.bg-light-blue {
-  background-color: var(--light-blue);
-  color: white;
-}
-
-.bg-orange {
-  background-color: var(--orange);
-  color: black;
-}
-
-.bg-beige {
-  background-color: var(--beige);
-  color: black;
-}
-
-/* === COLORI TESTO PERSONALIZZATI === */
-.text-dark-blue {
-  color: var(--dark-blue);
-}
-
-.text-sky-blue {
-  color: var(--sky-blue);
-}
-
-.text-light-blue {
-  color: var(--light-blue);
-}
-
-.text-orange {
-  color: var(--orange);
-}
-
-.text-beige {
-  color: var(--beige);
-}
-
-
 
 /* === RESET BASE === */
 body, html {
@@ -145,7 +137,6 @@ body, html {
   margin-left: auto;
 }
 
-/* Stato base */
 .navbar-nav .nav-link {
   color: var(--beige);
   font-weight: 500;
@@ -153,25 +144,19 @@ body, html {
   transition: color 0.2s ease;
 }
 
-/* Hover generale */
 .navbar-nav .nav-link:hover {
   color: var(--orange);
 }
 
-/* Dropdown attivo (aperto) o cliccato */
 .navbar-nav .nav-link.dropdown-toggle.show,
 .navbar-nav .nav-link.dropdown-toggle:focus,
 .navbar-nav .nav-link.dropdown-toggle:active {
   color: var(--orange);
 }
 
-/* Quando non è attivo ma è ancora in focus */
 .navbar-nav .nav-link.dropdown-toggle:not(.show):focus {
   color: var(--beige);
 }
-
-
-
 
 /* === FORM RICERCA === */
 form[role="search"] {
@@ -182,7 +167,6 @@ form[role="search"] {
 }
 
 form[role="search"] .form-control {
-  
   height: 38px;
   padding: 0.375rem 0.75rem;
   flex: 1;
@@ -192,6 +176,7 @@ form[role="search"] .form-control {
   flex-wrap: nowrap;
   width: auto;
 }
+
 /* === HOMEPAGE === */
 #backgroundpresto {
   background-image: url('/storage/app/public/images/backgroundpresto.png');
@@ -259,6 +244,112 @@ form[role="search"] .form-control {
   from { max-height: 1000px; opacity: 1; }
   to { max-height: 0; opacity: 0; }
 }
+
+/* === CARD PERSONALIZZATE === */
+.card-custom {
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+}
+
+.card-custom .card-body {
+  padding: 1.5rem;
+}
+
+.card-custom .card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.card-custom .card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.card-custom img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* === BOTTONE DETTAGLIO COERENTE CON AUTENTICAZIONE === */
+/* === COLORE COERENTE CON FORM AUTENTICAZIONE === */
+.card-custom,
+.card-custom .card-body,
+.card-custom .card-title,
+.card-custom .card-subtitle,
+.card-custom .btn,
+.card-custom .badge {
+  background-color: var(--beige);
+  color: var(--dark-blue);
+}
+
+.card-custom a,
+.card-custom h4,
+.card-custom h6,
+.card-custom span,
+.card-custom p {
+  color: var(--dark-blue);
+}
+
+
+/* === BOTTONI SECONDARI === */
+.btn-outline-danger {
+  color: var(--dark-blue);
+  border-color: var(--orange);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background-color: var(--orange);
+  color: black;
+  border-color: var(--orange);
+}
+
+/* === BADGE CATEGORIA === */
+.card-custom .badge,
+.badge-category {
+  background-color: transparent;
+  color: var(--sky-blue);
+  border: 1px solid var(--sky-blue);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  transition: all 0.3s ease;
+}
+
+
+.card-fixed-width {
+  width: 100%;
+  max-width: 300px;
+}
+
+.card-custom .btn-detail {
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-custom .btn-detail:hover {
+  background-color: var(--sky-blue);
+  color: white;
+}
+
+
+
+
+
+
 
 /* === MOBILE E TABLET === */
 @media (max-width: 992px) {
