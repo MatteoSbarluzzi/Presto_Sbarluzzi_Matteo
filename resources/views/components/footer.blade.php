@@ -89,9 +89,10 @@
               <div class="mx-auto mb-3" style="max-width: 400px;">
                 <input type="email" name="email" class="form-control" placeholder="{{ __('ui.email_placeholder') }}" required />
               </div>
-              <button type="submit" class="btn btn-outline-light">
-                {{ __('ui.subscribe') }}
-              </button>
+             <button type="submit" class="btn-footer-custom">
+  {{ __('ui.subscribe') }}
+</button>
+
             </div>
           </form>
 
@@ -100,9 +101,10 @@
           <div class="text-center">
             <h5>{{ __('ui.work_with_us') }}</h5>
             <p class="small">{{ __('ui.click_button_below') }}</p>
-            <a href="{{ route('become.revisor') }}" class="btn btn-success btn-sm">
-              {{ __('ui.want_to_become_revisor') }}
-            </a>
+            <a href="{{ route('become.revisor') }}" class="btn-footer-custom">
+  {{ __('ui.want_to_become_revisor') }}
+</a>
+
           </div>
         </div>
 
@@ -113,6 +115,6 @@
   <!-- Copyright -->
   <div class="text-center p-3 bg-dark text-white">
     © 2025 Copyright:
-    <a class="text-white fw-bold text-decoration-none" href="https://mdbootstrap.com/">Presto.it</a>
+    <a class="text-white fw-bold text-decoration-none" href="{{ route('homepage') }}">Presto.it</a>
   </div>
 </footer>

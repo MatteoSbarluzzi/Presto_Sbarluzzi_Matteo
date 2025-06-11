@@ -26,7 +26,7 @@ return [
     'homepage_title' => 'Welcome to Presto.it!',
 
     // Articles
-    'publish_article' => 'Publish an article',
+    'publish_article' => 'Create an article',
     'create' => 'Create',
     'category_articles' => 'Articles in the :category category',
     'article_detail' => 'Article detail: :title',

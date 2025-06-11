@@ -3,7 +3,11 @@
     <div id="backgroundpresto" class="container-fluid text-center d-flex align-items-center justify-content-center bg-dark-blue text-white py-5">
         <div class="row w-100">
             <div class="col-12">
-                <h1 class="slide-down welcometitle">{{ __('ui.homepage_title') }}</h1>
+                <h1 class="slide-down welcometitle">
+    {{ __('ui.homepage_title') }}
+</h1>
+
+
 
                 @if (session()->has('errorMessage'))
                     <div class="alert alert-danger text-center shadow rounded w-50 mx-auto">
@@ -19,7 +23,10 @@
 
                 <div class="my-3">
                     @auth
-                        <a class="btn btn-light slide-up" href="{{ route('create.article') }}">{{ __('ui.publish_article') }}</a>
+                        <a class="btn-apply-filters slide-up" href="{{ route('create.article') }}">
+    {{ __('ui.publish_article') }}
+</a>
+
                     @endauth
                 </div>
             </div>
@@ -27,7 +34,7 @@
     </div>
 
     {{-- Titolo "Esplora le ultime inserzioni" --}}
-    <div class="container-fluid bg-sky-blue text-beige py-4">
+    <div class="container-fluid bg-sky-blue text-beige py-3 pt-5">
         <h2 class="text-center slide-from-bottom-slow">{{ __('ui.explore_latest_ads') }}</h2>
     </div>
 
@@ -90,7 +97,7 @@
         <div class="container-fluid responsive-section bg-beige text-white py-5">
             <div class="row w-100 justify-content-center position-relative">
                 <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-12 offset-md-0 col-lg-12 offset-lg-0">
-                    <h2 class="text-center mb-4 slide-from-bottom">{{ __('ui.latest_reviews') }}</h2>
+                    <h2 class="text-center text-black mb-4 slide-from-bottom">{{ __('ui.latest_reviews') }}</h2>
 
                     <div class="swiper mySwiper position-relative">
                         <div class="swiper-wrapper">

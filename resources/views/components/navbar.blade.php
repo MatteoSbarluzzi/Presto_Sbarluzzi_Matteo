@@ -2,21 +2,21 @@
 <nav class="navbar navbar-expand-lg fixed-top navcustom">
   <div class="container">
 
-    {{-- Logo mobile (visibile solo su schermi piccoli) --}}
+    {{-- Logo mobile --}}
     <a class="navbar-brand d-lg-none logo-wrapper" href="{{ route('homepage') }}">
       <img src="{{ asset('storage/images/prestoit_logo.png') }}" class="logo" alt="Presto.it logo">
     </a>
 
-    {{-- Bottone toggle per mobile --}}
+    {{-- Bottone toggle mobile --}}
     <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    {{-- Menu responsivo --}}
+    {{-- Menu --}}
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
-        {{-- Logo desktop (centrato, visibile solo da lg in poi) --}}
+        {{-- Logo desktop --}}
         <li class="nav-item logo-wrapper d-none d-lg-flex">
           <a class="navbar-brand" href="{{ route('homepage') }}">
             <img src="{{ asset('storage/images/prestoit_logo.png') }}" class="logo" alt="Presto.it logo">
@@ -56,7 +56,8 @@
         @auth
           @if (Auth::user()->is_revisor)
             <li class="nav-item">
-              <a class="nav-link btn btn-outline-success btn-sm position-relative" href="{{ route('revisor.index') }}">
+              <a class="nav-link position-relative" href="{{ route('revisor.index') }}">
+
                 {{ __('ui.revisor_zone') }}
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{ \App\Models\Article::toBeRevisionedCount() }}
@@ -119,12 +120,12 @@
           </ul>
         </li>
 
-        {{-- Form di ricerca --}}
+        {{-- Ricerca --}}
         <li class="nav-item">
           <form class="d-flex" role="search" action="{{ route('article.search') }}" method="GET">
             <div class="input-group">
               <input type="search" name="query" class="form-control" placeholder="{{ __('ui.search_placeholder') }}" aria-label="search">
-              <button type="submit" class="input-group-text btn btn-outline-success">
+              <button type="submit" class="input-group-text btn-search-custom">
                 {{ __('ui.search') }}
               </button>
             </div>
@@ -133,5 +134,5 @@
 
       </ul>
     </div>
-  </div>  
+  </div>
 </nav>

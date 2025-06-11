@@ -61,13 +61,14 @@
 
                     {{-- BOTTONI --}}
                     <div class="d-grid gap-2">
-                        <button type="button" id="applyFiltersBtn" class="btn btn-success">
-                            {{ __('ui.apply_filters') }}
-                        </button>
+                        <button type="button" id="applyFiltersBtn" class="btn btn-apply-filters">
+  {{ __('ui.apply_filters') }}
+</button>
 
-                        <a href="{{ route('article.index') }}" class="btn btn-outline-danger">
-                            {{ __('ui.reset_filters') }}
-                        </a>
+<a href="{{ route('article.index') }}" class="btn btn-reset-filters text-center">
+  {{ __('ui.reset_filters') }}
+</a>
+
                     </div>
                 </form>
             </div>

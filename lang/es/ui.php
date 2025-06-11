@@ -26,7 +26,7 @@ return [
     'homepage_title' => '¡Bienvenido a Presto.it!',
 
     // Artículos
-    'publish_article' => 'Publicar un artículo',
+    'publish_article' => 'Crear un artículo',
     'create' => 'Crear',
     'category_articles' => 'Artículos de la categoría :category',
     'article_detail' => 'Detalle del artículo :title',

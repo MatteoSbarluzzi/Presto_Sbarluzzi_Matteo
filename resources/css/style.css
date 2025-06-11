@@ -279,8 +279,6 @@ form[role="search"] .form-control {
   border-top-right-radius: 8px;
 }
 
-/* === BOTTONE DETTAGLIO COERENTE CON AUTENTICAZIONE === */
-/* === COLORE COERENTE CON FORM AUTENTICAZIONE === */
 .card-custom,
 .card-custom .card-body,
 .card-custom .card-title,
@@ -299,21 +297,6 @@ form[role="search"] .form-control {
   color: var(--dark-blue);
 }
 
-
-/* === BOTTONI SECONDARI === */
-.btn-outline-danger {
-  color: var(--dark-blue);
-  border-color: var(--orange);
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.btn-outline-danger:hover {
-  background-color: var(--orange);
-  color: black;
-  border-color: var(--orange);
-}
-
 /* === BADGE CATEGORIA === */
 .card-custom .badge,
 .badge-category {
@@ -326,12 +309,12 @@ form[role="search"] .form-control {
   transition: all 0.3s ease;
 }
 
-
 .card-fixed-width {
   width: 100%;
   max-width: 300px;
 }
 
+/* === BOTTONE DETTAGLIO === */
 .card-custom .btn-detail {
   background-color: var(--orange);
   color: black;
@@ -344,6 +327,128 @@ form[role="search"] .form-control {
   background-color: var(--sky-blue);
   color: white;
 }
+
+/* === BOTTONI FILTRI === */
+button.btn-apply-filters,
+a.btn-apply-filters {
+  all: unset;
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+button.btn-apply-filters:hover,
+a.btn-apply-filters:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+a.btn-reset-filters {
+  all: unset;
+  background-color: var(--beige);
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border: 1px solid #dc3545;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+a.btn-reset-filters:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* === BOTTONI FOOTER === */
+.btn-footer-custom {
+  background-color: var(--beige);
+  color: black;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-footer-custom:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+/* === Bottone di ricerca nella navbar === */
+.input-group-text.btn-search-custom {
+  background-color: var(--beige);
+  color: black;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group-text.btn-search-custom:hover {
+  background-color: var(--sky-blue);
+  color: var(--beige);
+}
+
+/* === TITOLO PRINCIPALE HOMEPAGE === */
+.welcometitle {
+  color: var(--beige);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  text-shadow:
+    -1px -1px 0 #333,
+    1px -1px 0 #333,
+    -1px 1px 0 #333,
+    1px 1px 0 #333;
+  font-weight: 700;
+}
+
+/* === Navbar dropdown === */
+.navbar .dropdown-menu {
+  background-color: var(--dark-blue);
+  border: none;
+  border-radius: 8px;
+}
+
+.navbar .dropdown-menu .dropdown-item,
+.navbar .dropdown-menu button.dropdown-item {
+  color: var(--beige);
+  transition: color 0.2s ease;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu button.dropdown-item:hover {
+  color: var(--orange);
+  background-color: transparent;
+}
+
+/* === FIX PER MENU LINGUE === */
+.navbar .dropdown-menu button.dropdown-item span,
+.navbar .dropdown-menu button.dropdown-item svg,
+.navbar .dropdown-menu button.dropdown-item * {
+  color: var(--beige);
+  transition: color 0.2s ease;
+}
+
+.navbar .dropdown-menu button.dropdown-item:hover span,
+.navbar .dropdown-menu button.dropdown-item:hover svg,
+.navbar .dropdown-menu button.dropdown-item:hover * {
+  color: var(--orange);
+}
+
 
 
 
