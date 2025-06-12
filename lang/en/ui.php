@@ -153,21 +153,35 @@ return [
     'shipping_and_returns' => 'Shipping and Returns',
     'shipping_and_returns_description' => 'Discover all the information about our shipping and return policies.',
     'shipping_title' => 'Shipping Information',
-    'shipping_paragraph' => 'We offer fast and trackable shipping throughout Italy and abroad. Orders are processed within 24 hours and delivered within 3-5 business days. Free shipping over €99.',
+    'shipping_paragraph' => 'We provide fast, secure, and fully trackable shipping services throughout Italy and internationally. Orders are processed within 24 hours of confirmation and handed over to our logistics partners by the next business day. Delivery times range from 3 to 5 business days depending on the destination, with possible variations for remote areas. You’ll receive an email with a tracking link to monitor your shipment in real time. Shipping is free for orders over €99.',
     'returns_title' => 'Return Policy',
-    'returns_paragraph' => 'You have 14 days to change your mind. If you are not satisfied with your purchase, you can return it easily and get a full refund. Return shipping is free in case of damaged or defective items.',
-    'contact_support' => 'Learn More',
+    'returns_paragraph' => 'Customer satisfaction is our top priority. You have 14 days from the delivery date to request a return, with no obligation to provide a reason. If the product doesn’t meet your expectations, you can easily return it by filling out the return form in your account area. Return shipping is free for defective or incorrect items. Refunds will be processed within 5–7 business days after receiving the returned product.',
+
+ 
 
     // FAQ
     'faq_title' => 'Frequently Asked Questions',
+
     'faq_q1' => 'How long does shipping take?',
-    'faq_a1' => 'Domestic shipping takes between 2 to 5 business days. International delivery times vary by country.',
-    'faq_q2' => 'How can I track my order?',
-    'faq_a2' => 'As soon as your order is shipped, you will receive an email with a tracking link.',
-    'faq_q3' => 'How can I return a product?',
-    'faq_a3' => 'Fill out the form in the "Returns" section and follow the instructions. We will provide you with a prepaid return label.',
-    'faq_q4' => 'Are there any return costs?',
-    'faq_a4' => 'Returns are free if the item is damaged or incorrect. In all other cases, return shipping is paid by the customer.',
+'faq_a1' => 'Domestic shipping takes between 2 to 5 business days. International delivery times vary depending on the destination. You’ll receive an email with a tracking link to monitor your shipment.',
+
+'faq_q2' => 'How can I track my order?',
+'faq_a2' => 'As soon as your order is shipped, you’ll receive an email with a tracking link. You can follow your delivery status anytime from your account area.',
+
+'faq_q3' => 'What payment methods do you accept?',
+'faq_a3' => 'We accept a wide range of secure payment methods: credit and debit cards (Visa, Mastercard, American Express), PayPal, bank transfer, Google Pay, Apple Pay, and cryptocurrencies such as Bitcoin.',
+
+'faq_q4' => 'Are there any return costs?',
+'faq_a4' => 'Returns are free in case of damaged or incorrect products. Otherwise, return shipping costs are the customer’s responsibility.',
+
+'faq_q5' => 'What are the requirements to work with Presto.it?',
+'faq_a5' => 'We’re always looking for motivated collaborators! You must be over 18, have a good understanding of digital tools, and a passion for e-commerce. You can apply via the "Work with us" section and we’ll contact you for an interview.',
+
+'faq_q6' => 'How long does it take Presto.it to select candidates?',
+'faq_a6' => 'Our recruitment team reviews applications within 5–7 business days. Suitable candidates will be contacted by email to arrange an interview.',
+
+'faq_q7' => 'How long does customer support take to reply?',
+'faq_a7' => 'Our customer service usually responds within 24 to 48 business hours. For urgent matters, you may be contacted by phone as soon as possible.',
 
     // Dynamic statistics
     'our_numbers' => 'Our numbers',

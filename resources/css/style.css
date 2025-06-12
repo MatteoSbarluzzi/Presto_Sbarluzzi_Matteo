@@ -449,6 +449,72 @@ a.btn-reset-filters:hover {
   color: var(--orange);
 }
 
+/* Hamburger custom color + no focus border */
+.navbar .navbar-toggler:focus,
+.navbar .navbar-toggler:active,
+.navbar .navbar-toggler:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+.navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+  width: 30px;
+  height: 22px;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+  content: '';
+  display: block;
+  background-color: var(--beige);
+  height: 3px;
+  margin: 5px 0;
+  border-radius: 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Posizionamento delle 3 linee */
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.navbar-toggler-icon::before {
+  top: 0;
+}
+
+.navbar-toggler-icon span {
+  top: 9px;
+}
+
+.navbar-toggler-icon::after {
+  bottom: 0;
+}
+
+/* Trasformazione in X quando il menu è aperto (cioè .collapsed NON presente) */
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  bottom: 9px;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon span {
+  opacity: 0;
+}
+
+
 /* Bottoni dettaglio articolo */
 /* === BOTTONE CHIUDI DETTAGLIO ARTICOLO === */
 .btn-close-detail {
@@ -826,3 +892,5 @@ a.btn-reset-filters:hover {
     align-items: center;
   }
 }
+
+

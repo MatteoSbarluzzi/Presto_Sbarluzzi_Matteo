@@ -153,21 +153,33 @@ return [
     'shipping_and_returns' => 'Envíos y Devoluciones',
     'shipping_and_returns_description' => 'Descubre toda la información sobre nuestras políticas de envío y devolución.',
     'shipping_title' => 'Información de envío',
-    'shipping_paragraph' => 'Ofrecemos envíos rápidos y rastreables a toda Italia y al extranjero. Los pedidos se procesan dentro de las 24 horas y se entregan en 3-5 días hábiles. Envío gratuito para pedidos superiores a 99€.',
+    'shipping_paragraph' => 'Ofrecemos envíos rápidos, seguros y totalmente rastreables en todo el territorio nacional e internacional. Los pedidos se procesan dentro de las 24 horas posteriores a la confirmación del pago y se entregan al transportista al siguiente día hábil. Los tiempos de entrega oscilan entre 3 y 5 días laborables, con posibles variaciones en zonas remotas o islas. Recibirás un correo electrónico con el enlace de seguimiento para monitorizar tu envío en tiempo real. El envío es gratuito para pedidos superiores a 99 €.',
     'returns_title' => 'Política de devoluciones',
-    'returns_paragraph' => 'Tienes 14 días para cambiar de opinión. Si no estás satisfecho con tu compra, puedes devolverla fácilmente y obtener un reembolso completo. Los gastos de devolución son gratuitos en caso de producto dañado o defectuoso.',
-    'contact_support' => 'Más información',
+    'returns_paragraph' => 'La satisfacción del cliente es nuestra prioridad. Dispones de 14 días desde la recepción del pedido para solicitar una devolución, sin necesidad de justificar el motivo. Si el producto no cumple tus expectativas, puedes devolverlo fácilmente rellenando el formulario de devoluciones en tu cuenta. Los gastos de devolución son gratuitos en caso de artículos defectuosos o no conformes. El reembolso se procesará dentro de los 5–7 días hábiles posteriores a la recepción del producto.',
 
     // FAQ
     'faq_title' => 'Preguntas Frecuentes',
+
     'faq_q1' => '¿Cuánto tiempo tarda el envío?',
-    'faq_a1' => 'Los envíos nacionales tardan entre 2 y 5 días hábiles. Los tiempos de entrega internacionales varían según el país.',
-    'faq_q2' => '¿Cómo puedo rastrear mi pedido?',
-    'faq_a2' => 'Una vez que tu pedido sea enviado, recibirás un correo con el enlace de seguimiento.',
-    'faq_q3' => '¿Cómo puedo devolver un producto?',
-    'faq_a3' => 'Rellena el formulario en la sección "Devoluciones" y sigue las instrucciones. Te enviaremos una etiqueta de devolución prepagada.',
-    'faq_q4' => '¿Hay costos de devolución?',
-    'faq_a4' => 'Las devoluciones son gratuitas si el producto está dañado o es incorrecto. En otros casos, los gastos de envío de la devolución corren por cuenta del cliente.',
+'faq_a1' => 'Los envíos nacionales tardan entre 2 y 5 días hábiles. Los envíos internacionales varían según el destino. Recibirás un correo con el enlace de seguimiento.',
+
+'faq_q2' => '¿Cómo puedo rastrear mi pedido?',
+'faq_a2' => 'Una vez que tu pedido sea enviado, recibirás un correo electrónico con el enlace de seguimiento. También puedes consultarlo desde tu cuenta.',
+
+'faq_q3' => '¿Qué métodos de pago aceptan?',
+'faq_a3' => 'Aceptamos varios métodos de pago seguros: tarjetas de crédito y débito (Visa, Mastercard, American Express), PayPal, transferencia bancaria, Google Pay, Apple Pay y criptomonedas como Bitcoin.',
+
+'faq_q4' => '¿Hay costos de devolución?',
+'faq_a4' => 'Las devoluciones son gratuitas si el producto está dañado o es incorrecto. En otros casos, los gastos de devolución corren por cuenta del cliente.',
+
+'faq_q5' => '¿Cuáles son los requisitos para trabajar en Presto.it?',
+'faq_a5' => 'Siempre buscamos colaboradores motivados. Es necesario ser mayor de edad, tener buen manejo de herramientas digitales y pasión por el comercio electrónico. Puedes postularte desde la sección "Trabaja con nosotros" y te contactaremos para una entrevista.',
+
+'faq_q6' => '¿Cuánto tarda Presto.it en seleccionar a los candidatos?',
+'faq_a6' => 'Nuestro equipo de selección revisa las solicitudes en un plazo de 5 a 7 días hábiles. Si tu perfil es adecuado, te contactaremos por correo electrónico para concertar una entrevista.',
+
+'faq_q7' => '¿En cuánto tiempo responde el servicio de atención al cliente?',
+'faq_a7' => 'Nuestro equipo de atención al cliente responde normalmente en un plazo de 24 a 48 horas hábiles. En casos urgentes, podrías recibir una llamada lo antes posible.',
 
     // Estadísticas dinámicas
     'our_numbers' => 'Nuestros números',

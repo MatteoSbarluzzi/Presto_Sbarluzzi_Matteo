@@ -153,21 +153,36 @@ return [
     'shipping_and_returns' => 'Spedizioni e Resi',
     'shipping_and_returns_description' => 'Scopri tutte le informazioni su spedizioni e politiche di reso.',
     'shipping_title' => 'Informazioni sulla spedizione',
-    'shipping_paragraph' => 'Offriamo spedizioni rapide e tracciabili in tutta Italia e all’estero. Gli ordini vengono evasi entro 24 ore dalla conferma e consegnati entro 3-5 giorni lavorativi. Spedizione gratuita sopra i 99€.',
+    'shipping_paragraph' => 'Offriamo spedizioni rapide, sicure e completamente tracciabili su tutto il territorio nazionale e internazionale. Gli ordini vengono evasi entro 24 ore dalla conferma del pagamento e affidati al corriere selezionato entro il giorno lavorativo successivo. I tempi di consegna variano da 3 a 5 giorni lavorativi in base alla destinazione, con eventuali differenze per zone remote o isole minori. È possibile monitorare in tempo reale lo stato della spedizione tramite un link di tracciamento che verrà inviato via email. La spedizione è gratuita per tutti gli ordini superiori a 99€.',
     'returns_title' => 'Politiche di reso',
-    'returns_paragraph' => 'Hai 14 giorni per cambiare idea. Se non sei soddisfatto del tuo acquisto, puoi restituirlo facilmente e ottenere un rimborso completo. Le spese di reso sono gratuite in caso di prodotto danneggiato o difettoso.',
-    'contact_support' => 'Approfondisci',
+    'returns_paragraph' => 'La soddisfazione del cliente è la nostra priorità. Hai 14 giorni di tempo dalla ricezione dell’ordine per richiedere un reso, anche senza obbligo di motivazione. Se il prodotto non soddisfa le tue aspettative, puoi restituirlo facilmente compilando il modulo disponibile nella sezione resi. Le spese di reso sono gratuite in caso di articoli difettosi o non conformi alla descrizione. Il rimborso avverrà entro 5-7 giorni lavorativi dalla ricezione del prodotto restituito.',
 
-    // FAQ
-    'faq_title' => 'Domande Frequenti',
-    'faq_q1' => 'Quanto tempo impiega la spedizione?',
-    'faq_a1' => 'Le spedizioni nazionali richiedono dai 2 ai 5 giorni lavorativi. Per le spedizioni internazionali, i tempi variano a seconda del Paese.',
-    'faq_q2' => 'Come posso tracciare il mio ordine?',
-    'faq_a2' => 'Appena il tuo ordine verrà spedito, riceverai un’email con il link per il tracciamento.',
-    'faq_q3' => 'Come posso restituire un prodotto?',
-    'faq_a3' => 'Compila il modulo nella sezione “Resi” e segui le istruzioni. Ti forniremo un’etichetta di reso prepagata.',
-    'faq_q4' => 'Ci sono costi per il reso?',
-    'faq_a4' => 'I resi sono gratuiti in caso di prodotto danneggiato o errato. In altri casi, le spese di spedizione sono a carico del cliente.',
+ 
+     
+
+   // FAQ
+'faq_title' => 'Domande Frequenti',
+
+'faq_q1' => 'Quanto tempo impiega la spedizione?',
+'faq_a1' => 'Le spedizioni nazionali richiedono dai 2 ai 5 giorni lavorativi. Per le spedizioni internazionali, i tempi variano in base alla destinazione. Riceverai via email un link per tracciare il tuo ordine in tempo reale.',
+
+'faq_q2' => 'Come posso tracciare il mio ordine?',
+'faq_a2' => 'Non appena il tuo ordine viene spedito, riceverai un’email con il link di tracciamento. Potrai monitorare lo stato della spedizione in qualsiasi momento dalla tua area personale.',
+
+'faq_q3' => 'Quali metodi di pagamento accettate?',
+'faq_a3' => 'Accettiamo numerosi metodi di pagamento sicuri: carte di credito e debito (Visa, Mastercard, American Express), PayPal, bonifico bancario, Google Pay, Apple Pay e anche criptovalute come Bitcoin.',
+
+'faq_q4' => 'Ci sono costi per il reso?',
+'faq_a4' => 'I resi sono gratuiti in caso di prodotto danneggiato o errato. In altri casi, le spese di spedizione sono a carico del cliente.',
+
+'faq_q5' => 'Quali sono i requisiti per lavorare con Presto.it?',
+'faq_a5' => 'Siamo sempre alla ricerca di collaboratori motivati! Per lavorare con noi è richiesta maggiore età, una buona conoscenza del web e tanta passione per il commercio digitale. Puoi candidarti dalla sezione "Lavora con noi" e verrai ricontattato per un colloquio.',
+
+'faq_q6' => 'Quanto tempo impiega Presto.it a selezionare i candidati?',
+'faq_a6' => 'Dopo aver ricevuto la candidatura, il nostro team di selezione valuta i profili entro 5-7 giorni lavorativi. I candidati idonei vengono ricontattati tramite email per fissare un eventuale colloquio conoscitivo.',
+
+'faq_q7' => "In quanto tempo risponde l'assistenza clienti?",
+'faq_a7' => 'Il nostro servizio clienti risponde solitamente entro 24/48 ore lavorative. In caso di urgenze, potresti essere contattato telefonicamente da un operatore nel più breve tempo possibile.',
 
     
     // Statistiche dinamiche
