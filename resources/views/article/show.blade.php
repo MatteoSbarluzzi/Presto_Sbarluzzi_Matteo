@@ -56,7 +56,7 @@
 
                 {{-- BOTTONI CHIUSURA E CANCELLA --}}
                 <div class="d-flex justify-content-center gap-2 mt-3">
-                    <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
+                    <a href="{{ url()->previous() }}" class="btn-close-detail">
                         {{ __('ui.close_article_detail') }}
                     </a>
 
@@ -66,7 +66,8 @@
                                   onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">{{ __('ui.delete') }}</button>
+                                <input type="hidden" name="redirect_to" value="{{ url()->previous() }}">
+                                <button type="submit" class="btn-delete-custom">{{ __('ui.delete') }}</button>
                             </form>
                         @endif
                     @endauth

@@ -27,7 +27,7 @@ return [
 
     // Articles
     'publish_article' => 'Create an article',
-    'create' => 'Create',
+    'create' => 'Create an article',
     'category_articles' => 'Articles in the :category category',
     'article_detail' => 'Article detail: :title',
     'close_article_detail' => 'Close article detail',
@@ -75,6 +75,7 @@ return [
 
     // Search
     'search' => 'Search',
+    'search_results_for' => 'Search results for',
     'search_placeholder' => 'Type the name of the article',
     'search_results' => 'Search results for ":query"',
     'no_search_results' => 'No results found',
@@ -132,6 +133,41 @@ return [
     'send_review' => 'Submit review',
     'login_to_review' => 'Log in to write a review',
     'no_reviews_yet' => 'No reviews yet',
+
+    // Shipping
+'shipping_worldwide' => 'Guaranteed international shipping',
+'shipping_description' => 'At Presto.it, we provide reliable and professional shipping services both nationally and internationally. Through our trusted logistics partners, we ensure fast, trackable, and timely deliveries wherever our customers are located. Rely on us for efficient and secure handling of your shipments.',
+
+    // Shipping (deepening button)
+'approfondisci' => 'Learn more',
+
+    'shipping_detail_1' => 'We ship to over 50 countries worldwide with trusted couriers.',
+'shipping_detail_2' => 'Delivery times range from 2 to 7 business days depending on the destination.',
+'shipping_detail_3' => 'Each package is tracked and insured to ensure maximum safety.',
+
+'returns_detail_1' => 'You have 14 days to return an item if it’s not as expected.',
+'returns_detail_2' => 'To request a return, contact our customer service and provide your order number.',
+'returns_detail_3' => 'Refunds are processed within 5–7 business days after the return is received.',
+
+// Shipping and Returns
+    'shipping_and_returns' => 'Shipping and Returns',
+    'shipping_and_returns_description' => 'Discover all the information about our shipping and return policies.',
+    'shipping_title' => 'Shipping Information',
+    'shipping_paragraph' => 'We offer fast and trackable shipping throughout Italy and abroad. Orders are processed within 24 hours and delivered within 3-5 business days. Free shipping over €99.',
+    'returns_title' => 'Return Policy',
+    'returns_paragraph' => 'You have 14 days to change your mind. If you are not satisfied with your purchase, you can return it easily and get a full refund. Return shipping is free in case of damaged or defective items.',
+    'contact_support' => 'Learn More',
+
+    // FAQ
+    'faq_title' => 'Frequently Asked Questions',
+    'faq_q1' => 'How long does shipping take?',
+    'faq_a1' => 'Domestic shipping takes between 2 to 5 business days. International delivery times vary by country.',
+    'faq_q2' => 'How can I track my order?',
+    'faq_a2' => 'As soon as your order is shipped, you will receive an email with a tracking link.',
+    'faq_q3' => 'How can I return a product?',
+    'faq_a3' => 'Fill out the form in the "Returns" section and follow the instructions. We will provide you with a prepaid return label.',
+    'faq_q4' => 'Are there any return costs?',
+    'faq_a4' => 'Returns are free if the item is damaged or incorrect. In all other cases, return shipping is paid by the customer.',
 
     // Dynamic statistics
     'our_numbers' => 'Our numbers',

@@ -68,8 +68,18 @@ class ArticleController extends Controller implements HasMiddleware
         return view('article.index', compact('articles', 'categories', 'maxPrice'));
     }
 
-    public function show(Article $article)
+    public function show(Article $article, Request $request)
     {
+        $referer = $request->headers->get('referer');
+
+        if ($referer) {
+            if (str_contains($referer, '/categoria/')) {
+                session(['previous_category_url' => $referer]);
+            } elseif (str_contains($referer, '/searched')) {
+                session(['previous_search_url' => $referer]);
+            }
+        }
+
         return view('article.show', compact('article'));
     }
 
@@ -120,11 +130,29 @@ class ArticleController extends Controller implements HasMiddleware
         return view('article.create');
     }
 
-    public function destroy(Article $article)
+    public function destroy(Article $article, Request $request)
     {
         if (Auth::id() === $article->user_id || Auth::user()->is_revisor) {
             $article->delete();
-            return redirect()->back()->with('message', __('ui.article_deleted_successfully'));
+
+            // Redirect personalizzato
+            $redirectTo = $request->input('redirect_to');
+            if ($redirectTo && str($redirectTo)->startsWith(url('/'))) {
+                return redirect($redirectTo)->with('message', __('ui.article_deleted_successfully'));
+            }
+
+            // Fallback alle sessioni salvate dai dettagli articolo
+            if (session()->has('previous_category_url')) {
+                $url = session()->pull('previous_category_url');
+                return redirect($url)->with('message', __('ui.article_deleted_successfully'));
+            }
+
+            if (session()->has('previous_search_url')) {
+                $url = session()->pull('previous_search_url');
+                return redirect($url)->with('message', __('ui.article_deleted_successfully'));
+            }
+
+            return redirect()->route('article.index')->with('message', __('ui.article_deleted_successfully'));
         }
 
         return redirect()->back()->with('errorMessage', __('ui.not_authorized_to_delete'));

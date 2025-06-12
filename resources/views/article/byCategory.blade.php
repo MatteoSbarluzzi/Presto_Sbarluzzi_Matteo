@@ -3,10 +3,16 @@
         {{-- Messaggio di errore --}}
         {{-- Titolo della categoria --}}
         <div class="row mb-5">
-            <div class="col-12 text-center mt-5 mt-sm-0">
+            <div class="col-12 text-center mt-5 pt-5 mt-sm-0">
                 <h1 class="display-4 slide-from-bottom-slow">
                     {{ __('ui.category_articles', ['category' => __('ui.categories_list.' . $category->slug)]) }}
                 </h1>
+                @if (session('message'))
+    <div class="alert alert-success text-center my-4 shadow rounded w-75 mx-auto">
+        {{ session('message') }}
+    </div>
+@endif
+
             </div>
         </div>
 

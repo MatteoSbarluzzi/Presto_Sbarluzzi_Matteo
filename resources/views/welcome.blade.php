@@ -54,17 +54,22 @@
     </div>
 
     {{-- Sezione Spedizioni Internazionali --}}
-    <div class="container-fluid responsive-section bg-light-blue text-dark-blue py-5">
-        <div class="row align-items-center">
-            <div class="col-md-6 order-1 order-md-2 text-center slide-from-right mt-4 mt-md-0">
-                <h2 class="fw-bold">{{ __('ui.shipping_worldwide') }}</h2>
-                <p>{{ __('ui.shipping_description') }}</p>
-            </div>
-            <div class="col-md-6 order-2 order-md-1 text-center slide-from-left">
-                <img src="{{ asset('storage/images/logistics.png') }}" alt="Logistica" class="img-fluid shadow rounded">
-            </div>
+<div class="container-fluid responsive-section bg-light-blue text-dark-blue py-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 order-1 order-md-2 text-center slide-from-right mt-4 mt-md-0">
+            <h2 class="fw-bold">{{ __('ui.shipping_worldwide') }}</h2>
+            <p>{{ __('ui.shipping_description') }}</p>
+            
+            {{-- Bottone Approfondisci --}}
+            <a href="{{ route('shipping') }}" class="btn-apply-filters mt-3">{{ __('ui.approfondisci') }}</a>
+
+        </div>
+        <div class="col-md-6 order-2 order-md-1 text-center slide-from-left">
+            <img src="{{ asset('storage/images/logistics.png') }}" alt="Logistica" class="img-fluid shadow rounded">
         </div>
     </div>
+</div>
+
 
     {{-- Sezione Statistiche dinamiche --}}
     <div class="container-fluid responsive-section bg-orange text-dark-blue py-5">

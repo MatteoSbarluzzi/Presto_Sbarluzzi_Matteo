@@ -1,7 +1,5 @@
 <div class="card card-custom card-fixed-width h-100 shadow text-center d-flex flex-column mx-auto mb-3">
 
-
-
     {{-- Immagine in ratio 1:1 --}}
     <div class="ratio ratio-1x1">
         <img 
@@ -27,6 +25,7 @@
                         <form method="POST" action="{{ route('article.destroy', $article) }}" onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
                             @csrf
                             @method('DELETE')
+                            <input type="hidden" name="redirect_to" value="{{ url()->full() }}">
                             <button type="submit" class="btn btn-outline-danger">{{ __('ui.delete') }}</button>
                         </form>
                     @endif
@@ -34,7 +33,6 @@
             </div>
 
             <span class="badge rounded-pill px-3 py-2">
-
                 {{ __($article->getTranslatedCategoryKey()) }}
             </span>
         </div>

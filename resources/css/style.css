@@ -449,6 +449,107 @@ a.btn-reset-filters:hover {
   color: var(--orange);
 }
 
+/* Bottoni dettaglio articolo */
+/* === BOTTONE CHIUDI DETTAGLIO ARTICOLO === */
+.btn-close-detail {
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-close-detail:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+
+/* === BOTTONE CHIUDI DETTAGLIO ARTICOLO === */
+.btn-close-detail {
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-close-detail:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+/* === Bottone Elimina Personalizzato === */
+.btn-delete-custom {
+  all: unset;
+  border: 1px solid #dc3545;
+  color: var(--dark-blue);
+  background-color: var(--beige);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-delete-custom:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-accept-custom {
+  all: unset;
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-accept-custom:hover {
+  background-color: var(--sky-blue);
+  color: var(--beige);
+}
+
+/* Bottone dopo aver revisionato articolo */
+.btn-home-custom {
+  all: unset;
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-home-custom:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+
 
 
 

@@ -27,7 +27,7 @@ return [
 
     // Artículos
     'publish_article' => 'Crear un artículo',
-    'create' => 'Crear',
+    'create' => 'Crear un artículo',
     'category_articles' => 'Artículos de la categoría :category',
     'article_detail' => 'Detalle del artículo :title',
     'close_article_detail' => 'Cerrar detalle del artículo',
@@ -75,6 +75,7 @@ return [
 
     // Búsqueda
     'search' => 'Buscar',
+    'search_results_for' => 'Resultados de la búsqueda para',
     'search_placeholder' => 'Escribe el nombre del artículo',
     'search_results' => 'Resultados de la búsqueda para ":query"',
     'no_search_results' => 'No se encontraron resultados',
@@ -132,6 +133,41 @@ return [
     'send_review' => 'Enviar reseña',
     'login_to_review' => 'Inicia sesión para escribir una reseña',
     'no_reviews_yet' => 'Aún no hay reseñas',
+
+    // Envíos
+'shipping_worldwide' => 'Envíos internacionales garantizados',
+'shipping_description' => 'En Presto.it ofrecemos un servicio de envío confiable y profesional, tanto a nivel nacional como internacional. Gracias a nuestros socios logísticos de confianza, garantizamos entregas rápidas, rastreables y puntuales, sin importar dónde se encuentren nuestros clientes. Confía en nosotros para una gestión eficiente y segura de tus envíos.',
+
+    // Envíos (botón de más información)
+'approfondisci' => 'Más información',
+
+    'shipping_detail_1' => 'Enviamos a más de 50 países con mensajeros confiables.',
+'shipping_detail_2' => 'Los tiempos de entrega oscilan entre 2 y 7 días laborables según el destino.',
+'shipping_detail_3' => 'Cada paquete es rastreado y asegurado para tu tranquilidad.',
+
+'returns_detail_1' => 'Tienes 14 días para devolver un artículo si no cumple con tus expectativas.',
+'returns_detail_2' => 'Para solicitar una devolución, contacta con atención al cliente e indica el número de pedido.',
+'returns_detail_3' => 'Los reembolsos se procesan en un plazo de 5–7 días laborables tras recibir la devolución.',
+
+    // Envíos y Devoluciones
+    'shipping_and_returns' => 'Envíos y Devoluciones',
+    'shipping_and_returns_description' => 'Descubre toda la información sobre nuestras políticas de envío y devolución.',
+    'shipping_title' => 'Información de envío',
+    'shipping_paragraph' => 'Ofrecemos envíos rápidos y rastreables a toda Italia y al extranjero. Los pedidos se procesan dentro de las 24 horas y se entregan en 3-5 días hábiles. Envío gratuito para pedidos superiores a 99€.',
+    'returns_title' => 'Política de devoluciones',
+    'returns_paragraph' => 'Tienes 14 días para cambiar de opinión. Si no estás satisfecho con tu compra, puedes devolverla fácilmente y obtener un reembolso completo. Los gastos de devolución son gratuitos en caso de producto dañado o defectuoso.',
+    'contact_support' => 'Más información',
+
+    // FAQ
+    'faq_title' => 'Preguntas Frecuentes',
+    'faq_q1' => '¿Cuánto tiempo tarda el envío?',
+    'faq_a1' => 'Los envíos nacionales tardan entre 2 y 5 días hábiles. Los tiempos de entrega internacionales varían según el país.',
+    'faq_q2' => '¿Cómo puedo rastrear mi pedido?',
+    'faq_a2' => 'Una vez que tu pedido sea enviado, recibirás un correo con el enlace de seguimiento.',
+    'faq_q3' => '¿Cómo puedo devolver un producto?',
+    'faq_a3' => 'Rellena el formulario en la sección "Devoluciones" y sigue las instrucciones. Te enviaremos una etiqueta de devolución prepagada.',
+    'faq_q4' => '¿Hay costos de devolución?',
+    'faq_a4' => 'Las devoluciones son gratuitas si el producto está dañado o es incorrecto. En otros casos, los gastos de envío de la devolución corren por cuenta del cliente.',
 
     // Estadísticas dinámicas
     'our_numbers' => 'Nuestros números',

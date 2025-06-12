@@ -6,6 +6,12 @@
                 <h1 class="display-4 slide-from-bottom-slow mt-4 mt-sm-5">
                     {{ __('ui.all_articles') }}
                 </h1>
+                @if (session('message'))
+    <div class="alert alert-success text-center my-4 shadow rounded w-75 mx-auto">
+        {{ session('message') }}
+    </div>
+@endif
+
             </div>
         </div>
 

@@ -1,18 +1,25 @@
 <x-layout>
-    <div class="container py-5">
+    <div class="container-fluid py-5 bg-sky-blue text-beige">
         {{-- Titolo pagina di ricerca --}}
         <div class="row mb-5">
             <div class="col-12 text-center mt-4">
-                <h1 class="display-4 slide-from-bottom-slow">
+                <h1 class="display-4 slide-from-bottom-slow mt-4 mt-sm-5">
                     {{ __('ui.search_results_for') }}: "{{ $query }}"
                 </h1>
+
+                {{-- Messaggio di successo --}}
+                @if (session('message'))
+                    <div class="alert alert-success text-center my-4 shadow rounded w-75 mx-auto">
+                        {{ session('message') }}
+                    </div>
+                @endif
             </div>
         </div>
 
         {{-- SEZIONE FILTRI + RISULTATI --}}
         <div class="row justify-content-center align-items-start">
             {{-- COLONNA FILTRI --}}
-            <div class="col-12 col-md-3 px-4 sticky-filter">
+            <div class="col-12 col-md-3 px-4 sticky-filter filter-box">
                 <h4 class="mb-4">{{ __('ui.filter_by') }}</h4>
 
                 {{-- FORM DI FILTRI --}}
@@ -34,6 +41,7 @@
                         <select id="sortSelect" name="sort" class="form-select">
                             <option value="default" @if(request('sort') == 'default') selected @endif>{{ __('ui.default_order') }}</option>
                             <option value="title_asc" @if(request('sort') == 'title_asc') selected @endif>{{ __('ui.alpha_az') }}</option>
+                            <option value="title_desc" @if(request('sort') == 'title_desc') selected @endif>{{ __('ui.alpha_za') }}</option>
                             <option value="price_asc" @if(request('sort') == 'price_asc') selected @endif>{{ __('ui.price_low_high') }}</option>
                             <option value="price_desc" @if(request('sort') == 'price_desc') selected @endif>{{ __('ui.price_high_low') }}</option>
                             <option value="newest" @if(request('sort') == 'newest') selected @endif>{{ __('ui.newest_first') }}</option>
@@ -58,18 +66,18 @@
                         <input type="text" id="wordInput" name="query" class="form-control" value="{{ request('query') }}" placeholder="{{ __('ui.search_placeholder') }}">
                     </div>
 
-                    {{-- BOTTONE FILTRA --}}
+                    {{-- BOTTONI --}}
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-apply-filters">
                             {{ __('ui.apply_filters') }}
                         </button>
 
                         @if(request('category') && request('category') !== 'all')
-                            <a href="{{ route('byCategory', ['category' => request('category')]) }}" class="btn btn-outline-danger">
+                            <a href="{{ route('byCategory', ['category' => request('category')]) }}" class="btn btn-reset-filters text-center">
                                 {{ __('ui.reset_filters') }}
                             </a>
                         @else
-                            <a href="{{ route('article.index') }}" class="btn btn-outline-danger">
+                            <a href="{{ route('article.index') }}" class="btn btn-reset-filters text-center">
                                 {{ __('ui.reset_filters') }}
                             </a>
                         @endif

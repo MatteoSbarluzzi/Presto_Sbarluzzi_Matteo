@@ -27,7 +27,7 @@ return [
 
     // Articoli
     'publish_article' => 'Crea un articolo', 
-    'create' => 'Crea',
+    'create' => 'Crea un articolo',
     'category_articles' => 'Articoli della categoria :category',
     'article_detail' => 'Dettaglio dell’articolo :title',
     'close_article_detail' => 'Chiudi dettaglio articolo',
@@ -75,6 +75,7 @@ return [
 
     // Ricerca
     'search' => 'Cerca',
+    'search_results_for' => 'Risultati della ricerca per',
     'search_placeholder' => 'Scrivi il nome dell\'articolo',
     'search_results' => 'Risultati della ricerca per ":query"',
     'no_search_results' => 'Nessun risultato trovato',
@@ -133,6 +134,42 @@ return [
     'login_to_review' => 'Accedi per scrivere una recensione',
     'no_reviews_yet' => 'Nessuna recensione presente',
 
+    // Spedizioni
+'shipping_worldwide' => 'Spedizioni internazionali garantite',
+'shipping_description' => 'Su Presto.it offriamo un servizio di spedizione affidabile e professionale, attivo su scala nazionale e internazionale. Grazie alla collaborazione con operatori logistici selezionati, assicuriamo consegne rapide, tracciabili e puntuali, ovunque si trovino i nostri clienti. Affidati a noi per una gestione efficiente e sicura delle tue spedizioni.',
+
+    // Spedizioni (aggiunta bottone approfondimento)
+'approfondisci' => 'Approfondisci',
+
+    'shipping_detail_1' => 'Spediamo in oltre 50 paesi nel mondo con corrieri affidabili.',
+'shipping_detail_2' => 'I tempi di consegna variano da 2 a 7 giorni lavorativi a seconda della destinazione.',
+'shipping_detail_3' => 'Ogni pacco viene tracciato e assicurato per garantirti la massima sicurezza.',
+
+'returns_detail_1' => 'Hai 14 giorni di tempo per restituire un articolo non conforme o indesiderato.',
+'returns_detail_2' => 'Per richiedere un reso, contatta il nostro servizio clienti indicando il numero d’ordine.',
+'returns_detail_3' => 'Il rimborso verrà effettuato entro 5-7 giorni lavorativi dalla ricezione del reso.',
+
+    // Spedizioni e Resi
+    'shipping_and_returns' => 'Spedizioni e Resi',
+    'shipping_and_returns_description' => 'Scopri tutte le informazioni su spedizioni e politiche di reso.',
+    'shipping_title' => 'Informazioni sulla spedizione',
+    'shipping_paragraph' => 'Offriamo spedizioni rapide e tracciabili in tutta Italia e all’estero. Gli ordini vengono evasi entro 24 ore dalla conferma e consegnati entro 3-5 giorni lavorativi. Spedizione gratuita sopra i 99€.',
+    'returns_title' => 'Politiche di reso',
+    'returns_paragraph' => 'Hai 14 giorni per cambiare idea. Se non sei soddisfatto del tuo acquisto, puoi restituirlo facilmente e ottenere un rimborso completo. Le spese di reso sono gratuite in caso di prodotto danneggiato o difettoso.',
+    'contact_support' => 'Approfondisci',
+
+    // FAQ
+    'faq_title' => 'Domande Frequenti',
+    'faq_q1' => 'Quanto tempo impiega la spedizione?',
+    'faq_a1' => 'Le spedizioni nazionali richiedono dai 2 ai 5 giorni lavorativi. Per le spedizioni internazionali, i tempi variano a seconda del Paese.',
+    'faq_q2' => 'Come posso tracciare il mio ordine?',
+    'faq_a2' => 'Appena il tuo ordine verrà spedito, riceverai un’email con il link per il tracciamento.',
+    'faq_q3' => 'Come posso restituire un prodotto?',
+    'faq_a3' => 'Compila il modulo nella sezione “Resi” e segui le istruzioni. Ti forniremo un’etichetta di reso prepagata.',
+    'faq_q4' => 'Ci sono costi per il reso?',
+    'faq_a4' => 'I resi sono gratuiti in caso di prodotto danneggiato o errato. In altri casi, le spese di spedizione sono a carico del cliente.',
+
+    
     // Statistiche dinamiche
     'our_numbers' => 'I nostri numeri',
     'users_registered' => 'Utenti registrati',
