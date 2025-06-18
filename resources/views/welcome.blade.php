@@ -4,10 +4,8 @@
         <div class="row w-100">
             <div class="col-12">
                 <h1 class="slide-down welcometitle">
-    {{ __('ui.homepage_title') }}
-</h1>
-
-
+                    {{ __('ui.homepage_title') }}
+                </h1>
 
                 @if (session()->has('errorMessage'))
                     <div class="alert alert-danger text-center shadow rounded w-50 mx-auto">
@@ -24,9 +22,8 @@
                 <div class="my-3">
                     @auth
                         <a class="btn-apply-filters slide-up" href="{{ route('create.article') }}">
-    {{ __('ui.publish_article') }}
-</a>
-
+                            {{ __('ui.publish_article') }}
+                        </a>
                     @endauth
                 </div>
             </div>
@@ -54,22 +51,18 @@
     </div>
 
     {{-- Sezione Spedizioni Internazionali --}}
-<div class="container-fluid responsive-section bg-light-blue text-dark-blue py-5">
-    <div class="row align-items-center">
-        <div class="col-md-6 order-1 order-md-2 text-center slide-from-right mt-4 mt-md-0">
-            <h2 class="fw-bold">{{ __('ui.shipping_worldwide') }}</h2>
-            <p>{{ __('ui.shipping_description') }}</p>
-            
-            {{-- Bottone Approfondisci --}}
-            <a href="{{ route('shipping') }}" class="btn-apply-filters mt-3">{{ __('ui.approfondisci') }}</a>
-
-        </div>
-        <div class="col-md-6 order-2 order-md-1 text-center slide-from-left">
-            <img src="{{ asset('storage/images/logistics.png') }}" alt="Logistica" class="img-fluid shadow rounded">
+    <div class="container-fluid responsive-section bg-light-blue text-dark-blue py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 order-1 order-md-2 text-center slide-from-right mt-4 mt-md-0">
+                <h2 class="fw-bold">{{ __('ui.shipping_worldwide') }}</h2>
+                <p>{{ __('ui.shipping_description') }}</p>
+                <a href="{{ route('shipping') }}" class="btn-apply-filters mt-3 mb-5">{{ __('ui.approfondisci') }}</a>
+            </div>
+            <div class="col-md-6 order-2 order-md-1 text-center slide-from-left">
+                <img src="{{ asset('storage/images/logistics.png') }}" alt="Logistica" class="img-fluid shadow rounded">
+            </div>
         </div>
     </div>
-</div>
-
 
     {{-- Sezione Statistiche dinamiche --}}
     <div class="container-fluid responsive-section bg-orange text-dark-blue py-5">
@@ -85,7 +78,7 @@
                     <p class="mb-0 fs-5">{{ __('ui.articles_published') }}</p>
                     <h3 id="secondNumber" class="display-4 mb-0">0</h3>
                 </div>
-                <div class="d-flex justify-content-between align-items-center px-3">
+                <div class="d-flex justify-content-between align-items-center px-3 mb-5">
                     <p class="mb-0 fs-5">{{ __('ui.sales_record') }}</p>
                     <h3 id="thirdNumber" class="display-4 mb-0">0</h3>
                 </div>

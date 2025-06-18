@@ -67,7 +67,7 @@
                     </div>
 
                     {{-- BOTTONI --}}
-                    <div class="d-grid gap-2">
+                    <div class="d-grid gap-2 mb-4">
                         <button type="submit" class="btn btn-apply-filters">
                             {{ __('ui.apply_filters') }}
                         </button>

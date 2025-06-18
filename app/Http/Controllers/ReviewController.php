@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class ReviewController extends Controller
 {
     public function index()
-    {
-        $reviews = Review::latest()->with('user')->get();
-        return view('reviews.index', compact('reviews'));
-    }
+{
+    $reviews = Review::latest()->with('user')->paginate(6);
+    return view('reviews.index', compact('reviews'));
+}
+
 
     public function store(Request $request)
     {

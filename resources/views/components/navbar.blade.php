@@ -8,9 +8,8 @@
     </a>
 
     {{-- Bottone toggle mobile --}}
-    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler text-white border-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><span></span></span>
-
     </button>
 
     {{-- Menu --}}
@@ -58,7 +57,6 @@
           @if (Auth::user()->is_revisor)
             <li class="nav-item">
               <a class="nav-link position-relative" href="{{ route('revisor.index') }}">
-
                 {{ __('ui.revisor_zone') }}
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{ \App\Models\Article::toBeRevisionedCount() }}
@@ -100,12 +98,10 @@
         {{-- Lingua --}}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
-            @switch(app()->getLocale())
-              @case('it') <x-_locale lang="it" /> {{ __('ui.italian') }} @break
-              @case('en') <x-_locale lang="en" /> {{ __('ui.english') }} @break
-              @case('es') <x-_locale lang="es" /> {{ __('ui.spanish') }} @break
-            @endswitch
+            <img src="{{ asset('vendor/blade-flags/language-' . app()->getLocale() . '.svg') }}" width="32" height="32" />
+            <span class="text-current-language">{{ __('ui.' . (app()->getLocale() == 'it' ? 'italian' : (app()->getLocale() == 'en' ? 'english' : 'spanish'))) }}</span>
           </a>
+
           <ul class="dropdown-menu">
             @foreach (['it', 'en', 'es'] as $lang)
               <li>
