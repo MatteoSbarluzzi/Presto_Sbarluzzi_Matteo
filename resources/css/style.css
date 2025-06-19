@@ -889,6 +889,16 @@ a.btn-reset-filters:hover {
 
 
 /* === SEZIONI RESPONSIVE === */
+@media (min-width: 768px) and (max-width: 992px) {
+  .card-custom .btn-detail,
+  .btn-delete-custom {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem; 
+  }
+}
+
+
+
 @media (max-width: 992px) {
   .swiper {
     height: 500px;

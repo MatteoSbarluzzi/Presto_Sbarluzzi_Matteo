@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container-fluid bg-sky-blue min-vh-100 py-5">
+    <div class="container-fluid bg-sky-blue py-5">
         {{-- Titolo e sottotitolo --}}
         <div class="row justify-content-center mb-5">
             <div class="col-md-8 text-center pt-5">
@@ -53,23 +53,23 @@
                                             <div class="col-md-3">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Ratings</h5>
-                                                    <div class="row justify-content-center">
+                                                    <div class="row align-items-center">
                                                         <div class="col-2 text-center"><i class="{{ $image->adult }}"></i></div>
                                                         <div class="col-10">adult</div>
                                                     </div>
-                                                    <div class="row justify-content-center">
+                                                    <div class="row align-items-center">
                                                         <div class="col-2 text-center"><i class="{{ $image->violence }}"></i></div>
                                                         <div class="col-10">violence</div>
                                                     </div>
-                                                    <div class="row justify-content-center">
+                                                    <div class="row align-items-center">
                                                         <div class="col-2 text-center"><i class="{{ $image->spoof }}"></i></div>
                                                         <div class="col-10">spoof</div>
                                                     </div>
-                                                    <div class="row justify-content-center">
+                                                    <div class="row align-items-center">
                                                         <div class="col-2 text-center"><i class="{{ $image->racy }}"></i></div>
                                                         <div class="col-10">racy</div>
                                                     </div>
-                                                    <div class="row justify-content-center">
+                                                    <div class="row align-items-center">
                                                         <div class="col-2 text-center"><i class="{{ $image->medical }}"></i></div>
                                                         <div class="col-10">medical</div>
                                                     </div>
@@ -90,7 +90,9 @@
                 </div>
 
                 {{-- Colonna dettagli articolo e bottoni --}}
-                <div class="col-md-4 ps-4 d-flex flex-column justify-content-between">
+                <div class="col-12 col-md-4 d-flex flex-column justify-content-between mx-auto px-3 px-md-3">
+
+
                     <div class="bg-beige rounded p-4">
                         <h1>{{ $article_to_check->title }}</h1>
                         <h3>{{ __('ui.author') }}: {{ $article_to_check->user->name }}</h3>
@@ -121,7 +123,6 @@
                         {{ __('ui.no_articles_to_review') }}
                     </h1>
                     <a href="{{ route('homepage') }}" class="mt-5 btn-home-custom">{{ __('ui.back_home') }}</a>
-
                 </div>
             </div>
         @endif
