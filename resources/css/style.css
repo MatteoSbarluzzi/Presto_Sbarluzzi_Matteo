@@ -519,7 +519,7 @@ a.btn-reset-filters:hover {
   opacity: 0;
 }
 
-/*Bottone elimina Articolo */
+/*Bottone elimina Articolo*/
 .btn-delete-custom {
   all: unset;
   background-color: var(--beige);
