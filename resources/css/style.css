@@ -519,53 +519,12 @@ a.btn-reset-filters:hover {
   opacity: 0;
 }
 
-
-/* Bottoni dettaglio articolo */
-/* === BOTTONE CHIUDI DETTAGLIO ARTICOLO === */
-.btn-close-detail {
-  background-color: var(--orange);
-  color: black;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-close-detail:hover {
-  background-color: var(--dark-blue);
-  color: var(--beige);
-}
-
-
-/* === BOTTONE CHIUDI DETTAGLIO ARTICOLO === */
-.btn-close-detail {
-  background-color: var(--orange);
-  color: black;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-close-detail:hover {
-  background-color: var(--dark-blue);
-  color: var(--beige);
-}
-
-/* === Bottone Elimina Personalizzato === */
+/*Bottone elimina Articolo */
 .btn-delete-custom {
   all: unset;
-  border: 1px solid #dc3545;
-  color: var(--dark-blue);
   background-color: var(--beige);
+  color: black;
+  border: 1px solid #dc3545;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 600;
@@ -579,8 +538,27 @@ a.btn-reset-filters:hover {
   color: white;
 }
 
-.btn-accept-custom {
+/*Bottone modifica Articolo */
+.btn-edit-custom {
   all: unset;
+  background-color: var(--beige);
+  color: black;
+  border: 1px solid var(--orange);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-edit-custom:hover {
+  background-color: var(--orange);
+  color: white;
+}
+
+/*Bottone chiudi dettaglio Articolo */
+.btn-close-detail {
   background-color: var(--orange);
   color: black;
   font-weight: 600;
@@ -591,38 +569,12 @@ a.btn-reset-filters:hover {
   display: inline-block;
   border: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
 }
 
-.btn-accept-custom:hover {
-  background-color: var(--sky-blue);
-  color: var(--beige);
-}
-
-/* Bottone dopo aver revisionato articolo */
-.btn-home-custom {
-  all: unset;
-  background-color: var(--orange);
-  color: black;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-home-custom:hover {
+.btn-close-detail:hover {
   background-color: var(--dark-blue);
   color: var(--beige);
 }
-
-
-
-
 
 
 
@@ -886,9 +838,75 @@ a.btn-reset-filters:hover {
   cursor: not-allowed;
 }
 
+/* Wrapper colonna bottoni */
+.button-column-wrapper {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bottoni del dettaglio */
+.btn-detail-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  min-height: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Rimozione padding interno */
+.btn-close-detail,
+.btn-edit-custom,
+.btn-delete-custom {
+  padding: 0;
+}
+
+
+/*bottone salva modifiche */
+.btn-accept-custom {
+  background-color: var(--orange);
+  color: black;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-accept-custom:hover {
+  background-color: var(--dark-blue);
+  color: white;
+}
+
+
+
 
 
 /* === SEZIONI RESPONSIVE === */
+
+/* Bottoni allineati su mobile */
+@media (max-width: 768px) {
+  .btn-close-detail,
+  .btn-edit-custom,
+  .btn-delete-custom {
+    flex: 1 1 0;
+    min-width: 100px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+}
+
+
+
 @media (min-width: 768px) and (max-width: 992px) {
   .card-custom .btn-detail,
   .btn-delete-custom {

@@ -13,10 +13,11 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/create/article', [ArticleController::class, 'create'])->name('create.article');
 Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index');
 Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show'); // cambiato da /show/article a /article
+Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])->name('article.edit')->middleware('auth'); // rotta per modifica articolo
+Route::put('/article/{article}', [ArticleController::class, 'update'])->name('article.update')->middleware('auth'); // rotta per aggiornamento articolo
 
 // Articoli per categoria
 Route::get('/category/{category:slug}', [ArticleController::class, 'byCategory'])->name('byCategory');
-
 
 // Ricerca
 Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search');

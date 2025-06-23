@@ -1,14 +1,28 @@
 <x-layout>
-    <div class="container-fluid py-5 bg-sky-blue text-beige">
-        {{-- Messaggio di errore --}}
+    <div class="container-fluid pt-5 pb-5 bg-sky-blue text-beige">
+        {{-- Messaggio di errore o successo --}}
+        @if (session('message'))
+            <div class="alert alert-success text-center">
+                {{ session('message') }}
+            </div>
+        @endif
+        @if (session('errorMessage'))
+            <div class="alert alert-danger text-center">
+                {{ session('errorMessage') }}
+            </div>
+        @endif
+
         <div class="d-sm-none py-3"></div>
-        <div class="row height-custom justify-content-center align-items-center text-center">
+
+        <div class="row justify-content-center align-items-center text-center">
             <div class="col-12 mt-4">
-                <h1 class="display-4 slide-from-bottom-slow mt-sm-5">{{ __('ui.article_detail', ['title' => $article->title]) }}</h1>
+                <h1 class="display-4 slide-from-bottom-slow mt-sm-5">
+                    {{ __('ui.article_detail', ['title' => $article->title]) }}
+                </h1>
             </div>
         </div>
 
-        <div class="row height-custom justify-content-center py-5">
+        <div class="row justify-content-center py-5">
             {{-- Immagini Carousel dinamico --}}
             <div class="col-12 col-md-6 mb-3">
                 @if ($article->images->count() > 0)
@@ -39,11 +53,11 @@
             </div>
 
             {{-- Dettagli Articolo --}}
-            <div class="col-12 col-md-6 mb-3 height-custom text-center">
+            <div class="col-12 col-md-6 mb-3 text-center">
                 <h2 class="display-5">
                     <span class="fw-bold">{{ __('ui.title') }}: </span> {{ $article->title }}
                 </h2>
-                <div class="d-flex flex-column justify-content-center h-75">
+                <div class="d-flex flex-column justify-content-center h-100">
                     <h4 class="fw-bold">{{ __('ui.price') }}: {{ $article->price }} €</h4>
                     <h5>{{ __('ui.description') }}:</h5>
                     <p>{{ $article->description }}</p>
@@ -52,25 +66,35 @@
                     <span class="badge rounded-pill text-info border border-info px-3 py-2 my-2 w-auto align-self-center">
                         {{ __('ui.categories_list.' . Illuminate\Support\Str::slug($article->category->name, '_')) }}
                     </span>
-                </div>
 
-                {{-- BOTTONI CHIUSURA E CANCELLA --}}
-                <div class="d-flex justify-content-center gap-2 mt-3">
-                    <a href="{{ url()->previous() }}" class="btn-close-detail">
-                        {{ __('ui.close_article_detail') }}
-                    </a>
+                    {{-- BOTTONI UNIFICATI --}}
+                    <div class="button-column-wrapper mt-3">
+                        {{-- Bottone Chiudi --}}
+                        <a href="{{ request('back') ?? route('article.index') }}" class="btn-close-detail btn-detail-action">
+                            {{ __('ui.close_article_detail') }}
+                        </a>
 
-                    @auth
-                        @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
-                            <form method="POST" action="{{ route('article.destroy', $article) }}"
-                                  onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="redirect_to" value="{{ url()->previous() }}">
-                                <button type="submit" class="btn-delete-custom">{{ __('ui.delete') }}</button>
-                            </form>
-                        @endif
-                    @endauth
+                        @auth
+                            @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
+                                {{-- Bottone Modifica --}}
+                                <a href="{{ route('article.edit', $article) }}" class="btn-edit-custom btn-detail-action mt-2">
+                                    {{ __('ui.edit_article') }}
+                                </a>
+
+                                {{-- Bottone Elimina --}}
+                                <form method="POST" action="{{ route('article.destroy', $article) }}"
+                                      onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="redirect_to" value="{{ request('back') ?? route('article.index') }}">
+                                    <button type="submit" class="btn-delete-custom btn-detail-action mt-2">
+                                        {{ __('ui.delete') }}
+                                    </button>
+                                </form>
+                            @endif
+                        @endauth
+                    </div>
+                    {{-- FINE BOTTONI --}}
                 </div>
             </div>
         </div>

@@ -130,6 +130,38 @@ class ArticleController extends Controller implements HasMiddleware
         return view('article.create');
     }
 
+    // Metodo per mostrare il form di modifica dell’articolo
+    public function edit(Article $article)
+    {
+        if (Auth::id() === $article->user_id || Auth::user()->is_revisor) {
+            return view('article.edit', compact('article'));
+        }
+
+        return redirect()->back()->with('errorMessage', __('ui.not_authorized_to_edit'));
+    }
+
+    // Metodo per aggiornare l’articolo dopo la modifica
+    public function update(Request $request, Article $article)
+    {
+        if (Auth::id() !== $article->user_id && !Auth::user()->is_revisor) {
+            return redirect()->back()->with('errorMessage', __('ui.not_authorized_to_edit'));
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        $article->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+        ]);
+
+        return redirect()->route('article.show', $article)->with('message', __('ui.article_updated_successfully'));
+    }
+
     public function destroy(Article $article, Request $request)
     {
         if (Auth::id() === $article->user_id || Auth::user()->is_revisor) {

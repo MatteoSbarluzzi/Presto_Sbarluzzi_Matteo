@@ -16,7 +16,9 @@
 
         <div class="mt-4">
             <div class="d-flex justify-content-center gap-2 mb-3">
-                <a href="{{ route('article.show', compact('article')) }}" class="btn btn-detail">
+                <a href="{{ route('article.show', ['article' => $article, 'back' => request()->fullUrl()]) }}" class="btn btn-detail">
+
+
                     {{ __('ui.detail') }}
                 </a>
 

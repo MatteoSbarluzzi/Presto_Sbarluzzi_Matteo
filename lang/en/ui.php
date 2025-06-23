@@ -197,6 +197,11 @@ return [
     'explore_latest_ads' => 'Explore the latest listings',
     'apply_filters' => 'Apply filters',
     'reset_filters' => 'Reset filters',
-    'alpha_za' => 'Title Z-A'
+    'alpha_za' => 'Title Z-A',
 
+    // Article editing
+    'edit_article' => 'Edit article',
+    'save_changes' => 'Save changes',
+    'article_updated_successfully' => 'Article updated successfully.',
+    'not_authorized_to_edit' => 'You are not authorized to edit this article.',
 ];

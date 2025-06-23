@@ -196,10 +196,16 @@ return [
     'english' => 'Inglese',
     'spanish' => 'Spagnolo',
 
+    // Modifica articolo
     'explore_latest_ads' => 'Esplora le ultime inserzioni',
     'apply_filters' => 'Applica filtri',
     'reset_filters' => 'Resetta filtri', 
     'alpha_za' => 'Titolo Z-A',
+
+     'edit_article' => 'Modifica articolo',
+    'save_changes' => 'Salva modifiche',
+    'article_updated_successfully' => 'Articolo modificato con successo.',
+    'not_authorized_to_edit' => 'Non sei autorizzato a modificare questo articolo.',
 
 
 ];

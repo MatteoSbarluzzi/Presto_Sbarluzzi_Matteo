@@ -30,7 +30,7 @@ return [
     'create' => 'Crear un artículo',
     'category_articles' => 'Artículos de la categoría :category',
     'article_detail' => 'Detalle del artículo :title',
-    'close_article_detail' => 'Cerrar detalle del artículo',
+    'close_article_detail' => 'Cerrar detalle del arículo',
     'title' => 'Título',
     'price' => 'Precio',
     'description' => 'Descripción',
@@ -195,5 +195,11 @@ return [
     'explore_latest_ads' => 'Explora los últimos anuncios',
     'apply_filters' => 'Aplicar filtros',
     'reset_filters' => 'Restablecer filtros',
-    'alpha_za' => 'Título Z-A'
+    'alpha_za' => 'Título Z-A',
+
+    // Mensajes de éxito y error
+    'edit_article' => 'Editar artículo',
+    'save_changes' => 'Guardar cambios',
+    'article_updated_successfully' => 'Artículo modificado con éxito.',
+    'not_authorized_to_edit' => 'No estás autorizado para editar este artículo.',
 ];
