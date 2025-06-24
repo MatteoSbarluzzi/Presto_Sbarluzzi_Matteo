@@ -90,7 +90,6 @@ return [
     // Navegación
     'previous' => 'Anterior',
     'next' => 'Siguiente',
-    'back_home' => 'Volver a inicio',
     'no_articles_yet' => 'Aún no hay artículos',
     'no_articles' => 'No hay artículos disponibles',
     'no_articles_category' => 'No hay artículos en esta categoría',
@@ -202,4 +201,8 @@ return [
     'save_changes' => 'Guardar cambios',
     'article_updated_successfully' => 'Artículo modificado con éxito.',
     'not_authorized_to_edit' => 'No estás autorizado para editar este artículo.',
+
+    // Mensajes de éxito al crear un artículo
+    'article_created_successfully' => 'Artículo creado con éxito.',
+    'article_submitted_for_review' => 'Artículo enviado para revisión.',
 ];

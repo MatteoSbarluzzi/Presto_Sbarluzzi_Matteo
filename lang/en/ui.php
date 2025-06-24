@@ -90,7 +90,6 @@ return [
     // Navigation
     'previous' => 'Previous',
     'next' => 'Next',
-    'back_home' => 'Back to home',
     'no_articles_yet' => 'No articles yet',
     'no_articles' => 'No available articles',
     'no_articles_category' => 'No articles for this category',
@@ -204,4 +203,8 @@ return [
     'save_changes' => 'Save changes',
     'article_updated_successfully' => 'Article updated successfully.',
     'not_authorized_to_edit' => 'You are not authorized to edit this article.',
+
+    // Article creation
+    'article_created_successfully' => 'Article created successfully.',
+    'article_submitted_for_review' => 'Article submitted for review.',
 ];

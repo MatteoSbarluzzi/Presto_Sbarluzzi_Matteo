@@ -10,7 +10,7 @@ class Category extends Model
 {
     protected $fillable = [
         'name',
-        'slug', // aggiunto slug ai campi assegnabili
+        'slug',
     ];
 
     // Relazione: una categoria ha molti articoli
@@ -27,5 +27,11 @@ class Category extends Model
                 $category->slug = Str::slug($category->name, '_');
             }
         });
+    }
+
+    // Restituisce il nome della categoria tradotto in base alla lingua corrente
+    public function getTranslatedName()
+    {
+        return __('ui.categories_list.' . $this->slug);
     }
 }

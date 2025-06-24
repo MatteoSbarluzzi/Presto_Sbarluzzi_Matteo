@@ -67,7 +67,9 @@ class CreateArticleForm extends Component
             File::deleteDirectory(storage_path('/app/livewire-tmp')); // Elimina la directory temporanea di Livewire, utilizzata per caricare temporaneamente le immagini prima del salvataggio
         }
 
-        session()->flash('success', __('messages.article_created_successfully')); // Imposta un messaggio di successo nella sessione
+        session()->flash('message', 'article_submitted_for_review'); // Imposta un messaggio di successo nella sessione per informare l'utente che l'articolo è stato inviato per la revisione
+
+        session()->flash('success', 'article_created_successfully'); // Imposta un messaggio di successo nella sessione
 
         $this->cleanForm(); // Pulisce il form dopo la creazione dell'articolo
 

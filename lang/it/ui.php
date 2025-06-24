@@ -90,7 +90,6 @@ return [
     // Navigazione
     'previous' => 'Precedente',
     'next' => 'Successivo',
-    'back_home' => 'Torna alla home',
     'no_articles_yet' => 'Non ci sono ancora articoli',
     'no_articles' => 'Nessun articolo disponibile',
     'no_articles_category' => 'Nessun articolo per questa categoria',
@@ -207,5 +206,8 @@ return [
     'article_updated_successfully' => 'Articolo modificato con successo.',
     'not_authorized_to_edit' => 'Non sei autorizzato a modificare questo articolo.',
 
+    // Creazione articolo
+    'article_created_successfully' => 'Articolo creato con successo.',
+    'article_submitted_for_review' => 'Articolo inviato per la revisione.',
 
 ];

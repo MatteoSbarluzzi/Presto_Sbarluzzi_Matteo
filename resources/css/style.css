@@ -885,6 +885,33 @@ a.btn-reset-filters:hover {
   color: white;
 }
 
+/* Bottone per accettare o rifiutare una richiesta */
+button.btn-accept {
+    background-color: var(--orange);
+    color: black;
+    border: none;
+}
+
+button.btn-accept:hover {
+    background-color: var(--dark-blue);
+    border: 1px solid white;
+}
+
+button.btn-reject {
+    background-color: var(--beige);
+    border: 1px solid red;
+    color: black;
+}
+
+button.btn-reject:hover {
+    background-color: red;
+    border: 1px solid red;
+}
+
+button.btn-accept,
+button.btn-reject {
+    transition: all 0.3s ease;
+}
 
 
 

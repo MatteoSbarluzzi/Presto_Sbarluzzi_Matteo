@@ -18,7 +18,7 @@
                     <form action="{{ route('undo.last.review') }}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <button class="btn-delete-custom mt-3">{{ __('ui.undo_last_review') }}</button>
+                        <button class="btn btn-reject w-30 mt-3">{{ __('ui.undo_last_review') }}</button>
                     </form>
                 @endif
             </div>
@@ -91,27 +91,33 @@
 
                 {{-- Colonna dettagli articolo e bottoni --}}
                 <div class="col-12 col-md-4 d-flex flex-column justify-content-between mx-auto px-3 px-md-3">
-
-
                     <div class="bg-beige rounded p-4">
                         <h1>{{ $article_to_check->title }}</h1>
                         <h3>{{ __('ui.author') }}: {{ $article_to_check->user->name }}</h3>
                         <h4>{{ $article_to_check->price }}€</h4>
-                        <h4 class="fst-italic text-muted">{{ $article_to_check->category->name }}</h4>
+                        <h4 class="fst-italic text-muted">{{ $article_to_check->category->getTranslatedName() }}</h4>
                         <p class="h6">{{ $article_to_check->description }}</p>
 
                         {{-- Bottoni accetta / rifiuta --}}
-                        <div class="d-flex justify-content-between mt-4">
-                            <form action="{{ route('accept', ['article' => $article_to_check]) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <button class="btn-accept-custom" type="submit">{{ __('ui.accept') }}</button>
-                            </form>
-                            <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <button class="btn-delete-custom" type="submit">{{ __('ui.reject') }}</button>
-                            </form>
+                        <div class="row g-2 mt-4">
+                            <div class="col-6">
+                                <form action="{{ route('accept', ['article' => $article_to_check]) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button class="btn btn-accept w-100" type="submit">
+                                        {{ __('ui.accept') }}
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-6">
+                                <form action="{{ route('reject', ['article' => $article_to_check]) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button class="btn btn-reject w-100" type="submit">
+                                        {{ __('ui.reject') }}
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +128,6 @@
                     <h1 class="fst-italic display-4 text-beige">
                         {{ __('ui.no_articles_to_review') }}
                     </h1>
-                    <a href="{{ route('homepage') }}" class="mt-5 btn-home-custom">{{ __('ui.back_home') }}</a>
                 </div>
             </div>
         @endif

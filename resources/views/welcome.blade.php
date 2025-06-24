@@ -14,10 +14,13 @@
                 @endif
 
                 @if (session()->has('message'))
-                    <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
-                        {{ session('message') }}
-                    </div>
-                @endif
+    <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
+        {{ __('ui.' . session('message')) }}
+    </div>
+@endif
+
+
+
 
                 <div class="my-3">
                     @auth
