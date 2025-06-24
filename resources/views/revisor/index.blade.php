@@ -1,5 +1,6 @@
 <x-layout>
     <div class="container-fluid bg-sky-blue py-5">
+
         {{-- Titolo e sottotitolo --}}
         <div class="row justify-content-center mb-5">
             <div class="col-md-8 text-center pt-5">
@@ -24,20 +25,27 @@
             </div>
         </div>
 
+        {{-- Se c'è un articolo da revisionare --}}
         @if ($article_to_check)
             <div class="row justify-content-center pt-5">
                 <div class="col-md-8">
+
+                    {{-- Se sono presenti immagini dell’articolo --}}
                     <div class="row justify-content-center">
                         @if ($article_to_check->images->count())
                             @foreach ($article_to_check->images as $key => $image)
                                 <div class="col-12 mb-4">
                                     <div class="card shadow">
                                         <div class="row g-0 align-items-center">
+
+                                            {{-- Immagine --}}
                                             <div class="col-md-4">
                                                 <img src="{{ $image->getUrl(300, 300) }}"
                                                      class="img-fluid rounded-start"
                                                      alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
                                             </div>
+
+                                            {{-- Labels (etichettature AI) --}}
                                             <div class="col-md-5 ps-3">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Labels</h5>
@@ -50,6 +58,8 @@
                                                     @endif
                                                 </div>
                                             </div>
+
+                                            {{-- Rating AI: contenuti sensibili --}}
                                             <div class="col-md-3">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Ratings</h5>
@@ -75,11 +85,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
+                            {{-- Se non ci sono immagini, mostra 6 segnaposto --}}
                             @for ($i = 0; $i < 6; $i++)
                                 <div class="col-6 col-md-4 mb-4 text-center">
                                     <img src="https://picsum.photos/300" alt="immagine segnaposto" class="img-fluid rounded shadow">
@@ -122,6 +134,8 @@
                     </div>
                 </div>
             </div>
+
+        {{-- Nessun articolo da revisionare --}}
         @else
             <div class="row justify-content-center align-items-center height-custom text-center">
                 <div class="col-12">

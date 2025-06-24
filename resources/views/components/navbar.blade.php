@@ -12,28 +12,28 @@
       <span class="navbar-toggler-icon"><span></span></span>
     </button>
 
-    {{-- Menu --}}
+    {{-- Menu principale della navbar --}}
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
-        {{-- Logo desktop --}}
+        {{-- Logo desktop (visibile solo su schermi grandi) --}}
         <li class="nav-item logo-wrapper d-none d-lg-flex">
           <a class="navbar-brand" href="{{ route('homepage') }}">
             <img src="{{ asset('storage/images/prestoit_logo.png') }}" class="logo" alt="Presto.it logo">
           </a>
         </li>
 
-        {{-- Home --}}
+        {{-- Link Home --}}
         <li class="nav-item">
           <a class="nav-link" href="{{ route('homepage') }}">{{ __('ui.home') }}</a>
         </li>
 
-        {{-- Tutti gli articoli --}}
+        {{-- Link Tutti gli articoli --}}
         <li class="nav-item">
           <a class="nav-link" href="{{ route('article.index') }}">{{ __('ui.all_articles') }}</a>
         </li>
 
-        {{-- Categorie --}}
+        {{-- Dropdown Categorie --}}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
             {{ __('ui.categories') }}
@@ -52,12 +52,13 @@
           </ul>
         </li>
 
-        {{-- Zona revisore --}}
+        {{-- Zona revisore visibile solo se utente autenticato e revisore --}}
         @auth
           @if (Auth::user()->is_revisor)
             <li class="nav-item">
               <a class="nav-link position-relative" href="{{ route('revisor.index') }}">
                 {{ __('ui.revisor_zone') }}
+                {{-- Badge rosso con il numero di articoli da revisionare --}}
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{ \App\Models\Article::toBeRevisionedCount() }}
                 </span>
@@ -66,8 +67,9 @@
           @endif
         @endauth
 
-        {{-- Autenticazione --}}
+        {{-- Area autenticazione --}}
         @auth
+          {{-- Dropdown per utente autenticato --}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
               {{ __('ui.hello_user', ['name' => Auth::user()->name]) }}
@@ -79,10 +81,12 @@
                   {{ __('ui.logout') }}
                 </a>
               </li>
+              {{-- Form invisibile per logout --}}
               <form action="{{ route('logout') }}" method="POST" class="d-none" id="form-logout">@csrf</form>
             </ul>
           </li>
         @else
+          {{-- Dropdown per ospite --}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
               {{ __('ui.hello_guest') }}
@@ -95,9 +99,10 @@
           </li>
         @endauth
 
-        {{-- Lingua --}}
+        {{-- Dropdown selezione lingua --}}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
+            {{-- Bandiera lingua attuale --}}
             <img src="{{ asset('vendor/blade-flags/language-' . app()->getLocale() . '.svg') }}" width="32" height="32" />
             <span class="text-current-language">{{ __('ui.' . (app()->getLocale() == 'it' ? 'italian' : (app()->getLocale() == 'en' ? 'english' : 'spanish'))) }}</span>
           </a>
@@ -105,9 +110,11 @@
           <ul class="dropdown-menu">
             @foreach (['it', 'en', 'es'] as $lang)
               <li>
+                {{-- Cambio lingua tramite POST --}}
                 <form action="{{ route('setLocale', ['lang' => $lang]) }}" method="POST" class="d-inline">
                   @csrf
                   <button type="submit" class="dropdown-item d-flex align-items-center gap-2 border-0 bg-transparent w-100 text-start">
+                    {{-- Bandiera lingua --}}
                     <x-_locale :lang="$lang" />
                     <span>{{ __('ui.' . ($lang == 'it' ? 'italian' : ($lang == 'en' ? 'english' : 'spanish'))) }}</span>
                   </button>
@@ -117,7 +124,7 @@
           </ul>
         </li>
 
-        {{-- Ricerca --}}
+        {{-- Campo di ricerca --}}
         <li class="nav-item">
           <form class="d-flex" role="search" action="{{ route('article.search') }}" method="GET">
             <div class="input-group">

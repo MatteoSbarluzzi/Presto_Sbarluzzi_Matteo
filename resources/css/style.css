@@ -913,6 +913,16 @@ button.btn-reject {
     transition: all 0.3s ease;
 }
 
+/*review*/
+button.btn.btn-review-submit {
+    background-color: var(--orange);
+    color: black;
+}
+
+button.btn.btn-review-submit:hover {
+    background-color: var(--dark-blue);
+    color: white;
+}
 
 
 

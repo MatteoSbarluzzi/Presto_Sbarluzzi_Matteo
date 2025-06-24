@@ -1,9 +1,9 @@
-<!-- Footer -->
 <footer class="bg-black text-white text-center">
   <div class="container p-4">
 
     <!-- Sezione descrizione -->
     <section class="mb-4">
+      {{-- Descrizione generale del sito, testuale e tradotta --}}
       <p>{{ __('ui.description_footer') }}</p>
     </section>
 
@@ -13,6 +13,7 @@
 
         <!-- Colonna Contatti -->
         <div class="col-md-3 mb-3">
+          {{-- Informazioni di contatto aziendali --}}
           <h5>{{ __('ui.contact') }}</h5>
           <p>{{ __('ui.location') }}: Firenze (FI)</p>
           <p>{{ __('ui.address') }}: Via della Liberazione, 11</p>
@@ -24,6 +25,7 @@
 
         <!-- Colonna Fatturazione -->
         <div class="col-md-3 mb-3 text-center">
+          {{-- Collegamenti a pagine informative relative ad ordini e spedizioni --}}
           <h5>{{ __('ui.billing_and_orders') }}</h5>
           <p>
             <a href="{{ route('shipping') }}" class="text-white text-decoration-none">
@@ -35,8 +37,11 @@
               {{ __('ui.customer_reviews') }}
             </a>
           </p>
+
+          {{-- Metodi di pagamento supportati --}}
           <p class="text-white">{{ __('ui.payment_methods') }}</p>
           <div class="mt-4 text-center">
+            {{-- Icone visive dei metodi di pagamento, con titolo localizzato --}}
             <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" class="me-2" title="{{ __('ui.visa') }}" />
             <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard" class="me-2" title="{{ __('ui.mastercard') }}" />
             <img src="https://img.icons8.com/color/48/000000/amex.png" alt="American Express" class="me-2" title="{{ __('ui.amex') }}" />
@@ -50,6 +55,7 @@
 
         <!-- Colonna Social -->
         <div class="col-md-3 mb-3 d-flex flex-column align-items-center">
+          {{-- Collegamenti ai social con icone bootstrap e apertura in nuova finestra --}}
           <h5>{{ __('ui.follow_us') }}</h5>
           <ul class="list-unstyled">
             <li class="mb-2">
@@ -82,6 +88,7 @@
 
         <!-- Colonna Newsletter + Revisore -->
         <div class="col-md-3 mb-3">
+          {{-- Form per iscrizione newsletter --}}
           <h5>{{ __('ui.newsletter_text') }}</h5>
           <form method="POST" action="{{ route('newsletter.subscribe') }}">
             @csrf
@@ -89,22 +96,21 @@
               <div class="mx-auto mb-3" style="max-width: 400px;">
                 <input type="email" name="email" class="form-control" placeholder="{{ __('ui.email_placeholder') }}" required />
               </div>
-             <button type="submit" class="btn-footer-custom">
-  {{ __('ui.subscribe') }}
-</button>
-
+              <button type="submit" class="btn-footer-custom">
+                {{ __('ui.subscribe') }}
+              </button>
             </div>
           </form>
 
           <hr class="my-4 bg-white">
 
+          {{-- Sezione per diventare revisore --}}
           <div class="text-center">
             <h5>{{ __('ui.work_with_us') }}</h5>
             <p class="small">{{ __('ui.click_button_below') }}</p>
             <a href="{{ route('become.revisor') }}" class="btn-footer-custom">
-  {{ __('ui.want_to_become_revisor') }}
-</a>
-
+              {{ __('ui.want_to_become_revisor') }}
+            </a>
           </div>
         </div>
 
@@ -114,6 +120,7 @@
 
   <!-- Copyright -->
   <div class="text-center p-3 bg-dark text-white">
+    {{-- Riferimento al sito con link alla homepage --}}
     © 2025 Copyright:
     <a class="text-white fw-bold text-decoration-none" href="{{ route('homepage') }}">Presto.it</a>
   </div>

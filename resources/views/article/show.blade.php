@@ -1,19 +1,24 @@
 <x-layout>
+    {{-- Contenitore con padding e sfondo colorato --}}
     <div class="container-fluid pt-5 pb-5 bg-sky-blue text-beige">
-        {{-- Messaggio di errore o successo --}}
+
+        {{-- MESSAGGI DI SUCCESSO O ERRORE --}}
         @if (session('message'))
             <div class="alert alert-success text-center">
                 {{ session('message') }}
             </div>
         @endif
+
         @if (session('errorMessage'))
             <div class="alert alert-danger text-center">
                 {{ session('errorMessage') }}
             </div>
         @endif
 
+        {{-- Spazio aggiuntivo su mobile --}}
         <div class="d-sm-none py-3"></div>
 
+        {{-- TITOLO PRINCIPALE --}}
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12 mt-4">
                 <h1 class="display-4 slide-from-bottom-slow mt-sm-5">
@@ -22,20 +27,25 @@
             </div>
         </div>
 
+        {{-- SEZIONE IMMAGINI + DETTAGLI ARTICOLO --}}
         <div class="row justify-content-center py-5">
-            {{-- Immagini Carousel dinamico --}}
+
+            {{-- COLONNA IMMAGINI - CAROUSEL --}}
             <div class="col-12 col-md-6 mb-3">
                 @if ($article->images->count() > 0)
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             @foreach ($article->images as $key => $image)
                                 <div class="carousel-item @if ($loop->first) active @endif">
-                                    <img src="{{ $image->getUrl(300, 300) }}" class="d-block w-100 rounded shadow"
-                                         alt="Immagine {{ $key + 1 }} dell'articolo {{ $article->title }}">
+                                    <img 
+                                        src="{{ $image->getUrl(300, 300) }}" 
+                                        class="d-block w-100 rounded shadow"
+                                        alt="Immagine {{ $key + 1 }} dell'articolo {{ $article->title }}">
                                 </div>
                             @endforeach
                         </div>
 
+                        {{-- Controlli Carousel (se più di una immagine) --}}
                         @if ($article->images->count() > 1)
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -48,40 +58,49 @@
                         @endif
                     </div>
                 @else
+                    {{-- Immagine placeholder se non ci sono immagini --}}
                     <img src="https://picsum.photos/300" alt="Nessuna foto inserita dall'utente">
                 @endif
             </div>
 
-            {{-- Dettagli Articolo --}}
+            {{-- COLONNA DETTAGLI ARTICOLO --}}
             <div class="col-12 col-md-6 mb-3 text-center">
+                {{-- Titolo --}}
                 <h2 class="display-5">
                     <span class="fw-bold">{{ __('ui.title') }}: </span> {{ $article->title }}
                 </h2>
+
                 <div class="d-flex flex-column justify-content-center h-100">
+                    {{-- Prezzo --}}
                     <h4 class="fw-bold">{{ __('ui.price') }}: {{ $article->price }} €</h4>
+
+                    {{-- Descrizione --}}
                     <h5>{{ __('ui.description') }}:</h5>
                     <p>{{ $article->description }}</p>
 
-                    {{-- Etichetta categoria --}}
+                    {{-- Categoria come badge --}}
                     <span class="badge rounded-pill text-info border border-info px-3 py-2 my-2 w-auto align-self-center">
                         {{ __('ui.categories_list.' . Illuminate\Support\Str::slug($article->category->name, '_')) }}
                     </span>
 
-                    {{-- BOTTONI UNIFICATI --}}
+                    {{-- COLONNA BOTTONI --}}
                     <div class="button-column-wrapper mt-3">
-                        {{-- Bottone Chiudi --}}
+
+                        {{-- Bottone CHIUDI --}}
                         <a href="{{ request('back') ?? route('article.index') }}" class="btn-close-detail btn-detail-action">
                             {{ __('ui.close_article_detail') }}
                         </a>
 
+                        {{-- Bottone MODIFICA e CANCELLA (solo per proprietario o revisore) --}}
                         @auth
                             @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
-                                {{-- Bottone Modifica --}}
+
+                                {{-- Bottone MODIFICA --}}
                                 <a href="{{ route('article.edit', $article) }}" class="btn-edit-custom btn-detail-action mt-2">
                                     {{ __('ui.edit_article') }}
                                 </a>
 
-                                {{-- Bottone Elimina --}}
+                                {{-- Form CANCELLA --}}
                                 <form method="POST" action="{{ route('article.destroy', $article) }}"
                                       onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
                                     @csrf
@@ -94,7 +113,7 @@
                             @endif
                         @endauth
                     </div>
-                    {{-- FINE BOTTONI --}}
+                    {{-- FINE COLONNA BOTTONI --}}
                 </div>
             </div>
         </div>

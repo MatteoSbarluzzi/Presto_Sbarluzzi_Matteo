@@ -1,5 +1,4 @@
-{{-- create-article-form.blade.php --}}
-
+{{-- Se è presente un messaggio di successo (es. articolo creato), lo mostra in un alert verde --}}
 @if (session()->has('success'))
     <div class="alert alert-success text-center">
         {{ session('success') }}
@@ -8,13 +7,16 @@
 
 {{-- identico “contenitore visivo” dei form di autenticazione --}}
 <form class="auth-form p-5 my-3" wire:submit.prevent="store">
+    
     {{-- Titolo --}}
     <div class="mb-3">
         <label for="title" class="form-label">{{ __('ui.title') }}:</label>
+        {{-- wire:model.blur aggiorna il dato solo al blur (per evitare aggiornamenti continui mentre si scrive) --}}
         <input  type="text"
                 id="title"
                 class="form-control @error('title') is-invalid @enderror"
                 wire:model.blur="title">
+        {{-- Mostra errore se il campo non è valido --}}
         @error('title')
             <p class="fst-italic text-danger">{{ $message }}</p>
         @enderror
@@ -48,7 +50,7 @@
     <div class="mb-3">
         <label for="category" class="form-label">{{ __('ui.select_category') }}</label>
         <select id="category"
-                wire:model.defer="category"
+                wire:model.defer="category" {{-- defer: aggiorna il dato solo al submit --}}
                 class="form-control @error('category') is-invalid @enderror">
             <option value="">{{ __('ui.select_category') }}</option> {{-- placeholder vuoto --}}
             @foreach($categories as $category)
@@ -65,14 +67,17 @@
     {{-- Upload immagini --}}
     <div class="mb-3">
         <label for="temporary_images" class="form-label">{{ __('ui.image_for_article') }}:</label>
+        {{-- wire:model.live permette di accedere ai temporary file caricati --}}
         <input  type="file"
                 id="temporary_images"
                 wire:model.live="temporary_images"
                 multiple
                 class="form-control shadow @error('temporary_images.*') is-invalid @enderror" />
+        {{-- Errori specifici per singole immagini caricate --}}
         @error('temporary_images.*')
             <p class="fst-italic text-danger">{{ $message }}</p>
         @enderror
+        {{-- Errore generico se fallisce tutto il caricamento --}}
         @error('temporary_images')
             <p class="fst-italic text-danger">{{ $message }}</p>
         @enderror
@@ -88,6 +93,7 @@
                         <div class="col d-flex flex-column align-items-center my-3">
                             <div  class="img-preview mx-auto shadow rounded"
                                   style="background-image: url({{ $image->temporaryUrl() }}); width: 150px; height: 150px; background-size: cover; background-position: center;"></div>
+                            {{-- Rimuove l’immagine dalla preview usando il metodo Livewire --}}
                             <button type="button"
                                     class="btn mt-1 btn-danger"
                                     wire:click="removeImage({{ $key }})">X</button>
@@ -98,7 +104,7 @@
         </div>
     @endif
 
-    {{-- Pulsante di invio con stesso stile orange --}}
+    {{-- Pulsante di invio --}}
     <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-submit">{{ __('ui.create') }}</button>
     </div>

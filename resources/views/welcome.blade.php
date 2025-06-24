@@ -7,6 +7,7 @@
                     {{ __('ui.homepage_title') }}
                 </h1>
 
+                {{-- Messaggi di sessione --}}
                 @if (session()->has('errorMessage'))
                     <div class="alert alert-danger text-center shadow rounded w-50 mx-auto">
                         {{ session('errorMessage') }}
@@ -14,14 +15,12 @@
                 @endif
 
                 @if (session()->has('message'))
-    <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
-        {{ __('ui.' . session('message')) }}
-    </div>
-@endif
+                    <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
+                        {{ __('ui.' . session('message')) }}
+                    </div>
+                @endif
 
-
-
-
+                {{-- Pulsante pubblica articolo --}}
                 <div class="my-3">
                     @auth
                         <a class="btn-apply-filters slide-up" href="{{ route('create.article') }}">
@@ -100,6 +99,7 @@
                 <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-12 offset-md-0 col-lg-12 offset-lg-0">
                     <h2 class="text-center text-black mb-4 slide-from-bottom">{{ __('ui.latest_reviews') }}</h2>
 
+                    {{-- Carosello orizzontale con Swiper.js --}}
                     <div class="swiper mySwiper position-relative">
                         <div class="swiper-wrapper">
                             @foreach ($reviews as $review)
@@ -120,6 +120,7 @@
                             @endforeach
                         </div>
 
+                        {{-- Bottoni per scorrere le slide (visibili solo su desktop) --}}
                         <button id="prevButton" class="btn btn-light rounded-circle arrow-button start-0 translate-middle-y position-absolute top-50 d-none d-lg-flex">
                             <i class="bi bi-chevron-left"></i>
                         </button>

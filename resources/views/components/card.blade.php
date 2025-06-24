@@ -16,17 +16,18 @@
 
         <div class="mt-4">
             <div class="d-flex justify-content-center gap-2 mb-3">
+                {{-- Link alla pagina di dettaglio con parametro "back" per tornare correttamente alla pagina corrente --}}
                 <a href="{{ route('article.show', ['article' => $article, 'back' => request()->fullUrl()]) }}" class="btn btn-detail">
-
-
                     {{ __('ui.detail') }}
                 </a>
 
+                {{-- Pulsante elimina visibile solo all’autore o al revisore --}}
                 @auth
                     @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
                         <form method="POST" action="{{ route('article.destroy', $article) }}" onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
                             @csrf
                             @method('DELETE')
+                            {{-- Redireziona alla pagina corrente dopo l’eliminazione --}}
                             <input type="hidden" name="redirect_to" value="{{ url()->full() }}">
                             <button type="submit" class="btn btn-outline-danger">{{ __('ui.delete') }}</button>
                         </form>
@@ -34,6 +35,7 @@
                 @endauth
             </div>
 
+            {{-- Etichetta categoria tradotta dinamicamente in base allo slug --}}
             <span class="badge rounded-pill px-3 py-2">
                 {{ __($article->getTranslatedCategoryKey()) }}
             </span>

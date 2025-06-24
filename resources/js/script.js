@@ -7,6 +7,7 @@ import 'swiper/css/bundle';
 
 let confirm = true;
 
+// Funzione per l'incremento animato dei numeri
 let createInterval = function (n, element, time) {
     let counter = 0;
     let interval = setInterval(() => {
@@ -21,7 +22,7 @@ let createInterval = function (n, element, time) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // === Navbar collapse ===
+    // Navbar collapse animato
     let navbarCollapse = document.querySelector('#navbarResponsive');
     let navbarToggler = document.querySelector('.navbar-toggler');
 
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // === Numeri dinamici ===
+    // Numeri dinamici nella sezione statistiche
     let firstNumber = document.querySelector('#firstNumber');
     let secondNumber = document.querySelector('#secondNumber');
     let thirdNumber = document.querySelector('#thirdNumber');
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(firstNumber);
     }
 
-    // === Animazioni dinamiche ===
+    // Animazioni dinamiche in scroll
     let animatedBlocks = document.querySelectorAll(
         '.slide-from-left, .slide-from-right, .slide-from-bottom, .slide-from-bottom-slow, .review-fade-in, .article-fade-in'
     );
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedBlocks.forEach(el => blockObserver.observe(el));
 
-    // === Slideshow Swiper ===
+    // Slideshow Swiper per recensioni 
     let swiper = new Swiper('.mySwiper', {
         grabCursor: true,
         centeredSlides: true,
@@ -93,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             nextEl: '#nextButton',
             prevEl: '#prevButton',
         },
-
         breakpoints: {
             576: {
                 direction: 'horizontal',
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         effect: 'coverflow'
     });
 
-    // === Comportamento responsive per sezioni dinamiche ===
+    // Gestione sezioni responsive dinamiche 
     function updateResponsiveSections() {
         document.querySelectorAll('.responsive-section').forEach(section => {
             section.classList.remove('d-flex', 'align-items-center', 'min-vh-100', 'section-responsive');
@@ -137,13 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
     updateResponsiveSections();
     window.addEventListener('resize', updateResponsiveSections);
 
-    // === Filtro articoli con bottone "Applica filtri" ===
+    // Filtro articoli attivato dal bottone "Applica filtri"
     let applyFiltersBtn = document.querySelector('#applyFiltersBtn');
     let filterForm = document.querySelector('#filterForm');
     let priceInput = document.querySelector('#priceInput');
     let priceValue = document.querySelector('#priceValue');
 
-    // ✅ Mostra dinamicamente il prezzo mentre muovi l’asticella
+    // Mostra dinamicamente il valore del range prezzo
     if (priceInput && priceValue) {
         priceValue.textContent = priceInput.value;
         priceInput.addEventListener('input', () => {
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let params = new URLSearchParams();
             if (sort) params.append('sort', sort);
             if (price) params.append('price', price);
-            if (query) params.append('query', query); // 👈 modifica fatta qui
+            if (query) params.append('query', query); 
 
             if (selectedCategory && selectedCategory !== 'all') {
                 window.location.href = `/category/${selectedCategory}?${params.toString()}`;
