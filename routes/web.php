@@ -5,6 +5,8 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 // Homepage
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
@@ -47,3 +49,8 @@ Route::get('/recensioni', [ReviewController::class, 'index'])->name('reviews');
 Route::post('/recensioni', [ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
 
 Route::delete('/article/{article}', [ArticleController::class, 'destroy'])->name('article.destroy')->middleware('auth');
+
+// Login personalizzato
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+

@@ -27,7 +27,7 @@
             </div>
 
             {{-- Colonna DESTRA: Immagine --}}
-            <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="col-md-6 my-4 d-flex align-items-center justify-content-center">
                 <img src="{{ asset('storage/images/shippingreturns.png') }}" alt="Shipping and Returns" class="img-fluid rounded shadow">
             </div>
         </div>

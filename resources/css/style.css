@@ -826,9 +826,9 @@ a.btn-reset-filters:hover {
 }
 
 .page-item .page-link:hover {
-  background-color: var(--sky-blue);
+  background-color: var(--dark-blue);
   color: white;
-  border-color: var(--sky-blue);
+  border-color: var(--dark-blue);
 }
 
 .page-item.disabled .page-link {

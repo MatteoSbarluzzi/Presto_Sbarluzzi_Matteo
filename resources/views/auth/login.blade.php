@@ -15,6 +15,14 @@
         <div class="row justify-content-center align-items-center height-custom">
             <div class="col-12 col-md-6">
 
+                {{-- Messaggio di errore login --}}
+                    @if(session('error'))
+                        <div class="alert alert-danger text-center">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+
                 {{-- Form di login --}}
                 <form method="POST" action="{{ route('login') }}" class="auth-form p-5 my-3">
                     @csrf

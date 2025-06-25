@@ -38,7 +38,8 @@ class GoogleVisionLabelImage implements ShouldQueue
         $image = file_get_contents(storage_path('app/public/' . $i->path));
 
         // Imposta la variabile di ambiente per l'autenticazione con Google Cloud
-        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credential.json'));
+        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path(env('GOOGLE_APPLICATION_CREDENTIALS')));
+
 
         // Crea il client Vision per l'analisi delle immagini
         $imageAnnotator = new ImageAnnotatorClient();
