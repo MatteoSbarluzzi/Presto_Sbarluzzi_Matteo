@@ -20,13 +20,13 @@ class ResizeImage implements ShouldQueue
     {
         $this->path = dirname($filePath); // estrae il percorso della directory dal path completo
         $this->fileName = basename($filePath); // estrae il nome del file con estensione
-        $this->w = $w; // assegna valore dell'argomento $w alla proprietà $w della classe
+        $this->w = $w; 
         $this->h = $h;
     }
 
     public function handle(): void
     {
-        // assegnano i valori delle proprietà $w e $h a variabili locali
+      
         $w = $this->w;
         $h = $this->h;
 
@@ -44,11 +44,11 @@ class ResizeImage implements ShouldQueue
                 base_path('resources/img/prestowatermark.png'),
                 width: 100,       
                 height: 100,      
-                paddingX: 5,     // distanza orizzontale dal bordo (in percentuale)
-                paddingY: 5,     // distanza verticale dal bordo (in percentuale)
-                paddingUnit: Unit::Percent // specifica che paddingX e Y sono espressi in percentuale
+                paddingX: 5,    
+                paddingY: 5,     
+                paddingUnit: Unit::Percent 
             )
 
-            ->save($destPath); // salvataggio dell'immagine modificata nel percorso di destinazione
+            ->save($destPath); 
     }
 }

@@ -136,8 +136,6 @@ return [
     // Envíos
 'shipping_worldwide' => 'Envíos internacionales garantizados',
 'shipping_description' => 'En Presto.it ofrecemos un servicio de envío confiable y profesional, tanto a nivel nacional como internacional. Gracias a nuestros socios logísticos de confianza, garantizamos entregas rápidas, rastreables y puntuales, sin importar dónde se encuentren nuestros clientes. Confía en nosotros para una gestión eficiente y segura de tus envíos.',
-    
-    // Envíos (botón de más información)
 'approfondisci' => 'Más información',
     
     'shipping_detail_1' => 'Enviamos a más de 50 países con mensajeros confiables.',
@@ -196,11 +194,13 @@ return [
     'reset_filters' => 'Restablecer filtros',
     'alpha_za' => 'Título Z-A',
     
-    // Mensajes de éxito y error
+    // Editar artículo
     'edit_article' => 'Editar artículo',
     'save_changes' => 'Guardar cambios',
     'article_updated_successfully' => 'Artículo modificado con éxito.',
     'not_authorized_to_edit' => 'No estás autorizado para editar este artículo.',
+    'upload_images' => 'Subir nuevas imágenes',
+    'current_images' => 'Imágenes actuales',
     
     // Mensajes de éxito al crear un artículo
     'article_created_successfully' => 'Artículo creado con éxito.',
@@ -208,5 +208,9 @@ return [
 
     // Login
     'login_failed' => 'Las credenciales proporcionadas no son correctas.',
+
+    // id de usuario creator
+    'created_by' => 'Creado por',
+
 
 ];

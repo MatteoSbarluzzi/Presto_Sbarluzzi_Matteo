@@ -136,8 +136,6 @@ return [
     // Shipping
 'shipping_worldwide' => 'Guaranteed international shipping',
 'shipping_description' => 'At Presto.it, we provide reliable and professional shipping services both nationally and internationally. Through our trusted logistics partners, we ensure fast, trackable, and timely deliveries wherever our customers are located. Rely on us for efficient and secure handling of your shipments.',
-    
-    // Shipping (deepening button)
 'approfondisci' => 'Learn more',
     
     'shipping_detail_1' => 'We ship to over 50 countries worldwide with trusted couriers.',
@@ -203,6 +201,8 @@ return [
     'save_changes' => 'Save changes',
     'article_updated_successfully' => 'Article updated successfully.',
     'not_authorized_to_edit' => 'You are not authorized to edit this article.',
+    'upload_images' => 'Upload new images',
+    'current_images' => 'Current images',
     
     // Article creation
     'article_created_successfully' => 'Article created successfully.',
@@ -210,5 +210,9 @@ return [
 
     // Login
     'login_failed' => 'The provided credentials are incorrect.',
+
+    // id creator user
+    'created_by' => 'Created by',
+
 
 ];

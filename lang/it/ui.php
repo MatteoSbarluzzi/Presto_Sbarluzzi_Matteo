@@ -136,8 +136,6 @@ return [
     // Spedizioni
 'shipping_worldwide' => 'Spedizioni internazionali garantite',
 'shipping_description' => 'Su Presto.it offriamo un servizio di spedizione affidabile e professionale, attivo su scala nazionale e internazionale. Grazie alla collaborazione con operatori logistici selezionati, assicuriamo consegne rapide, tracciabili e puntuali, ovunque si trovino i nostri clienti. Affidati a noi per una gestione efficiente e sicura delle tue spedizioni.',
-    
-    // Spedizioni (aggiunta bottone approfondimento)
 'approfondisci' => 'Approfondisci',
     
     'shipping_detail_1' => 'Spediamo in oltre 50 paesi nel mondo con corrieri affidabili.',
@@ -195,16 +193,19 @@ return [
     'english' => 'Inglese',
     'spanish' => 'Spagnolo',
     
-    // Modifica articolo
+    // Filtri articolo
     'explore_latest_ads' => 'Esplora le ultime inserzioni',
     'apply_filters' => 'Applica filtri',
     'reset_filters' => 'Resetta filtri', 
     'alpha_za' => 'Titolo Z-A',
     
+    // Modifica articolo
     'edit_article' => 'Modifica articolo',
     'save_changes' => 'Salva modifiche',
     'article_updated_successfully' => 'Articolo modificato con successo.',
     'not_authorized_to_edit' => 'Non sei autorizzato a modificare questo articolo.',
+    'upload_images' => 'Carica nuove immagini',
+    'current_images' => 'Immagini attuali',
     
     // Creazione articolo
     'article_created_successfully' => 'Articolo creato con successo.',
@@ -212,6 +213,9 @@ return [
 
     // Login
     'login_failed' => 'Le credenziali inserite non sono corrette.',
+
+    // id utente creatore
+    'created_by' => 'Creato da',
 
     
 ];

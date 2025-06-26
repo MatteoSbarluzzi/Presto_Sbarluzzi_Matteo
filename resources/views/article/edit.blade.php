@@ -29,7 +29,7 @@
                 @endif
 
                 {{-- Form di modifica articolo --}}
-                <form method="POST" action="{{ route('article.update', $article) }}" class="auth-form">
+                <form method="POST" action="{{ route('article.update', $article) }}" class="auth-form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -71,6 +71,49 @@
                             required
                         >
                     </div>
+
+                    {{-- Campo: Categoria --}}
+                    <div class="mb-3">
+                        <label for="category" class="form-label">{{ __('ui.select_category') }}</label>
+                        <select class="form-select" id="category" name="category_id" required>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" @if(old('category_id', $article->category_id) == $category->id) selected @endif>
+                                    {{ __('ui.categories_list.' . $category->slug) }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- Campo: Carica nuove immagini --}}
+                    <div class="mb-3">
+                        <label for="images" class="form-label">{{ __('ui.upload_images') }}</label>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            id="images" 
+                            name="images[]" 
+                            multiple 
+                            accept="image/*"
+                        >
+                    </div>
+
+                    {{-- Mostra immagini esistenti --}}
+                    @if ($article->images->count())
+                        <div class="mb-3">
+                            <p>{{ __('ui.current_images') }}:</p>
+                            <div class="d-flex flex-wrap gap-3">
+                                @foreach ($article->images as $image)
+                                    {{-- Utilizzo diretto dello storage path --}}
+                                    <img src="{{ asset('storage/' . $image->path) }}" class="rounded shadow" alt="Immagine esistente" width="100" height="100">
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- Campo nascosto: termine di ricerca se presente nella query string --}}
+                    @if(request('query'))
+                        <input type="hidden" name="query" value="{{ request('query') }}">
+                    @endif
 
                     {{-- Pulsante di salvataggio --}}
                     <div class="d-flex justify-content-center mt-4">

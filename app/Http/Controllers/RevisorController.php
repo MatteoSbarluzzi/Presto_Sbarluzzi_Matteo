@@ -22,18 +22,50 @@ class RevisorController extends Controller
     // Accetta l'articolo e lo salva come approvato
     public function accept(Article $article)
     {
-        $article->isAccepted(true);
+        // Se ci sono modifiche precedenti, vengono azzerate
+        $article->update([
+            'is_accepted' => true,
+            'old_title' => null,
+            'old_description' => null,
+            'old_price' => null,
+            'old_category_id' => null,
+        ]);
+
         session(['last_reviewed_article_id' => $article->id]);
+
         return redirect()
             ->route('revisor.index') //redirect alla rotta corretta dopo l'approvazione
             ->with('message', __('messages.article_accepted', ['title' => $article->title]));
     }
 
-    // Rifiuta l'articolo e lo salva come non approvato
+    // Rifiuta l'articolo e lo salva come non approvato (oppure ripristina i dati precedenti)
     public function reject(Article $article)
     {
-        $article->isAccepted(false);
+        // Se l'articolo è una modifica già approvata (dati old_* presenti), li ripristiniamo
+        if (
+            $article->old_title !== null ||
+            $article->old_description !== null ||
+            $article->old_price !== null ||
+            $article->old_category_id !== null
+        ) {
+            $article->update([
+                'title' => $article->old_title,
+                'description' => $article->old_description,
+                'price' => $article->old_price,
+                'category_id' => $article->old_category_id,
+                'is_accepted' => true,
+                'old_title' => null,
+                'old_description' => null,
+                'old_price' => null,
+                'old_category_id' => null,
+            ]);
+        } else {
+            // Se non è una modifica, semplicemente viene rifiutato
+            $article->isAccepted(false);
+        }
+
         session(['last_reviewed_article_id' => $article->id]);
+
         return redirect()
             ->back() //torna indietro alla pagina corrente
             ->with('message', __('messages.article_rejected', ['title' => $article->title]));
