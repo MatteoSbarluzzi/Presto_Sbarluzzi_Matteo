@@ -1,0 +1,332 @@
+/* === CARD PERSONALIZZATE === */
+.card-custom {
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+}
+
+.card-custom .card-body {
+  padding: 1.5rem;
+}
+
+.card-custom .card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.card-custom .card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--dark-blue);
+}
+
+.card-custom img {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-custom,
+.card-custom .card-body,
+.card-custom .card-title,
+.card-custom .card-subtitle,
+.card-custom .btn,
+.card-custom .badge {
+  background-color: var(--beige);
+  color: var(--dark-blue);
+}
+
+.card-custom a,
+.card-custom h4,
+.card-custom h6,
+.card-custom span,
+.card-custom p {
+  color: var(--dark-blue);
+}
+
+.card-fixed-width {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* === BADGE CATEGORIA === */
+.card-custom .badge,
+.badge-category {
+  background-color: transparent;
+  color: var(--sky-blue);
+  border: 1px solid var(--sky-blue);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  transition: all 0.3s ease;
+}
+
+/* === FORM AUTENTICAZIONE (login/register) === */
+.auth-form {
+  background-color: var(--beige);
+  color: var(--dark-blue);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.auth-form label {
+  color: var(--dark-blue);
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-form input {
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-form .btn-submit {
+  background-color: var(--orange);
+  color: black;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form .btn-submit:hover {
+  background-color: var(--sky-blue);
+  color: white;
+}
+
+/* === BOTTONI === */
+.card-custom .btn-detail,
+button.btn-apply-filters,
+a.btn-apply-filters,
+a.btn-reset-filters,
+.btn-footer-custom,
+.btn-delete-custom,
+.btn-edit-custom,
+.btn-close-detail,
+.btn-accept-custom,
+button.btn-accept,
+button.btn-reject,
+button.btn.btn-review-submit {
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-custom .btn-detail {
+  background-color: var(--orange);
+  color: black;
+  border: none;
+}
+
+.card-custom .btn-detail:hover {
+  background-color: var(--sky-blue);
+  color: white;
+}
+
+button.btn-apply-filters,
+a.btn-apply-filters {
+  all: unset;
+  background-color: var(--orange);
+  color: black;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+button.btn-apply-filters:hover,
+a.btn-apply-filters:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+a.btn-reset-filters {
+  all: unset;
+  background-color: var(--beige);
+  color: black;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border: 1px solid #dc3545;
+  display: inline-block;
+  cursor: pointer;
+}
+
+a.btn-reset-filters:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-footer-custom {
+  background-color: var(--beige);
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+}
+
+.btn-footer-custom:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+.btn-delete-custom {
+  all: unset;
+  background-color: var(--beige);
+  color: black;
+  border: 1px solid #dc3545;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-delete-custom:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-edit-custom {
+  all: unset;
+  background-color: var(--beige);
+  color: black;
+  border: 1px solid var(--orange);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-edit-custom:hover {
+  background-color: var(--orange);
+  color: white;
+}
+
+.btn-close-detail {
+  background-color: var(--orange);
+  color: black;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+}
+
+.btn-close-detail:hover {
+  background-color: var(--dark-blue);
+  color: var(--beige);
+}
+
+.btn-accept-custom {
+  background-color: var(--orange);
+  color: black;
+  border: none;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-accept-custom:hover {
+  background-color: var(--dark-blue);
+  color: white;
+}
+
+button.btn-accept {
+  background-color: var(--orange);
+  color: black;
+  border: none;
+}
+
+button.btn-accept:hover {
+  background-color: var(--dark-blue);
+  border: 1px solid white;
+}
+
+button.btn-reject {
+  background-color: var(--beige);
+  border: 1px solid red;
+  color: black;
+}
+
+button.btn-reject:hover {
+  background-color: red;
+  border: 1px solid red;
+}
+
+button.btn-accept,
+button.btn-reject {
+  transition: all 0.3s ease;
+}
+
+button.btn.btn-review-submit {
+  background-color: var(--orange);
+  color: black;
+}
+
+button.btn.btn-review-submit:hover {
+  background-color: var(--dark-blue);
+  color: white;
+}
+
+/* === BOTTONI DETTAGLIO (wrapper) === */
+.button-column-wrapper {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-detail-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  min-height: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Rimozione padding interno */
+.btn-close-detail,
+.btn-edit-custom,
+.btn-delete-custom {
+  padding: 0;
+}
+
+/* === PAGINATION === */
+.pagination {
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.page-item .page-link {
+  color: var(--dark-blue);
+  background-color: var(--beige);
+  border: 1px solid var(--dark-blue);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.page-item.active .page-link {
+  background-color: var(--orange);
+  color: black;
+  border-color: var(--orange);
+}
+
+.page-item .page-link:hover {
+  background-color: var(--dark-blue);
+  color: white;
+  border-color: var(--dark-blue);
+}
+
+.page-item.disabled .page-link {
+  background-color: #ddd;
+  color: #aaa;
+  border-color: #ccc;
+  cursor: not-allowed;
+}

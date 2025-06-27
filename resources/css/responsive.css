@@ -1,0 +1,165 @@
+/* === NAVBAR E LAYOUT RESPONSIVE === */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar .container {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-wrapper {
+    margin-right: 0;
+    justify-content: flex-start;
+    height: 90px;
+  }
+
+  .logo-wrapper img.logo {
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .navbar-toggler {
+    margin-left: 0;
+    align-self: center;
+    height: 90px;
+  }
+
+  .navbar-toggler .navbar-toggler-icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+  }
+
+  .navbar-collapse {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: none;
+    background-color: var(--dark-blue);
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    padding: 0 1rem;
+    z-index: 1000;
+  }
+
+  .navbar-collapse.show {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+
+  .navbar-nav .nav-link {
+    width: 100%;
+  }
+
+  form[role="search"] {
+    width: 80%;
+    margin: 1rem auto 0 auto;
+  }
+
+  .input-group {
+    width: 100%;
+  }
+
+  .card-body .d-flex.justify-content-center.gap-2 {
+    min-width: auto;
+  }
+
+  .card-body .d-flex.justify-content-center.gap-2 > * {
+    min-width: auto;
+  }
+
+  #backgroundpresto {
+    height: auto;
+    min-height: 60vh;
+    padding: 100px 1rem 60px 1rem;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .welcometitle {
+    font-size: 2rem;
+  }
+
+  .swiper {
+    height: 500px;
+    overflow-x: hidden;
+  }
+
+  .review-card {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container-fluid.min-vh-100 {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: block;
+    align-items: normal;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-close-detail,
+  .btn-edit-custom,
+  .btn-delete-custom {
+    flex: 1 1 0;
+    min-width: 100px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .card-custom .btn-detail,
+  .btn-delete-custom {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+  }
+
+  .container-fluid.min-vh-100 {
+    height: auto;
+    min-height: unset;
+    display: block;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  #backgroundpresto {
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .welcometitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .section-responsive {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}

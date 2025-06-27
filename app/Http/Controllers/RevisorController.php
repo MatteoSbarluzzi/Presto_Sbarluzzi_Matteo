@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Artisan;
 
 class RevisorController extends Controller
 {
-    // Mostra il pannello del revisore con un articolo da revisionare (il primo con is_accepted = null)
+    // Mostra il pannello del revisore con un articolo da revisionare (il più vecchio aggiornato)
     public function index()
     {
-        $article_to_check = Article::where('is_accepted', null)->first();
-        return view('revisor.index', compact('article_to_check')); //salviamo il primo articolo che corrisponde alla condizione avere nella colonna null e passiamo questo dato alla vista
+        $article_to_check = Article::where('is_accepted', null)
+                                   ->orderBy('updated_at', 'asc')
+                                   ->first();
+
+        return view('revisor.index', compact('article_to_check'));
     }
 
     // Accetta l'articolo e lo salva come approvato
@@ -48,17 +51,8 @@ class RevisorController extends Controller
             $article->old_price !== null ||
             $article->old_category_id !== null
         ) {
-            $article->update([
-                'title' => $article->old_title,
-                'description' => $article->old_description,
-                'price' => $article->old_price,
-                'category_id' => $article->old_category_id,
-                'is_accepted' => true,
-                'old_title' => null,
-                'old_description' => null,
-                'old_price' => null,
-                'old_category_id' => null,
-            ]);
+            // Usa il metodo del model per ripristinare i dati precedenti
+            $article->restoreOldData();
         } else {
             // Se non è una modifica, semplicemente viene rifiutato
             $article->isAccepted(false);

@@ -102,4 +102,11 @@ class Article extends Model
             'old_category_id' => null,
         ]);
     }
+
+    // Metodo helper: restituisce il valore da mostrare al revisore (precedente se presente)
+    public function getReviewValue(string $field)
+    {
+        $oldField = 'old_' . $field;
+        return $this->$oldField ?? $this->$field;
+    }
 }

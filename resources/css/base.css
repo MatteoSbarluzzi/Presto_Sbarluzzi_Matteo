@@ -1,0 +1,59 @@
+/* === RESET BASE === */
+body, html {
+  overflow-x: hidden;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* === FONT === */
+body, p {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.section-title, .welcometitle {
+  font-family: 'Playfair Display', serif;
+}
+
+input::placeholder,
+textarea::placeholder,
+form[role="search"] input::placeholder {
+  font-family: 'Inter', sans-serif;
+}
+
+.navbar-nav .nav-link {
+  font-family: 'Playfair Display', serif;
+}
+
+form[role="search"] .form-control {
+  font-family: 'Inter', sans-serif;
+}
+
+.dropdown-menu,
+.dropdown-menu .dropdown-item {
+  font-family: 'Inter', sans-serif;
+}
+
+/* === VARIABILI === */
+:root {
+  --dark-blue: #002547;
+  --sky-blue: #005E8C;
+  --light-blue: #0084C1;
+  --orange: #ECAD50;
+  --beige: #FFF6D8;
+}
+
+/* === SFONDI PERSONALIZZATI === */
+.bg-dark-blue { background-color: var(--dark-blue); color: white; }
+.bg-sky-blue { background-color: var(--sky-blue); color: white; }
+.bg-light-blue { background-color: var(--light-blue); color: white; }
+.bg-orange { background-color: var(--orange); color: black; }
+.bg-beige { background-color: var(--beige); color: black; }
+
+/* === COLORI TESTO PERSONALIZZATI === */
+.text-dark-blue { color: var(--dark-blue); }
+.text-sky-blue { color: var(--sky-blue); }
+.text-light-blue { color: var(--light-blue); }
+.text-orange { color: var(--orange); }
+.text-beige { color: var(--beige); }

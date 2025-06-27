@@ -169,28 +169,23 @@ class ArticleController extends Controller implements HasMiddleware
             'images.*' => 'image|max:2048',
         ]);
 
-        // Se l'articolo è già stato accettato, salva vecchi dati e rimanda in revisione
+        // Se l'articolo è già stato accettato, salva vecchi dati
         if ($article->is_accepted === true) {
             $article->update([
                 'old_title' => $article->title,
                 'old_description' => $article->description,
                 'old_price' => $article->price,
                 'old_category_id' => $article->category_id,
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'price' => $request->input('price'),
-                'category_id' => $request->input('category_id'),
-                'is_accepted' => null,
-            ]);
-        } else {
-            // Altrimenti aggiorna direttamente
-            $article->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'price' => $request->input('price'),
-                'category_id' => $request->input('category_id'),
             ]);
         }
+
+        // Aggiorna i nuovi dati
+        $article->title = $request->input('title');
+        $article->description = $request->input('description');
+        $article->price = $request->input('price');
+        $article->category_id = $request->input('category_id');
+        $article->is_accepted = null; // ✅ forza sempre il passaggio in revisione
+        $article->save();
 
         // Salva le nuove immagini caricate
         if ($request->hasFile('images')) {

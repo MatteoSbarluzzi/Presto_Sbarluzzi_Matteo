@@ -22,7 +22,7 @@
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12 mt-4">
                 <h1 class="display-4 slide-from-bottom-slow mt-sm-5">
-                    {{ __('ui.article_detail', ['title' => $article->title]) }}
+                    {{ __('ui.article_detail', ['title' => $article->old_title ?? $article->title]) }}
                 </h1>
             </div>
         </div>
@@ -67,21 +67,29 @@
             <div class="col-12 col-md-6 mb-3 text-center">
                 {{-- Titolo --}}
                 <h2 class="display-5">
-                    <span class="fw-bold">{{ __('ui.title') }}: </span> {{ $article->title }}
+                    <span class="fw-bold">{{ __('ui.title') }}: </span> {{ $article->old_title ?? $article->title }}
                 </h2>
                 
                 <div class="d-flex flex-column justify-content-center">
                     {{-- Prezzo --}}
-                    <h4 class="fw-bold my-3">{{ __('ui.price') }}: {{ $article->price }} €</h4>
+                    <h4 class="fw-bold my-3">
+                        {{ __('ui.price') }}: {{ $article->old_price ?? $article->price }} €
+                    </h4>
                     
                     {{-- Descrizione --}}
                     <h5>{{ __('ui.description') }}:</h5>
-                    <p>{{ $article->description }}</p>
+                    <p>{{ $article->old_description ?? $article->description }}</p>
                     
                     {{-- Categoria come badge --}}
+                    @php
+                        $category_id = $article->old_category_id ?? $article->category_id;
+                        $category = \App\Models\Category::find($category_id);
+                    @endphp
+                    @if ($category)
                     <span class="badge rounded-pill text-info border border-info px-3 py-2 my-2 w-auto align-self-center">
-                        {{ __('ui.categories_list.' . Illuminate\Support\Str::slug($article->category->name, '_')) }}
+                        {{ __('ui.categories_list.' . \Illuminate\Support\Str::slug($category->name, '_')) }}
                     </span>
+                    @endif
                     
                     {{-- COLONNA BOTTONI --}}
                     <div class="button-column-wrapper mt-3">
@@ -103,24 +111,25 @@
                         {{-- Form CANCELLA --}}
                         <form method="POST" action="{{ route('article.destroy', $article) }}"
                         onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
-                        @csrf
-                        @method('DELETE')
-                        <input type="hidden" name="redirect_to" value="{{ request('back') ?? route('article.index') }}">
-                        <button type="submit" class="btn-delete-custom btn-detail-action mt-2">
-                            {{ __('ui.delete') }}
-                        </button>
-                    </form>
-                    @endif
-                    @endauth
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="redirect_to" value="{{ request('back') ?? route('article.index') }}">
+                            <button type="submit" class="btn-delete-custom btn-detail-action mt-2">
+                                {{ __('ui.delete') }}
+                            </button>
+                        </form>
+                        @endif
+                        @endauth
+                    </div>
+                    {{-- FINE COLONNA BOTTONI --}}
                 </div>
-                {{-- FINE COLONNA BOTTONI --}}
+                
+                {{-- Autore dell'articolo --}}
+                <p class="text-muted fw-bold my-3">
+                    {{ __('ui.created_by') }}: <strong>{{ $article->user->name }}</strong>
+                </p>
+                
             </div>
-            {{-- Autore dell'articolo --}}
-            <p class="text-muted fw-bold my-3">
-                {{ __('ui.created_by') }}: <strong>{{ $article->user->name }}</strong>
-            </p>
-            
         </div>
     </div>
-</div>
 </x-layout>

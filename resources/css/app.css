@@ -1,7 +1,13 @@
 /* === Google Fonts via @import === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-@import "./style.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./animations.css";
+@import "./responsive.css";
+
 @import "bootstrap/dist/css/bootstrap";
 @import "bootstrap-icons";
+
 
