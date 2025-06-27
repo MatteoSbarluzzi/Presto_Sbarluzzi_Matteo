@@ -28,6 +28,7 @@ class ReviewController extends Controller
             'rating' => $request->input('rating'),
         ]);
 
-        return redirect()->route('reviews')->with('message', 'Recensione inviata con successo!');
+        return redirect()->route('reviews')->with('message', 'review_sent_successfully');
+
     }
 }

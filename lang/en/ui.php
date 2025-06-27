@@ -132,7 +132,9 @@ return [
     'send_review' => 'Submit review',
     'login_to_review' => 'Log in to write a review',
     'no_reviews_yet' => 'No reviews yet',
-    
+    'review_sent_successfully' => 'Review submitted successfully!',
+    'reviews' => 'Reviews',
+
     // Shipping
 'shipping_worldwide' => 'Guaranteed international shipping',
 'shipping_description' => 'At Presto.it, we provide reliable and professional shipping services both nationally and internationally. Through our trusted logistics partners, we ensure fast, trackable, and timely deliveries wherever our customers are located. Rely on us for efficient and secure handling of your shipments.',

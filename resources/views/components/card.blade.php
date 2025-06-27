@@ -36,9 +36,15 @@
             </div>
 
             {{-- Etichetta categoria tradotta dinamicamente in base allo slug --}}
-            <span class="badge rounded-pill px-3 py-2">
-                {{ __($article->getTranslatedCategoryKey()) }}
-            </span>
+            <span 
+    class="badge rounded-pill px-3 py-2 text-truncate d-inline-block w-100" 
+    data-bs-toggle="tooltip" 
+    data-bs-placement="top" 
+    title="{{ __($article->getTranslatedCategoryKey()) }}">
+    {{ __($article->getTranslatedCategoryKey()) }}
+</span>
+
+
         </div>
     </div>
 </div>

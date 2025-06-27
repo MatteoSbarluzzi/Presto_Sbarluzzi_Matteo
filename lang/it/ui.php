@@ -115,7 +115,7 @@ return [
     'email_placeholder' => 'Inserisci la tua email',
     'subscribe' => 'Iscriviti',
     'newsletter_thank_you' => 'Grazie per esserti iscritto alla newsletter!',
-    'newsletter_subject_user' => 'Grazie per esserti iscritto alla newsletter',
+    'newsletter_subject_user' => 'Grazie per esserti iscritto alla newsletter!',
     'new_newsletter_subscription' => 'Nuova iscrizione alla newsletter',
     'newsletter_email' => "L'indirizzo email",
     'newsletter_registered' => 'si è iscritto alla newsletter.',
@@ -132,7 +132,9 @@ return [
     'send_review' => 'Invia recensione',
     'login_to_review' => 'Accedi per scrivere una recensione',
     'no_reviews_yet' => 'Nessuna recensione presente',
-    
+    'review_sent_successfully' => 'Recensione inviata con successo!',
+    'reviews' => 'Recensioni',
+
     // Spedizioni
 'shipping_worldwide' => 'Spedizioni internazionali garantite',
 'shipping_description' => 'Su Presto.it offriamo un servizio di spedizione affidabile e professionale, attivo su scala nazionale e internazionale. Grazie alla collaborazione con operatori logistici selezionati, assicuriamo consegne rapide, tracciabili e puntuali, ovunque si trovino i nostri clienti. Affidati a noi per una gestione efficiente e sicura delle tue spedizioni.',

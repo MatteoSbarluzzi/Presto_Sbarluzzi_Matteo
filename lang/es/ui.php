@@ -132,6 +132,8 @@ return [
     'send_review' => 'Enviar reseña',
     'login_to_review' => 'Inicia sesión para escribir una reseña',
     'no_reviews_yet' => 'Aún no hay reseñas',
+    'review_sent_successfully' => '¡Reseña enviada con éxito!',
+    'reviews' => 'Reseñas',
     
     // Envíos
 'shipping_worldwide' => 'Envíos internacionales garantizados',

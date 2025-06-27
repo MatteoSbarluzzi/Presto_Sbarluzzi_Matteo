@@ -8,8 +8,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
-// Importa il client ufficiale Google Vision
 use Google\Cloud\Vision\V1\ImageAnnotatorClient;
 
 class GoogleVisionLabelImage implements ShouldQueue
@@ -52,7 +50,7 @@ class GoogleVisionLabelImage implements ShouldQueue
 
         // Se sono presenti etichette, estraiamo le descrizioni in un array
         if ($labels) {
-            $result = []; // Array dove memorizzare le etichette
+            $result = [];
 
             foreach ($labels as $label) {
                 $result[] = $label->getDescription(); // Aggiunge la descrizione dell'etichetta
@@ -60,7 +58,7 @@ class GoogleVisionLabelImage implements ShouldQueue
 
             // Salva l'array delle etichette nel campo 'labels' dell'immagine
             $i->labels = $result;
-            $i->save(); // Aggiorna il record nel database
+            $i->save(); 
         }
 
         // Chiude il client Google Vision
