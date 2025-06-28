@@ -58,6 +58,8 @@ return [
     'click_button_below' => 'Click the button below to apply',
     'want_to_become_revisor' => 'I would like to become a revisor',
     'revisor_request_thank_you' => 'Thank you for your request and for wanting to join our team of revisors. We will contact you at the email you registered with to schedule an interview.',
+    'article_deleted' => "The article has been deleted because it was not approved.",
+
     
     // Categories
     'categories_list' => [

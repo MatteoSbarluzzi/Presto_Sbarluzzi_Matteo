@@ -170,4 +170,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Gestione X per eliminazione immagini dal form modifica articolo
+document.querySelectorAll('.image-delete-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const imageContainer = btn.closest('.image-container');
+        const imageId = btn.dataset.imageId;
+
+        if (imageContainer && imageId) {
+            // Nasconde visivamente l'immagine
+            imageContainer.style.display = 'none';
+
+            // Crea un input hidden per passare l'ID al backend
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'images_to_delete[]';
+            hiddenInput.value = imageId;
+            document.querySelector('#articleEditForm').appendChild(hiddenInput);
+        }
+    });
+
+    // Mostra anteprima immagini caricate in modifica articolo
+const imageInput = document.querySelector('#images');
+if (imageInput) {
+    imageInput.addEventListener('change', (event) => {
+        const previewContainer = document.querySelector('#newImagePreview');
+        previewContainer.innerHTML = ''; // Pulisce anteprime precedenti
+
+        Array.from(event.target.files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('img-thumbnail', 'me-2', 'mb-2');
+                img.style.width = '100px';
+                img.style.height = '100px';
+                previewContainer.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+}
+
+});
+
 });

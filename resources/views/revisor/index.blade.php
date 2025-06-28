@@ -30,27 +30,34 @@
             <div class="row justify-content-center pt-5">
                 <div class="col-md-8">
 
-                    {{-- Se sono presenti immagini dell’articolo --}}
+                    {{-- IMMAGINI PROPOSTE (old_images se presenti) --}}
                     <div class="row justify-content-center">
-                        @if ($article_to_check->images->count())
-                            @foreach ($article_to_check->images as $key => $image)
+                        @php
+                            $reviewImages = $article_to_check->old_images ?? $article_to_check->images->pluck('path')->toArray();
+                        @endphp
+
+                        @if (count($reviewImages))
+                            @foreach ($reviewImages as $key => $imagePath)
                                 <div class="col-12 mb-4">
                                     <div class="card shadow">
                                         <div class="row g-0 align-items-center">
 
                                             {{-- Immagine --}}
                                             <div class="col-md-4">
-                                                <img src="{{ $image->getUrl(300, 300) }}"
+                                                <img src="{{ asset('storage/' . $imagePath) }}"
                                                      class="img-fluid rounded-start"
-                                                     alt="Immagine {{ $key + 1 }} dell'articolo '{{ $article_to_check->title }}'">
+                                                     alt="Immagine {{ $key + 1 }}">
                                             </div>
 
-                                            {{-- Labels (etichettature AI) --}}
-                                            <div class="col-md-5 ps-3">
+                                            {{-- Etichette AI (se disponibili dalle immagini reali) --}}
+                                            <div class="col-md-8 ps-3">
                                                 <div class="card-body">
                                                     <h5 class="card-title">Labels</h5>
-                                                    @if ($image->labels)
-                                                        @foreach ($image->labels as $label)
+                                                    @php
+                                                        $realImage = $article_to_check->images[$key] ?? null;
+                                                    @endphp
+                                                    @if ($realImage && $realImage->labels)
+                                                        @foreach ($realImage->labels as $label)
                                                             <span class="badge bg-dark text-light me-1">{{ $label }}</span>
                                                         @endforeach
                                                     @else
@@ -59,42 +66,15 @@
                                                 </div>
                                             </div>
 
-                                            {{-- Rating AI: contenuti sensibili --}}
-                                            <div class="col-md-3">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Ratings</h5>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2 text-center"><i class="{{ $image->adult }}"></i></div>
-                                                        <div class="col-10">adult</div>
-                                                    </div>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2 text-center"><i class="{{ $image->violence }}"></i></div>
-                                                        <div class="col-10">violence</div>
-                                                    </div>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2 text-center"><i class="{{ $image->spoof }}"></i></div>
-                                                        <div class="col-10">spoof</div>
-                                                    </div>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2 text-center"><i class="{{ $image->racy }}"></i></div>
-                                                        <div class="col-10">racy</div>
-                                                    </div>
-                                                    <div class="row align-items-center">
-                                                        <div class="col-2 text-center"><i class="{{ $image->medical }}"></i></div>
-                                                        <div class="col-10">medical</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            {{-- Se non ci sono immagini, mostra 6 segnaposto --}}
+                            {{-- Se non ci sono immagini, mostra segnaposto --}}
                             @for ($i = 0; $i < 6; $i++)
                                 <div class="col-6 col-md-4 mb-4 text-center">
-                                    <img src="https://picsum.photos/300" alt="immagine segnaposto" class="img-fluid rounded shadow">
+                                    <img src="https://picsum.photos/300" alt="Segnaposto" class="img-fluid rounded shadow">
                                 </div>
                             @endfor
                         @endif
@@ -105,26 +85,19 @@
                 <div class="col-12 col-md-4 d-flex flex-column justify-content-between mx-auto px-3 px-md-3">
                     <div class="bg-beige rounded p-4">
 
-                        {{-- Titolo (se modificato, mostra il vecchio) --}}
-                        <h1>{{ $article_to_check->old_title ?? $article_to_check->title }}</h1>
+                        {{-- Dati modificati --}}
+                        <h1 class="text-break">{{ $article_to_check->title }}</h1>
+                        <h3 class="text-break">{{ __('ui.author') }}: {{ $article_to_check->user->name }}</h3>
+                        <h4>{{ $article_to_check->price }}€</h4>
 
-                        {{-- Autore --}}
-                        <h3>{{ __('ui.author') }}: {{ $article_to_check->user->name }}</h3>
-
-                        {{-- Prezzo (se modificato, mostra il vecchio) --}}
-                        <h4>{{ $article_to_check->old_price ?? $article_to_check->price }}€</h4>
-
-                        {{-- Categoria (se modificata, mostra la vecchia) --}}
                         @php
-                            $category_id = $article_to_check->old_category_id ?? $article_to_check->category_id;
-                            $category = \App\Models\Category::find($category_id);
+                            $category = \App\Models\Category::find($article_to_check->category_id);
                         @endphp
-                        @if($category)
-                            <h4 class="fst-italic text-muted">{{ $category->getTranslatedName() }}</h4>
+                        @if ($category)
+                            <h4 class="fst-italic text-muted text-break">{{ $category->getTranslatedName() }}</h4>
                         @endif
 
-                        {{-- Descrizione (se modificata, mostra la vecchia) --}}
-                        <p class="h6">{{ $article_to_check->old_description ?? $article_to_check->description }}</p>
+                        <p class="h6 text-break">{{ $article_to_check->description }}</p>
 
                         {{-- Bottoni accetta / rifiuta --}}
                         <div class="row g-2 mt-4">

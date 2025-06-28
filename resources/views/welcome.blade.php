@@ -20,7 +20,6 @@
                 </div>
                 @endif
                 
-                
                 {{-- Pulsante pubblica articolo --}}
                 <div class="my-3">
                     @auth
@@ -32,6 +31,21 @@
             </div>
         </div>
     </div>
+
+    {{-- Blocco notifiche utente --}}
+    @if(Auth::check() && Auth::user()->unreadNotifications->isNotEmpty())
+        <div class="container my-4">
+            <h5 class="text-center">{{ __('ui.notifications') }}</h5>
+            @foreach(Auth::user()->unreadNotifications as $notification)
+                <div class="alert alert-warning d-flex justify-content-between align-items-center">
+                    <span>{{ $notification->data['message'] }}</span>
+                    <a href="{{ route('article.show', $notification->data['article_id']) }}" class="btn btn-sm btn-primary">
+                        {{ __('ui.view_article') }}
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    @endif
     
     {{-- Titolo "Esplora le ultime inserzioni" --}}
     <div class="container-fluid bg-sky-blue text-beige py-3 pt-5">

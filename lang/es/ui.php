@@ -58,6 +58,8 @@ return [
     'click_button_below' => 'Haz clic en el botón a continuación para postularte',
     'want_to_become_revisor' => 'Quisiera ser revisor',
     'revisor_request_thank_you' => 'Gracias por enviar la solicitud y por querer unirte a nuestro equipo de revisores. Le contactaremos al correo con el que se registró para concertar una entrevista.',
+    'article_deleted' => "El artículo ha sido eliminado porque no fue aprobado.",
+
     
     // Categorías
     'categories_list' => [

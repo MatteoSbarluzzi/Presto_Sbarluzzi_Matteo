@@ -58,6 +58,8 @@ return [
     'click_button_below' => 'Clicca il bottone sottostante per fare richiesta',
     'want_to_become_revisor' => 'Vorrei diventare revisore',
     'revisor_request_thank_you' => 'Grazie per averci inviato la richiesta e per voler entrare a far parte del nostro team di revisori. La contatteremo all’indirizzo email con cui si è registrato per fissare un colloquio.',
+    'article_deleted' => "L'articolo è stato eliminato perché non approvato.",
+
     
     // Categorie
     'categories_list' => [

@@ -29,7 +29,7 @@
                 @endif
 
                 {{-- Form di modifica articolo --}}
-                <form method="POST" action="{{ route('article.update', $article) }}" class="auth-form" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('article.update', $article) }}" class="auth-form" enctype="multipart/form-data" id="articleEditForm">
                     @csrf
                     @method('PUT')
 
@@ -97,14 +97,21 @@
                         >
                     </div>
 
-                    {{-- Mostra immagini esistenti --}}
+                    {{-- ANTEPRIMA nuove immagini caricate --}}
+                    <div class="mb-3" id="newImagePreview" style="display:flex; flex-wrap:wrap;"></div>
+
+                    {{-- Mostra immagini esistenti con pulsante X --}}
                     @if ($article->images->count())
                         <div class="mb-3">
                             <p>{{ __('ui.current_images') }}:</p>
                             <div class="d-flex flex-wrap gap-3">
                                 @foreach ($article->images as $image)
-                                    {{-- Utilizzo diretto dello storage path --}}
-                                    <img src="{{ asset('storage/' . $image->path) }}" class="rounded shadow" alt="Immagine esistente" width="100" height="100">
+                                    <div class="image-container me-2 mb-2 position-relative">
+                                        <img src="{{ asset('storage/' . $image->path) }}" class="rounded shadow" alt="Immagine esistente" width="100" height="100">
+                                        <button type="button" class="image-delete-btn position-absolute top-0 end-0 translate-middle badge rounded-pill bg-danger" data-image-id="{{ $image->id }}">
+                                            &times;
+                                        </button>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>

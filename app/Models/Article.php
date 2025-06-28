@@ -9,6 +9,7 @@ use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class Article extends Model
 {
@@ -21,45 +22,39 @@ class Article extends Model
         'category_id',
         'user_id',
         'is_accepted',
+        'was_ever_accepted',
         'old_title',
         'old_description',
         'old_price',
-        'old_category_id'
+        'old_category_id',
+        'old_images',
     ];
 
-    // Un singolo oggetto di classe Article può appartenere ad un solo utente
+    protected $casts = [
+        'old_images' => 'array',
+        'was_ever_accepted' => 'boolean',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    // Un singolo oggetto di classe Article può appartenere ad una sola categoria
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Un singolo oggetto di classe Article può avere più oggetti di classe Image
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
     }
 
-    // Metodo per aggiornare lo stato di revisione
-    public function isAccepted($value)
-    {
-        $this->is_accepted = $value;
-        $this->save();
-        return true;
-    }
-
-    // Metodo per contare gli articoli da revisionare
     public static function toBeRevisionedCount()
     {
-        return Article::where('is_accepted', null)->count();
+        return self::where('is_accepted', null)->count();
     }
 
-    // Definizione dei dati da indicizzare nella ricerca
     public function toSearchableArray()
     {
         return [
@@ -70,15 +65,15 @@ class Article extends Model
         ];
     }
 
-    // Metodo per ottenere la chiave tradotta della categoria
     public function getTranslatedCategoryKey(): string
     {
         return 'ui.categories_list.' . str_replace('-', '_', $this->category->slug);
     }
 
-    // Ripristina i dati salvati prima della modifica
     public function restoreOldData()
     {
+        $this->restoreOldImages();
+
         $this->update([
             'title' => $this->old_title,
             'description' => $this->old_description,
@@ -88,11 +83,10 @@ class Article extends Model
             'old_description' => null,
             'old_price' => null,
             'old_category_id' => null,
-            'is_accepted' => true,
+            'old_images' => null,
         ]);
     }
 
-    // Elimina i dati temporanei salvati per la modifica
     public function clearOldData()
     {
         $this->update([
@@ -100,13 +94,42 @@ class Article extends Model
             'old_description' => null,
             'old_price' => null,
             'old_category_id' => null,
+            'old_images' => null,
         ]);
     }
 
-    // Metodo helper: restituisce il valore da mostrare al revisore (precedente se presente)
     public function getReviewValue(string $field)
     {
         $oldField = 'old_' . $field;
         return $this->$oldField ?? $this->$field;
+    }
+
+    public function restoreOldImages()
+    {
+        if (!empty($this->old_images)) {
+            // Rimuovi immagini attuali
+            foreach ($this->images as $image) {
+                if (Storage::disk('public')->exists($image->path)) {
+                    Storage::disk('public')->delete($image->path);
+                }
+                $image->delete();
+            }
+
+            // Ripristina immagini da backup o percorso originale
+            foreach ($this->old_images as $oldPath) {
+                $backupPath = 'backup/' . $oldPath;
+                $restoredPath = 'articles/' . basename($oldPath);
+
+                if (Storage::disk('public')->exists($backupPath)) {
+                    Storage::disk('public')->copy($backupPath, $restoredPath);
+                    $this->images()->create(['path' => $restoredPath]);
+                } elseif (Storage::disk('public')->exists($oldPath)) {
+                    $this->images()->create(['path' => $oldPath]);
+                }
+            }
+
+            $this->old_images = null;
+            $this->save();
+        }
     }
 }

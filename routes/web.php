@@ -17,6 +17,8 @@ Route::get('/article/index', [ArticleController::class, 'index'])->name('article
 Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show'); // cambiato da /show/article a /article
 Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])->name('article.edit')->middleware('auth'); // rotta per modifica articolo
 Route::put('/article/{article}', [ArticleController::class, 'update'])->name('article.update')->middleware('auth'); // rotta per aggiornamento articolo
+Route::delete('/article/image/{image}', [ArticleController::class, 'deleteImage'])->name('article.image.delete')->middleware('auth');
+
 
 // Articoli per categoria
 Route::get('/category/{category:slug}', [ArticleController::class, 'byCategory'])->name('byCategory');
