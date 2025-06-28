@@ -130,13 +130,13 @@ button.btn.btn-review-submit {
 
 button.btn-apply-filters,
 a.btn-apply-filters {
-  all: unset;
   background-color: var(--orange);
   color: black;
   padding: 0.5rem 1rem;
   text-align: center;
   display: inline-block;
   cursor: pointer;
+  text-decoration: none;
 }
 
 button.btn-apply-filters:hover,
@@ -146,7 +146,6 @@ a.btn-apply-filters:hover {
 }
 
 a.btn-reset-filters {
-  all: unset;
   background-color: var(--beige);
   color: black;
   padding: 0.5rem 1rem;
@@ -240,6 +239,7 @@ button.btn-accept {
 
 button.btn-accept:hover {
   background-color: var(--dark-blue);
+  color: white;
   border: 1px solid white;
 }
 
