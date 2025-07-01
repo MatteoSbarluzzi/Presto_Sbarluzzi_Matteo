@@ -36,7 +36,7 @@ class GoogleVisionSafeSearch implements ShouldQueue
         $image = file_get_contents(storage_path('app/public/' . $i->path));
 
         // Imposta la variabile di ambiente per le credenziali di Google Cloud
-        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path(env('GOOGLE_APPLICATION_CREDENTIALS')));
+        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credential.json'));
 
 
         // Istanzia il client Google Vision e invia l'immagine per Safe Search Detection

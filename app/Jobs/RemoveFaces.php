@@ -32,22 +32,22 @@ class RemoveFaces implements ShouldQueue
             return;
         }
 
-        $srcPath = storage_path('app/public/' . $i->path); // usiamo il campo corretto "path" invece di "patch"
+        $srcPath = storage_path('app/public/' . $i->path); 
         $image = file_get_contents($srcPath);
 
-        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path(env('GOOGLE_APPLICATION_CREDENTIALS')));
+        putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credential.json'));
 
 
         $imageAnnotator = new ImageAnnotatorClient();
-        $response = $imageAnnotator->faceDetection($image); //faceDetection parte sulle immagini per rilevare i volti
-        $faces = $response->getFaceAnnotations();//sul risultato del precedente parte questo che serve a recuperare informazioni sui volti individuati nell'immagine, che restituisce un campo ripetuto contenente una lista di oggetti FaceAnnotation. Il risultato è salvato in $faces.
+        $response = $imageAnnotator->faceDetection($image); 
+        $faces = $response->getFaceAnnotations();
 
-        foreach ($faces as $face){//stiamo iterando sui volti rilevati e all'interno del ciclo il codice estrae le coordinate dei vertici del bounding box (modo per definire posizione e dimensioni di un oggetto in un'immagine) che circonda ogni volto
+        foreach ($faces as $face){
             $vertices = $face->getBoundingPoly()->getVertices();
 
-            $bounds = []; //array che memorizza coordinate dei vertici
+            $bounds = []; 
 
-            foreach ($vertices as $vertex){//calcola larghezza e altezza del bounding box del volto
+            foreach ($vertices as $vertex){
                 $bounds[] = [$vertex->getX(), $vertex->getY()];
             }
 
@@ -57,20 +57,20 @@ class RemoveFaces implements ShouldQueue
             //carichiamo l'immagine usando la libreria Spatie Image per poter effettuare la censura dei volti
             $image = SpatieImage::load($srcPath);
 
-            //metodo watermark per sovrapporre a ogni volto rilevato un'immagine di censura da noi scelta
+
             $image->watermark(
                 base_path('resources/img/stellinacensura.png'),
                 AlignPosition::TopLeft,
-                //padding specificano lo spostamento orizzontale e verticale della sovrapposizione rispetto all'angolo superiore sinistro del bounding box
+             
                 paddingX: $bounds[0][0],
                 paddingY: $bounds[0][1],
-                //definiscono la larghezza e l'altezza dell'immagine di sovrapposizione, forzata ad adattarsi alle dimensioni del bounding box con Fit::Stretch
+          
                 width: $w,
                 height: $h,
                 fit: Fit::Stretch
             );
 
-            //salviamo l'immagine modificata con la sovrapposizione sovrascritta sul percorso originale 
+
             $image->save($srcPath);
         }
 
