@@ -33,15 +33,20 @@
             {{-- COLONNA IMMAGINI - CAROUSEL --}}
             <div class="col-12 col-md-6 mb-3">
                 @php
-                    $imagesToShow = $article->images;
+                    // Se sono presenti old_images (modifica in revisione),
+                    // mostra solo le immagini attualmente approvate
+                    $reviewImages = $article->old_images
+                        ? $article->old_images
+                        : $article->images->pluck('path')->toArray();
                 @endphp
-                @if ($imagesToShow->count() > 0)
+
+                @if (count($reviewImages) > 0)
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
-                        @foreach ($imagesToShow as $key => $image)
+                        @foreach ($reviewImages as $key => $imagePath)
                         <div class="carousel-item @if ($loop->first) active @endif">
                             <img 
-                            src="{{ asset('storage/' . $image->path) }}" 
+                            src="{{ asset('storage/' . $imagePath) }}" 
                             class="d-block w-100 rounded shadow"
                             alt="Immagine {{ $key + 1 }} dell'articolo {{ $article->title }}">
                         </div>
@@ -49,7 +54,7 @@
                     </div>
                     
                     {{-- Controlli Carousel (se più di una immagine) --}}
-                    @if ($imagesToShow->count() > 1)
+                    @if (count($reviewImages) > 1)
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">{{ __('ui.previous') }}</span>

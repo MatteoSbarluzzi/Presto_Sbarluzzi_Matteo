@@ -70,7 +70,7 @@ class ArticleController extends Controller implements HasMiddleware
                 $query->orderBy('created_at', 'desc');
         }
 
-        $articles = $query->paginate(12)->withQueryString();
+        $articles = $query->with('images')->paginate(12)->withQueryString();
         $categories = Category::all();
 
         return view('article.index', compact('articles', 'categories', 'maxPrice'));
@@ -127,7 +127,7 @@ class ArticleController extends Controller implements HasMiddleware
                 $query->orderBy('created_at', 'desc');
         }
 
-        $articles = $query->paginate(12)->withQueryString();
+        $articles = $query->with('images')->paginate(12)->withQueryString();
         $categories = Category::all();
 
         return view('article.byCategory', compact('articles', 'category', 'categories', 'maxPrice'));

@@ -3,7 +3,7 @@
     {{-- Immagine in ratio 1:1 --}}
     <div class="ratio ratio-1x1">
         <img 
-            src="{{ $article->images->isNotEmpty() ? $article->images->first()->getUrl(300, 300) : 'https://picsum.photos/200' }}" 
+            src="{{ $article->images->isNotEmpty() ? asset('storage/' . $article->images->first()->path) : 'https://picsum.photos/200' }}" 
             class="img-fluid object-fit-cover rounded-top" 
             alt="Immagine dell'articolo {{ $article->title }}">
     </div>
@@ -37,14 +37,12 @@
 
             {{-- Etichetta categoria tradotta dinamicamente in base allo slug --}}
             <span 
-    class="badge rounded-pill px-3 py-2 text-truncate d-inline-block w-100" 
-    data-bs-toggle="tooltip" 
-    data-bs-placement="top" 
-    title="{{ __($article->getTranslatedCategoryKey()) }}">
-    {{ __($article->getTranslatedCategoryKey()) }}
-</span>
-
-
+                class="badge rounded-pill px-3 py-2 text-truncate d-inline-block w-100" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                title="{{ __($article->getTranslatedCategoryKey()) }}">
+                {{ __($article->getTranslatedCategoryKey()) }}
+            </span>
         </div>
     </div>
 </div>

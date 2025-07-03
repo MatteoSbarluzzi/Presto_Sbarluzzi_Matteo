@@ -12,7 +12,7 @@
 
                 {{-- MESSAGGIO DI SUCCESSO (es. articolo creato) --}}
                 @if (session('message'))
-                    <div class="alert alert-success text-center my-4 shadow rounded w-75 mx-auto">
+                    <div class="alert alert-success text-center my-4 shadow rounded w-45">
                         {{ session('message') }}
                     </div>
                 @endif

@@ -1,6 +1,7 @@
 <x-layout>
     <div class="container-fluid bg-sky-blue py-5">
 
+
         {{-- Titolo e sottotitolo --}}
         <div class="row justify-content-center mb-5">
             <div class="col-md-8 text-center pt-5">
@@ -9,7 +10,7 @@
 
                 {{-- Messaggio di successo --}}
                 @if (session()->has('message'))
-                    <div class="alert alert-success mt-4">
+                    <div class="alert alert-success text-center my-4 shadow rounded w-45">
                         {{ session('message') }}
                     </div>
                 @endif
