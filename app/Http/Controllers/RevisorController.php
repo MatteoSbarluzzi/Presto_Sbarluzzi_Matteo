@@ -25,6 +25,23 @@ class RevisorController extends Controller
 
     public function accept(Article $article)
     {
+        // ✅ Recupera eventuali immagini da backup se sono scomparse
+        if ($article->old_images && $article->images->isEmpty()) {
+            foreach ($article->old_images as $oldPath) {
+                $backupPath = 'backup/' . $oldPath;
+
+                if (Storage::disk('public')->exists($backupPath)) {
+                    Storage::disk('public')->copy($backupPath, $oldPath);
+                }
+
+                // ✅ Ricrea l'associazione nel DB se non esiste
+                if (!$article->images()->where('path', $oldPath)->exists()) {
+                    $article->images()->create(['path' => $oldPath]);
+                }
+            }
+        }
+
+        // ✅ Solo ora pulisci i dati temporanei
         $article->update([
             'is_accepted' => true,
             'was_ever_accepted' => true,

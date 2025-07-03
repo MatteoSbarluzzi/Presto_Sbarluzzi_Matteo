@@ -107,7 +107,7 @@ class Article extends Model
     public function restoreOldImages()
     {
         if (!empty($this->old_images)) {
-            // Rimuovi immagini attuali
+            // Elimina immagini attuali
             foreach ($this->images as $image) {
                 if (Storage::disk('public')->exists($image->path)) {
                     Storage::disk('public')->delete($image->path);
@@ -115,15 +115,12 @@ class Article extends Model
                 $image->delete();
             }
 
-            // Ripristina immagini da backup o percorso originale
+            // Ripristina immagini da backup o da path originale
             foreach ($this->old_images as $oldPath) {
-                $backupPath = 'backup/' . $oldPath;
-                $restoredPath = 'articles/' . basename($oldPath);
-
-                if (Storage::disk('public')->exists($backupPath)) {
-                    Storage::disk('public')->copy($backupPath, $restoredPath);
-                    $this->images()->create(['path' => $restoredPath]);
-                } elseif (Storage::disk('public')->exists($oldPath)) {
+                if (!$this->images()->where('path', $oldPath)->exists()) {
+                    if (Storage::disk('public')->exists('backup/' . $oldPath)) {
+                        Storage::disk('public')->copy('backup/' . $oldPath, $oldPath);
+                    }
                     $this->images()->create(['path' => $oldPath]);
                 }
             }

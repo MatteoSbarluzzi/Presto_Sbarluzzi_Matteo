@@ -30,10 +30,18 @@
             <div class="row justify-content-center pt-5">
                 <div class="col-md-8">
 
-                    {{-- IMMAGINI PROPOSTE (old_images se presenti) --}}
+                    {{-- IMMAGINI PROPOSTE --}}
                     <div class="row justify-content-center">
                         @php
-                            $reviewImages = $article_to_check->old_images ?? $article_to_check->images->pluck('path')->toArray();
+                            // Se ci sono old_images, mostra tutte le immagini attuali (vecchie + nuove)
+                            if ($article_to_check->old_images) {
+                                $reviewImages = $article_to_check->images->pluck('path')->toArray();
+                                $realImages = $article_to_check->images;
+                            } else {
+                                // Articolo mai approvato prima: mostra tutto normalmente
+                                $reviewImages = $article_to_check->images->pluck('path')->toArray();
+                                $realImages = $article_to_check->images;
+                            }
                         @endphp
 
                         @if (count($reviewImages))
@@ -49,19 +57,48 @@
                                                      alt="Immagine {{ $key + 1 }}">
                                             </div>
 
-                                            {{-- Etichette AI (se disponibili dalle immagini reali) --}}
+                                            {{-- Labels + Ratings --}}
                                             <div class="col-md-8 ps-3">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Labels</h5>
                                                     @php
-                                                        $realImage = $article_to_check->images[$key] ?? null;
+                                                        $realImage = $realImages[$key] ?? null;
                                                     @endphp
+
+                                                    {{-- Labels --}}
+                                                    <h5 class="card-title">Labels</h5>
                                                     @if ($realImage && $realImage->labels)
                                                         @foreach ($realImage->labels as $label)
                                                             <span class="badge bg-dark text-light me-1">{{ $label }}</span>
                                                         @endforeach
                                                     @else
                                                         <p class="fst-italic">No labels</p>
+                                                    @endif
+
+                                                    {{-- Ratings --}}
+                                                    <h5 class="card-title mt-4">Ratings</h5>
+                                                    @if ($realImage)
+                                                        <div class="mb-1 d-flex align-items-center gap-1">
+                                                            <span class="me-1 text-capitalize" style="width: 70px">adult</span>
+                                                            <i class="{{ $realImage->adult }}"></i>
+                                                        </div>
+                                                        <div class="mb-1 d-flex align-items-center gap-1">
+                                                            <span class="me-1 text-capitalize" style="width: 70px">violence</span>
+                                                            <i class="{{ $realImage->violence }}"></i>
+                                                        </div>
+                                                        <div class="mb-1 d-flex align-items-center gap-1">
+                                                            <span class="me-1 text-capitalize" style="width: 70px">spoof</span>
+                                                            <i class="{{ $realImage->spoof }}"></i>
+                                                        </div>
+                                                        <div class="mb-1 d-flex align-items-center gap-1">
+                                                            <span class="me-1 text-capitalize" style="width: 70px">racy</span>
+                                                            <i class="{{ $realImage->racy }}"></i>
+                                                        </div>
+                                                        <div class="mb-1 d-flex align-items-center gap-1">
+                                                            <span class="me-1 text-capitalize" style="width: 70px">medical</span>
+                                                            <i class="{{ $realImage->medical }}"></i>
+                                                        </div>
+                                                    @else
+                                                        <p class="fst-italic">No ratings</p>
                                                     @endif
                                                 </div>
                                             </div>

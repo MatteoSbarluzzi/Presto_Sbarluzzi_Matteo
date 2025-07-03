@@ -11,6 +11,10 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+// ✅ Import dei job Google Vision
+use App\Jobs\GoogleVisionSafeSearch;
+use App\Jobs\GoogleVisionLabelImage;
+
 class ArticleController extends Controller implements HasMiddleware
 {
     public static function middleware(): array
@@ -29,7 +33,9 @@ class ArticleController extends Controller implements HasMiddleware
             $category = Category::where('slug', $request->category)->first();
             if ($category) {
                 $query->where('category_id', $category->id);
-                $maxPrice = Article::where('is_accepted', true)->where('category_id', $category->id)->max('price') ?? 0;
+                $maxPrice = Article::where('is_accepted', true)
+                    ->where('category_id', $category->id)
+                    ->max('price') ?? 0;
             }
         }
 
@@ -158,6 +164,7 @@ class ArticleController extends Controller implements HasMiddleware
             'images_to_delete.*' => 'exists:images,id',
         ]);
 
+        // ✅ Backup dei vecchi dati solo se articolo già accettato e nessun backup presente
         if (
             $article->was_ever_accepted === true &&
             is_null($article->old_title) &&
@@ -166,22 +173,27 @@ class ArticleController extends Controller implements HasMiddleware
             is_null($article->old_category_id) &&
             is_null($article->old_images)
         ) {
+            $validImagePaths = [];
+            foreach ($article->images as $image) {
+                if (Storage::disk('public')->exists($image->path)) {
+                    $validImagePaths[] = $image->path;
+                    $backupPath = 'backup/' . $image->path;
+                    if (!Storage::disk('public')->exists($backupPath)) {
+                        Storage::disk('public')->copy($image->path, $backupPath);
+                    }
+                }
+            }
+
             $article->update([
                 'old_title' => $article->title,
                 'old_description' => $article->description,
                 'old_price' => $article->price,
                 'old_category_id' => $article->category_id,
-                'old_images' => $article->images->pluck('path')->toArray(),
+                'old_images' => $validImagePaths,
             ]);
-
-            foreach ($article->images as $image) {
-                $backupPath = 'backup/' . $image->path;
-                if (!Storage::disk('public')->exists($backupPath) && Storage::disk('public')->exists($image->path)) {
-                    Storage::disk('public')->copy($image->path, $backupPath);
-                }
-            }
         }
 
+        // ✅ Elimina le immagini selezionate
         if ($request->filled('images_to_delete')) {
             foreach ($request->images_to_delete as $imageId) {
                 $image = Image::find($imageId);
@@ -192,6 +204,7 @@ class ArticleController extends Controller implements HasMiddleware
             }
         }
 
+        // ✅ Aggiorna i campi principali
         $article->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -200,10 +213,14 @@ class ArticleController extends Controller implements HasMiddleware
             'is_accepted' => null,
         ]);
 
+        // ✅ Salva nuove immagini e dispatcha i job
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imageFile) {
                 $path = $imageFile->store('articles', 'public');
-                $article->images()->create(['path' => $path]);
+                $image = $article->images()->create(['path' => $path]);
+
+                GoogleVisionSafeSearch::dispatch($image->id);
+                GoogleVisionLabelImage::dispatch($image->id);
             }
         }
 

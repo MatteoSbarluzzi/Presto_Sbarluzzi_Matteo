@@ -117,6 +117,7 @@
                         </div>
                     @endif
 
+
                     {{-- Campo nascosto: termine di ricerca se presente nella query string --}}
                     @if(request('query'))
                         <input type="hidden" name="query" value="{{ request('query') }}">
