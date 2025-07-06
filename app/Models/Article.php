@@ -15,6 +15,7 @@ class Article extends Model
 {
     use Searchable;
 
+    // Campi assegnabili in massa
     protected $fillable = [
         'title',
         'description',
@@ -30,31 +31,37 @@ class Article extends Model
         'old_images',
     ];
 
+    // Conversione automatica per tipi complessi
     protected $casts = [
         'old_images' => 'array',
         'was_ever_accepted' => 'boolean',
     ];
 
+    // Relazione: un articolo appartiene a un utente
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    // Relazione: un articolo appartiene a una categoria
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
+    // Relazione: un articolo ha molte immagini
     public function images(): HasMany
     {
         return $this->hasMany(Image::class);
     }
 
+    // Conta gli articoli ancora da revisionare
     public static function toBeRevisionedCount()
     {
         return self::where('is_accepted', null)->count();
     }
 
+    // Dati da indicizzare per la ricerca
     public function toSearchableArray()
     {
         return [
@@ -65,11 +72,13 @@ class Article extends Model
         ];
     }
 
+    // Ritorna la chiave di traduzione della categoria
     public function getTranslatedCategoryKey(): string
     {
         return 'ui.categories_list.' . str_replace('-', '_', $this->category->slug);
     }
 
+    // Ripristina i dati precedenti salvati prima della modifica
     public function restoreOldData()
     {
         $this->restoreOldImages();
@@ -87,6 +96,7 @@ class Article extends Model
         ]);
     }
 
+    // Cancella i campi di backup delle modifiche
     public function clearOldData()
     {
         $this->update([
@@ -98,12 +108,14 @@ class Article extends Model
         ]);
     }
 
+    // Ritorna il valore da mostrare nel form revisore (modifica proposta o valore attuale)
     public function getReviewValue(string $field)
     {
         $oldField = 'old_' . $field;
         return $this->$oldField ?? $this->$field;
     }
 
+    // Ripristina le immagini precedenti salvate in backup
     public function restoreOldImages()
     {
         if (!empty($this->old_images)) {
@@ -125,6 +137,7 @@ class Article extends Model
                 }
             }
 
+            // Pulisce il campo old_images una volta ripristinato tutto
             $this->old_images = null;
             $this->save();
         }

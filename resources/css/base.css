@@ -1,4 +1,4 @@
-/* === RESET BASE === */
+/* RESET BASE */
 body, html {
   overflow-x: hidden;
   max-width: 100%;
@@ -6,7 +6,7 @@ body, html {
   padding: 0;
 }
 
-/* === FONT === */
+/* FONT */
 body, p {
   font-family: 'Inter', sans-serif;
 }
@@ -35,7 +35,7 @@ form[role="search"] .form-control {
   font-family: 'Inter', sans-serif;
 }
 
-/* === VARIABILI === */
+/* VARIABILI */
 :root {
   --dark-blue: #002547;
   --sky-blue: #005E8C;
@@ -44,14 +44,14 @@ form[role="search"] .form-control {
   --beige: #FFF6D8;
 }
 
-/* === SFONDI PERSONALIZZATI === */
+/* SFONDI PERSONALIZZATI */
 .bg-dark-blue { background-color: var(--dark-blue); color: white; }
 .bg-sky-blue { background-color: var(--sky-blue); color: white; }
 .bg-light-blue { background-color: var(--light-blue); color: white; }
 .bg-orange { background-color: var(--orange); color: black; }
 .bg-beige { background-color: var(--beige); color: black; }
 
-/* === COLORI TESTO PERSONALIZZATI === */
+/* COLORI TESTO PERSONALIZZATI */
 .text-dark-blue { color: var(--dark-blue); }
 .text-sky-blue { color: var(--sky-blue); }
 .text-light-blue { color: var(--light-blue); }

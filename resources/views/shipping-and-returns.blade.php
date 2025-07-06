@@ -8,7 +8,7 @@
         <p class="lead text-center text-beige">
             {{ __('ui.shipping_and_returns_description') }}
         </p>
-
+        
         {{-- Riga contenente colonna sinistra e immagine --}}
         <div class="row my-5">
             {{-- Colonna SINISTRA: Spedizione + Reso --}}
@@ -18,27 +18,27 @@
                     <h2 class="h5 fw-bold">{{ __('ui.shipping_title') }}</h2>
                     <p>{{ __('ui.shipping_paragraph') }}</p>
                 </div>
-
+                
                 {{-- Blocco Reso --}}
                 <div class="p-4 bg-light-blue text-dark-blue rounded shadow border">
                     <h2 class="h5 fw-bold">{{ __('ui.returns_title') }}</h2>
                     <p>{{ __('ui.returns_paragraph') }}</p>
                 </div>
             </div>
-
+            
             {{-- Colonna DESTRA: Immagine --}}
             <div class="col-md-6 my-4 d-flex align-items-center justify-content-center">
                 <img src="{{ asset('storage/images/shippingreturns.png') }}" alt="Shipping and Returns" class="img-fluid rounded shadow">
             </div>
         </div>
     </section>
-
+    
     {{-- Sezione FAQ --}}
     <section class="container-fluid bg-beige py-5">
         <div class="container">
             <h2 class="text-dark-blue fw-bold mb-4">{{ __('ui.faq_title') }}</h2>
             <div class="accordion accordion-flush" id="faqAccordion">
-
+                
                 {{-- FAQ 1 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingOne">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 {{-- FAQ 2 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingTwo">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 {{-- FAQ 3 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingThree">
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 {{-- FAQ 4 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingFour">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 {{-- FAQ 5 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingFive">
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 {{-- FAQ 6 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingSix">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 {{-- FAQ 7 --}}
                 <div class="accordion-item border rounded mb-3">
                     <h2 class="accordion-header" id="faqHeadingSeven">
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-
+                
             </div>
         </div>
     </section>

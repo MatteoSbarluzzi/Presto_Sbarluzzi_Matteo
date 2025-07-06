@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let thirdNumber = document.querySelector('#thirdNumber');
 
     if (firstNumber && secondNumber && thirdNumber) {
+        // Attiva animazione numeri quando visibili
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting && confirm) {
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '#prevButton',
         },
         breakpoints: {
+            // Layout desktop
             576: {
                 direction: 'horizontal',
                 slidesPerView: 3,
@@ -106,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     slideShadows: false,
                 }
             },
+            // Layout mobile
             0: {
                 direction: 'vertical',
                 slidesPerView: 3,
@@ -127,8 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
             section.classList.remove('d-flex', 'align-items-center', 'min-vh-100', 'section-responsive');
 
             if (window.innerWidth < 992) {
+                // Su mobile: solo classe base
                 section.classList.add('section-responsive');
             } else {
+                // Su desktop: layout centrato
                 section.classList.add('section-responsive', 'd-flex', 'align-items-center', 'min-vh-100');
             }
         });
@@ -153,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (applyFiltersBtn && filterForm) {
         applyFiltersBtn.addEventListener('click', () => {
+            // Costruisce la query string da inviare
             let selectedCategory = document.querySelector('#categorySelect').value;
             let sort = document.querySelector('#sortSelect').value;
             let price = document.querySelector('#priceInput').value;
@@ -163,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (price) params.append('price', price);
             if (query) params.append('query', query); 
 
+            // Reindirizza alla categoria selezionata oppure a tutti gli articoli
             if (selectedCategory && selectedCategory !== 'all') {
                 window.location.href = `/category/${selectedCategory}?${params.toString()}`;
             } else {
@@ -178,8 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const imageId = btn.dataset.imageId;
 
             if (imageContainer && imageId) {
+                // Nasconde l'immagine
                 imageContainer.style.display = 'none';
 
+                // Aggiunge input nascosto per inviarlo al controller
                 const hiddenInput = document.createElement('input');
                 hiddenInput.type = 'hidden';
                 hiddenInput.name = 'images_to_delete[]';
@@ -199,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const uniqueFiles = [];
             const fileNames = new Set();
 
+            // Evita duplicati confrontando i nomi dei file
             Array.from(event.target.files).forEach(file => {
                 if (!fileNames.has(file.name)) {
                     uniqueFiles.push(file);
@@ -206,6 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Mostra le anteprime
             uniqueFiles.forEach(file => {
                 const reader = new FileReader();
                 reader.onload = function(e) {

@@ -1,5 +1,6 @@
 <x-layout>
-    {{-- Contenitore principale con sfondo, colore testo e altezza minima schermo --}}
+
+    {{-- Contenitore principale --}}
     <div class="container-fluid mt-5 bg-light-blue text-beige min-vh-100">
 
         {{-- Titolo pagina --}}

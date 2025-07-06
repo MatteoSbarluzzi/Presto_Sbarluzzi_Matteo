@@ -59,7 +59,6 @@ return [
     'want_to_become_revisor' => 'I would like to become a revisor',
     'revisor_request_thank_you' => 'Thank you for your request and for wanting to join our team of revisors. We will contact you at the email you registered with to schedule an interview.',
     'article_deleted' => "The article has been deleted because it was not approved.",
-
     
     // Categories
     'categories_list' => [
@@ -136,21 +135,17 @@ return [
     'no_reviews_yet' => 'No reviews yet',
     'review_sent_successfully' => 'Review submitted successfully!',
     'reviews' => 'Reviews',
-
-    // Shipping
+    
+    // Shipping and Returns
 'shipping_worldwide' => 'Guaranteed international shipping',
 'shipping_description' => 'At Presto.it, we provide reliable and professional shipping services both nationally and internationally. Through our trusted logistics partners, we ensure fast, trackable, and timely deliveries wherever our customers are located. Rely on us for efficient and secure handling of your shipments.',
 'approfondisci' => 'Learn more',
-    
     'shipping_detail_1' => 'We ship to over 50 countries worldwide with trusted couriers.',
 'shipping_detail_2' => 'Delivery times range from 2 to 7 business days depending on the destination.',
 'shipping_detail_3' => 'Each package is tracked and insured to ensure maximum safety.',
-    
 'returns_detail_1' => 'You have 14 days to return an item if it’s not as expected.',
 'returns_detail_2' => 'To request a return, contact our customer service and provide your order number.',
 'returns_detail_3' => 'Refunds are processed within 5–7 business days after the return is received.',
-    
-    // Shipping and Returns
     'shipping_and_returns' => 'Shipping and Returns',
     'shipping_and_returns_description' => 'Discover all the information about our shipping and return policies.',
     'shipping_title' => 'Shipping Information',
@@ -158,29 +153,20 @@ return [
     'returns_title' => 'Return Policy',
     'returns_paragraph' => 'Customer satisfaction is our top priority. You have 14 days from the delivery date to request a return, with no obligation to provide a reason. If the product doesn’t meet your expectations, you can easily return it by filling out the return form in your account area. Return shipping is free for defective or incorrect items. Refunds will be processed within 5–7 business days after receiving the returned product.',
     
-    
-    
     // FAQ
     'faq_title' => 'Frequently Asked Questions',
-    
     'faq_q1' => 'How long does shipping take?',
 'faq_a1' => 'Domestic shipping takes between 2 to 5 business days. International delivery times vary depending on the destination. You’ll receive an email with a tracking link to monitor your shipment.',
-    
 'faq_q2' => 'How can I track my order?',
 'faq_a2' => 'As soon as your order is shipped, you’ll receive an email with a tracking link. You can follow your delivery status anytime from your account area.',
-    
 'faq_q3' => 'What payment methods do you accept?',
 'faq_a3' => 'We accept a wide range of secure payment methods: credit and debit cards (Visa, Mastercard, American Express), PayPal, bank transfer, Google Pay, Apple Pay, and cryptocurrencies such as Bitcoin.',
-    
 'faq_q4' => 'Are there any return costs?',
 'faq_a4' => 'Returns are free in case of damaged or incorrect products. Otherwise, return shipping costs are the customer’s responsibility.',
-    
 'faq_q5' => 'What are the requirements to work with Presto.it?',
 'faq_a5' => 'We’re always looking for motivated collaborators! You must be over 18, have a good understanding of digital tools, and a passion for e-commerce. You can apply via the "Work with us" section and we’ll contact you for an interview.',
-    
 'faq_q6' => 'How long does it take Presto.it to select candidates?',
 'faq_a6' => 'Our recruitment team reviews applications within 5–7 business days. Suitable candidates will be contacted by email to arrange an interview.',
-    
 'faq_q7' => 'How long does customer support take to reply?',
 'faq_a7' => 'Our customer service usually responds within 24 to 48 business hours. For urgent matters, you may be contacted by phone as soon as possible.',
     
@@ -195,6 +181,7 @@ return [
     'english' => 'English',
     'spanish' => 'Spanish',
     
+    // Filters
     'explore_latest_ads' => 'Explore the latest listings',
     'apply_filters' => 'Apply filters',
     'reset_filters' => 'Reset filters',
@@ -211,12 +198,27 @@ return [
     // Article creation
     'article_created_successfully' => 'Article created successfully.',
     'article_submitted_for_review' => 'Article submitted for review.',
-
+    'article_deleted_successfully' => 'Article deleted successfully.',
+    
     // Login
     'login_failed' => 'The provided credentials are incorrect.',
-
+    
+    //Register
+    'name_required' => 'Name is required.',
+    'email_required' => 'Email is required.',
+    'email_invalid' => 'The email address is not valid.',
+    'email_taken' => 'The email address is already registered.',
+    'passwords_do_not_match' => 'Passwords do not match.',
+    
     // id creator user
     'created_by' => 'Created by',
-
-
+    
+    // Payment Methods
+    'visa' => 'Visa',
+    'mastercard' => 'MasterCard',
+    'amex' => 'American Express',
+    'paypal' => 'PayPal',
+    'bank_transfer' => 'Bank transfer',
+    'google_pay' => 'Google Pay',
+    'apple_pay' => 'Apple Pay',
 ];

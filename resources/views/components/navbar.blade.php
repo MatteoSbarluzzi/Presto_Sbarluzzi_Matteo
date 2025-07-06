@@ -1,4 +1,3 @@
-{{-- Navbar --}}
 <nav class="navbar navbar-expand-lg fixed-top navcustom">
   <div class="container">
     
@@ -9,7 +8,9 @@
     
     {{-- Bottone toggle mobile --}}
     <button class="navbar-toggler text-white border-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"><div></div><span>
+      <span class="navbar-toggler-icon"><span></span></span>
+
+      
     </button>
     
     {{-- Menu principale della navbar --}}
@@ -76,7 +77,9 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('create.article') }}">{{ __('ui.create') }}</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ route('reviews') }}">{{ __('ui.reviews') }}</a></li>
+            <li><hr class="dropdown-divider"></li>
             <li>
               <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">
                 {{ __('ui.logout') }}
@@ -97,6 +100,8 @@
             <li><a class="dropdown-item" href="{{ route('login') }}">{{ __('ui.login') }}</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ route('register') }}">{{ __('ui.register') }}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ route('reviews') }}">{{ __('ui.reviews') }}</a></li>
           </ul>
         </li>
         @endauth

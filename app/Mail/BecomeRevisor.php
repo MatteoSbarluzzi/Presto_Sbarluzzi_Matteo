@@ -15,7 +15,7 @@ class BecomeRevisor extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user; //utente che ha fatto richiesta di diventare revisore
+    public $user; // Utente che ha fatto richiesta di diventare revisore
 
     public function __construct(User $user)
     {

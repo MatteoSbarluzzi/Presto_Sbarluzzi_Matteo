@@ -1,17 +1,17 @@
 <footer class="bg-black text-white text-center">
   <div class="container p-4">
 
-    <!-- Sezione descrizione -->
+    {{-- Sezione descrizione --}}
     <section class="mb-4">
       {{-- Descrizione generale del sito, testuale e tradotta --}}
       <p>{{ __('ui.description_footer') }}</p>
     </section>
 
-    <!-- Sezione: colonne principali -->
+    {{-- Sezione: colonne principali --}}
     <div class="container">
       <div class="row">
 
-        <!-- Colonna Contatti -->
+        {{-- Colonna contatti --}}
         <div class="col-md-3 mb-3">
           {{-- Informazioni di contatto aziendali --}}
           <h5>{{ __('ui.contact') }}</h5>
@@ -23,7 +23,7 @@
           <p>{{ __('ui.vat_number') }}: 12345678901</p>
         </div>
 
-        <!-- Colonna Fatturazione -->
+        {{-- Colonna fatturazione --}}
         <div class="col-md-3 mb-3 text-center">
           {{-- Collegamenti a pagine informative relative ad ordini e spedizioni --}}
           <h5>{{ __('ui.billing_and_orders') }}</h5>
@@ -53,7 +53,7 @@
           </div>
         </div>
 
-        <!-- Colonna Social -->
+        {{-- Colonna social --}}
         <div class="col-md-3 mb-3 d-flex flex-column align-items-center">
           {{-- Collegamenti ai social con icone bootstrap e apertura in nuova finestra --}}
           <h5>{{ __('ui.follow_us') }}</h5>
@@ -86,7 +86,7 @@
           </ul>
         </div>
 
-        <!-- Colonna Newsletter + Revisore -->
+        {{-- Colonna newsletter + revisore --}}
         <div class="col-md-3 mb-3">
           {{-- Form per iscrizione newsletter --}}
           <h5>{{ __('ui.newsletter_text') }}</h5>
@@ -118,7 +118,7 @@
     </div>
   </div>
 
-  <!-- Copyright -->
+  {{-- Copyright --}}
   <div class="text-center p-3 bg-dark text-white">
     {{-- Riferimento al sito con link alla homepage --}}
     © 2025 Copyright:

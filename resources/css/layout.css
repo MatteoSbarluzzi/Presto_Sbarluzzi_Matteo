@@ -1,4 +1,4 @@
-/* === NAVBAR BASE === */
+/* NAVBAR BASE */
 .navcustom {
   background-color: var(--dark-blue);
   font-weight: 500;
@@ -30,10 +30,64 @@
   z-index: 1001;
 }
 
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 30 30'%3E%3Cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+/* HAMGURGER CUSTOM COLOR CON TRASFORMAZIONE IN X */
+.navbar .navbar-toggler:focus,
+.navbar .navbar-toggler:active,
+.navbar .navbar-toggler:focus-visible {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }
 
+.navbar-toggler-icon {
+  background-image: none;
+  position: relative;
+  width: 30px;
+  height: 22px;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+  content: '';
+  display: block;
+  background-color: var(--beige);
+  height: 3px;
+  margin: 5px 0;
+  border-radius: 1px;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.navbar-toggler-icon::before {
+  top: 0;
+}
+
+.navbar-toggler-icon span {
+  top: 9px;
+}
+
+.navbar-toggler-icon::after {
+  bottom: 0;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+  transform: rotate(-45deg);
+  bottom: 9px;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon span {
+  opacity: 0;
+}
+
+/* NAVBAR LINKS */
 .navbar-nav {
   display: flex;
   align-items: center;
@@ -67,7 +121,7 @@
   color: var(--beige);
 }
 
-/* === Navbar dropdown === */
+/* NAVBAR DROPDOWN */
 .navbar .dropdown-menu {
   background-color: var(--dark-blue);
   border: none;
@@ -86,7 +140,7 @@
   background-color: transparent;
 }
 
-/* === FIX PER MENU LINGUE === */
+/* FIX PER MENU LINGUE */
 .navbar .dropdown-menu button.dropdown-item span {
   color: var(--beige);
   transition: color 0.2s ease;
@@ -96,7 +150,7 @@
   color: var(--orange);
 }
 
-/* === FORM RICERCA NELLA NAVBAR === */
+/* FORM RICERCA NELLA NAVBAR */
 form[role="search"] {
   display: flex;
   align-items: center;
@@ -115,7 +169,7 @@ form[role="search"] .form-control {
   width: auto;
 }
 
-/* === Bottone di ricerca nella navbar === */
+/* BOTTONE DI RICERCA NELLA NAVBAR */
 .input-group-text.btn-search-custom {
   background-color: var(--beige);
   color: black;
@@ -133,7 +187,7 @@ form[role="search"] .form-control {
   color: var(--beige);
 }
 
-/* === HOMEPAGE HERO === */
+/* HOMEPAGE HERO */
 #backgroundpresto {
   background-image: url('/storage/app/public/images/backgroundpresto.png');
   background-size: cover;
@@ -149,7 +203,7 @@ form[role="search"] .form-control {
   text-align: center;
 }
 
-/* === TITOLO HOMEPAGE === */
+/* TITOLO HOMEPAGE */
 .welcometitle {
   color: var(--beige);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -161,64 +215,8 @@ form[role="search"] .form-control {
   font-weight: 700;
 }
 
-/* === SEZIONE RESPONSIVA === */
+/* SEZIONE RESPONSIVA */
 .section-responsive {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-
-
-
-/* Contenitore hamburger */
-.navbar-toggler-icon {
-  position: relative;
-  width: 24px;
-  height: 16px;
-  display: inline-block;
-}
-
-/* Linee dell'hamburger */
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after,
-.navbar-toggler-icon div {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: white;
-  transition: all 0.3s ease;
-}
-
-/* Linea superiore */
-.navbar-toggler-icon::before {
-  top: 0;
-}
-
-/* Linea inferiore */
-.navbar-toggler-icon::after {
-  bottom: 0;
-}
-
-/* Linea centrale */
-.navbar-toggler-icon div {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Stato attivo: forma X */
-.navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
-  transform: rotate(45deg);
-  top: 50%;
-}
-
-.navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
-  transform: rotate(-45deg);
-  top: 50%;
-  bottom: auto;
-}
-
-.navbar-toggler:not(.collapsed) .navbar-toggler-icon div {
-  opacity: 0;
 }

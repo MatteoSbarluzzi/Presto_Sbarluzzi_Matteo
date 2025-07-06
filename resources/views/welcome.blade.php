@@ -1,5 +1,5 @@
 <x-layout>
-    {{-- Hero Section --}}
+
     <div id="backgroundpresto" class="container-fluid text-center d-flex align-items-center justify-content-center bg-dark-blue text-white py-5">
         <div class="row w-100">
             <div class="col-12">
@@ -15,11 +15,10 @@
                 @endif
                 
                 @if (session()->has('message'))
-    <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
-        {{ __('ui.' . session('message')) }}
-    </div>
-@endif
-
+                <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
+                    {{ __('ui.' . session('message')) }}
+                </div>
+                @endif
                 
                 {{-- Pulsante pubblica articolo --}}
                 <div class="my-3">
@@ -32,20 +31,20 @@
             </div>
         </div>
     </div>
-
+    
     {{-- Blocco notifiche utente --}}
     @if(Auth::check() && Auth::user()->unreadNotifications->isNotEmpty())
-        <div class="container my-4">
-            <h5 class="text-center">{{ __('ui.notifications') }}</h5>
-            @foreach(Auth::user()->unreadNotifications as $notification)
-                <div class="alert alert-warning d-flex justify-content-between align-items-center">
-                    <span>{{ $notification->data['message'] }}</span>
-                    <a href="{{ route('article.show', $notification->data['article_id']) }}" class="btn btn-sm btn-primary">
-                        {{ __('ui.view_article') }}
-                    </a>
-                </div>
-            @endforeach
+    <div class="container my-4">
+        <h5 class="text-center">{{ __('ui.notifications') }}</h5>
+        @foreach(Auth::user()->unreadNotifications as $notification)
+        <div class="alert alert-warning d-flex justify-content-between align-items-center">
+            <span>{{ $notification->data['message'] }}</span>
+            <a href="{{ route('article.show', $notification->data['article_id']) }}" class="btn btn-sm btn-primary">
+                {{ __('ui.view_article') }}
+            </a>
         </div>
+        @endforeach
+    </div>
     @endif
     
     {{-- Titolo "Esplora le ultime inserzioni" --}}

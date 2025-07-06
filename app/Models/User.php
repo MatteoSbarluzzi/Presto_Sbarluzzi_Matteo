@@ -47,7 +47,7 @@ class User extends Authenticatable
         ];
     }
 
-    //Ogni utente della tabella articles ha una colonna user_id che punta alla tabella users
+    // Ogni utente della tabella articles ha una colonna user_id che punta alla tabella users
     public function articles() : HasMany
     {
         return $this->hasMany(Article::class);

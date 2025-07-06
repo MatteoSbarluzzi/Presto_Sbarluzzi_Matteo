@@ -1,4 +1,4 @@
-/* === ANIMAZIONI BASE === */
+/* ANIMAZIONI BASE */
 .slide-down {
   animation: slideDown 1s ease forwards;
   opacity: 0;
@@ -19,7 +19,7 @@
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* === ANIMAZIONE COLLAPSE MENU === */
+/* ANIMAZIONE COLLAPSE MENU */
 .navbar-collapse.collapsing-in,
 .navbar-collapse.collapsing-out,
 .navbar-collapse.show {
@@ -50,7 +50,7 @@
   to { max-height: 0; opacity: 0; }
 }
 
-/* === ANIMAZIONI ENTRATA LATERALE === */
+/* ANIMAZIONI ENTRATA LATERALE */
 .slide-from-left,
 .slide-from-right {
   opacity: 0;
@@ -70,7 +70,7 @@
   transform: translateX(0);
 }
 
-/* === ANIMAZIONI DAL BASSO === */
+/* ANIMAZIONI DAL BASSO */
 .slide-from-bottom {
   opacity: 0;
   transform: translateY(40px);
@@ -93,7 +93,7 @@
   transform: translateY(0);
 }
 
-/* === FADE-IN ARTICOLI === */
+/* FADE-IN ARTICOLI */
 .article-fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -105,7 +105,7 @@
   transform: translateY(0);
 }
 
-/* === FADE-IN RECENSIONI === */
+/* FADE-IN RECENSIONI */
 .review-fade-in {
   opacity: 0;
   transition: opacity 1s ease;
@@ -115,7 +115,7 @@
   opacity: 1;
 }
 
-/* === SWIPER COVERFLOW === */
+/* SWIPER COVERFLOW */
 .swiper {
   width: 100%;
   padding-top: 50px;
@@ -141,7 +141,7 @@
   pointer-events: auto;
 }
 
-/* === FRECCE CAROSELLO === */
+/* FRECCE CAROSELLO */
 .arrow-button {
   width: 40px;
   height: 40px;
@@ -166,32 +166,33 @@
   right: 10px;
 }
 
+/* PREVIEW IMMAGINI + CANCELLAZIONE */
 .image-container {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .image-container img {
-    width: 150px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .image-delete-btn {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-    cursor: pointer;
-    z-index: 10;
-    padding: 0;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
 }

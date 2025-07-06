@@ -1,6 +1,6 @@
 <x-layout>
     
-    {{-- Contenitore principale con sfondo, colore testo e altezza minima per riempire la viewport --}}
+    {{-- Contenitore principale --}}
     <div class="container-fluid bg-light-blue text-beige min-vh-100 d-flex flex-column justify-content-center">
 
         {{-- Titolo della pagina --}}
@@ -25,3 +25,4 @@
     </div>
 
 </x-layout>
+

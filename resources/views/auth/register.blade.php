@@ -1,5 +1,6 @@
 <x-layout>
-    {{-- Contenitore con sfondo, testo chiaro e altezza minima a schermo pieno --}}
+
+    {{-- Contenitore principale --}}
     <div class="container-fluid bg-light-blue text-beige min-vh-100 d-flex flex-column justify-content-center">
 
         {{-- Titolo pagina --}}
@@ -22,19 +23,40 @@
                     {{-- Campo Nome --}}
                     <div class="mb-3">
                         <label for="name" class="form-label">{{ __('ui.name') }}:</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <div class="text-danger mt-1">{{ __('ui.name_required') }}</div>
+                        @enderror
                     </div>
 
                     {{-- Campo Email --}}
                     <div class="mb-3">
                         <label for="registerEmail" class="form-label">{{ __('ui.email_address') }}:</label>
-                        <input type="email" class="form-control" id="registerEmail" name="email">
+                        <input type="email" class="form-control" id="registerEmail" name="email" value="{{ old('email') }}">
+                        @error('email')
+                            @if(str_contains($message, 'required'))
+                                <div class="text-danger mt-1">{{ __('ui.email_required') }}</div>
+                            @elseif(str_contains($message, 'valid'))
+                                <div class="text-danger mt-1">{{ __('ui.email_invalid') }}</div>
+                            @elseif(str_contains($message, 'taken') || str_contains($message, 'been taken'))
+                                <div class="text-danger mt-1">{{ __('ui.email_taken') }}</div>
+                            @else
+                                <div class="text-danger mt-1">{{ $message }}</div> {{-- fallback --}}
+                            @endif
+                        @enderror
                     </div>
 
                     {{-- Campo Password --}}
                     <div class="mb-3">
                         <label for="password" class="form-label">{{ __('ui.password') }}:</label>
                         <input type="password" class="form-control" id="password" name="password">
+                        @error('password')
+                            @if(str_contains($message, 'confirmation'))
+                                <div class="text-danger mt-1">{{ __('ui.passwords_do_not_match') }}</div>
+                            @else
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @endif
+                        @enderror
                     </div>
 
                     {{-- Campo Conferma Password --}}

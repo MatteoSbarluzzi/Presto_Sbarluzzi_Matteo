@@ -12,7 +12,6 @@
             </div>
             @endif
             
-            
             {{-- Form per scrivere recensione (solo utenti autenticati) --}}
             @auth
             <div class="card mb-4 shadow">

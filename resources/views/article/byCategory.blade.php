@@ -1,14 +1,14 @@
 <x-layout>
     <div class="container-fluid py-5 bg-sky-blue text-beige">
         
-        {{-- TITOLO CATEGORIA --}}
+        {{-- Titolo categoria --}}
         <div class="row mb-5">
             <div class="col-12 text-center mt-5 pt-5 mt-sm-0">
                 <h1 class="display-4 slide-from-bottom-slow">
                     {{ __('ui.category_articles', ['category' => __('ui.categories_list.' . $category->slug)]) }}
                 </h1>
 
-                {{-- MESSAGGIO DI SUCCESSO --}}
+                {{-- Messaggio di successo --}}
                 @if (session('message'))
                     <div class="alert alert-success text-center my-4 shadow rounded w-75 mx-auto">
                         {{ session('message') }}
@@ -17,17 +17,17 @@
             </div>
         </div>
 
-        {{-- SEZIONE FILTRI + RISULTATI --}}
+        {{-- Sezione filtri + risultati --}}
         <div class="row justify-content-center align-items-start">
 
-            {{-- COLONNA SINISTRA: FILTRI --}}
+            {{-- Colonna sinistra: filtri --}}
             <div class="col-12 col-md-3 px-4 sticky-filter filter-box">
 
                 <h4 class="mb-4">{{ __('ui.filter_by') }}</h4>
 
                 <form method="GET" action="{{ route('byCategory', ['category' => $category->slug]) }}" id="filterForm">
 
-                    {{-- CATEGORIA --}}
+                    {{-- Categoria --}}
                     <div class="mb-3">
                         <label for="categorySelect" class="form-label">{{ __('ui.select_category') }}</label>
                         <select id="categorySelect" name="category" class="form-select">
@@ -42,7 +42,7 @@
                         </select>
                     </div>
 
-                    {{-- ORDINAMENTO --}}
+                    {{-- Ordinamento --}}
                     <div class="mb-3">
                         <label for="sortSelect" class="form-label">{{ __('ui.sort_by') }}</label>
                         <select id="sortSelect" name="sort" class="form-select">
@@ -56,7 +56,7 @@
                         </select>
                     </div>
 
-                    {{-- FILTRO PREZZO --}}
+                    {{-- Filtro prezzo --}}
                     <div class="mb-3">
                         <label for="priceInput" class="form-label">{{ __('ui.filter_by_price') }}</label>
                         <input
@@ -73,7 +73,7 @@
                         </div>
                     </div>
 
-                    {{-- FILTRO PER PAROLA --}}
+                    {{-- Filtro per parola --}}
                     <div class="mb-3">
                         <label for="wordInput" class="form-label">{{ __('ui.search_by_word') }}</label>
                         <input
@@ -86,7 +86,7 @@
                         >
                     </div>
 
-                    {{-- BOTTONI FILTRI --}}
+                    {{-- Bottoni filtri --}}
                     <div class="d-grid gap-2 mb-4">
                         <button type="button" id="applyFiltersBtn" class="btn btn-apply-filters">
                             {{ __('ui.apply_filters') }}
@@ -98,7 +98,7 @@
                 </form>
             </div>
 
-            {{-- COLONNA DESTRA: CARD ARTICOLI --}}
+            {{-- Colonna destra: card articoli --}}
             <div class="col-12 col-md-9">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center" id="cardWrapper">
                     @forelse ($articles as $article)
@@ -112,7 +112,7 @@
                     @endforelse
                 </div>
 
-                {{-- PAGINAZIONE --}}
+                {{-- Paginazione --}}
                 <div class="my-5">
                     {{ $articles->withQueryString()->links() }}
                 </div>

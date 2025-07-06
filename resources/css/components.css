@@ -1,4 +1,4 @@
-/* === CARD PERSONALIZZATE === */
+/* CARD PERSONALIZZATE */
 .card-custom {
   background-color: var(--beige);
   color: var(--dark-blue);
@@ -55,7 +55,7 @@
   max-width: 300px;
 }
 
-/* === BADGE CATEGORIA === */
+/* BADGE CATEGORIA */
 .card-custom .badge,
 .badge-category {
   background-color: transparent;
@@ -67,7 +67,7 @@
   transition: all 0.3s ease;
 }
 
-/* === FORM AUTENTICAZIONE (login/register) === */
+/* FORM AUTENTICAZIONE (lOGIN/REGISTER) */
 .auth-form {
   background-color: var(--beige);
   color: var(--dark-blue);
@@ -99,7 +99,7 @@
   color: white;
 }
 
-/* === BOTTONI === */
+/* BOTTONI */
 .card-custom .btn-detail,
 button.btn-apply-filters,
 a.btn-apply-filters,
@@ -269,7 +269,7 @@ button.btn.btn-review-submit:hover {
   color: white;
 }
 
-/* === BOTTONI DETTAGLIO (wrapper) === */
+/* BOTTONI DETTAGLIO (WRAPPER) */
 .button-column-wrapper {
   max-width: 400px;
   margin-left: auto;
@@ -290,14 +290,14 @@ button.btn.btn-review-submit:hover {
   text-decoration: none;
 }
 
-/* Rimozione padding interno */
+/* RIMOZIONE PADDING INTERNO */
 .btn-close-detail,
 .btn-edit-custom,
 .btn-delete-custom {
   padding: 0;
 }
 
-/* === PAGINATION === */
+/* PAGINATION */
 .pagination {
   justify-content: center;
   gap: 0.5rem;

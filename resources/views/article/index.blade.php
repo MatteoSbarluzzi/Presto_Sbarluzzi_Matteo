@@ -1,32 +1,37 @@
 <x-layout>
 
-    {{-- Contenitore principale con sfondo azzurro e testo beige --}}
+    {{-- Contenitore principale --}}
     <div class="container-fluid py-5 bg-sky-blue text-beige">
 
-        {{-- TITOLO PAGINA --}}
+        {{-- Titolo pagina --}}
         <div class="row mb-5">
             <div class="col-12 text-center mt-4">
                 <h1 class="display-4 slide-from-bottom-slow mt-4 mt-sm-5">
                     {{ __('ui.all_articles') }}
                 </h1>
 
-                {{-- MESSAGGIO DI SUCCESSO (es. articolo creato) --}}
+                {{-- Messaggio di successo (es. articolo creato) --}}
                 @if (session('message'))
-                    <div class="alert alert-success text-center my-4 shadow rounded w-45">
-                        {{ session('message') }}
+                    <div class="row justify-content-center my-4">
+                        <div class="col-md-6">
+                            <div class="alert alert-success text-center shadow rounded">
+                                {{ session('message') }}
+                            </div>
+                        </div>
                     </div>
                 @endif
+
             </div>
         </div>
 
-        {{-- SEZIONE FILTRI + CARDS --}}
+        {{-- Sezione filtri + cards --}}
         <div class="row justify-content-center align-items-start">
 
-            {{-- COLONNA SINISTRA: FILTRI --}}
+            {{-- Colonna sinistra: filtri --}}
             <div class="col-12 col-md-3 px-4 sticky-filter filter-box">
                 <h4 class="mb-4">{{ __('ui.filter_by') }}</h4>
 
-                {{-- FORM FILTRI --}}
+                {{-- Form filtri --}}
                 <form method="GET" action="{{ route('article.index') }}" id="filterForm">
 
                     {{-- Selezione categoria --}}
@@ -93,14 +98,14 @@
                         <button type="button" id="applyFiltersBtn" class="btn btn-apply-filters">
                             {{ __('ui.apply_filters') }}
                         </button>
-                        <a href="{{ route('article.index') }}" class="btn btn-reset-filters text-center">
+                        <a href="{{ route('article.index') }}" class="btn btn-reset-filters text-center mb-4">
                             {{ __('ui.reset_filters') }}
                         </a>
                     </div>
                 </form>
             </div>
 
-            {{-- COLONNA DESTRA: RISULTATI --}}
+            {{-- Colonna destra: risultati --}}
             <div class="col-12 col-md-9">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center" id="cardWrapper">
 

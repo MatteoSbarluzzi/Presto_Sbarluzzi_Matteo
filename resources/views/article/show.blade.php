@@ -1,8 +1,9 @@
 <x-layout>
-    {{-- Contenitore con padding e sfondo colorato --}}
+    
+    {{-- Contenitore principale --}}
     <div class="container-fluid pt-5 pb-5 bg-sky-blue text-beige">
         
-        {{-- MESSAGGI DI SUCCESSO O ERRORE --}}
+        {{-- Messaggi di successo o errore --}}
         @if (session('message'))
         <div class="alert alert-success text-center">
             {{ session('message') }}
@@ -18,7 +19,7 @@
         {{-- Spazio aggiuntivo su mobile --}}
         <div class="d-sm-none py-3"></div>
         
-        {{-- TITOLO PRINCIPALE --}}
+        {{-- Titolo principale --}}
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12 mt-4">
                 <h1 class="display-4 slide-from-bottom-slow mt-sm-5">
@@ -27,14 +28,13 @@
             </div>
         </div>
         
-        {{-- SEZIONE IMMAGINI + DETTAGLI ARTICOLO --}}
+        {{-- Sezione immagini + dettagli articolo --}}
         <div class="row justify-content-center py-5">
             
-            {{-- COLONNA IMMAGINI - CAROUSEL --}}
+            {{-- Colonna immagini - carousel --}}
             <div class="col-12 col-md-6 mb-3">
                 @php
-                    // Se sono presenti old_images (modifica in revisione),
-                    // mostra solo le immagini attualmente approvate
+                    // Se sono presenti old_images (modifica in revisione), mostra solo le immagini attualmente approvate
                     $reviewImages = $article->old_images
                         ? $article->old_images
                         : $article->images->pluck('path')->toArray();
@@ -53,7 +53,7 @@
                         @endforeach
                     </div>
                     
-                    {{-- Controlli Carousel (se più di una immagine) --}}
+                    {{-- Controlli carousel (se più di una immagine) --}}
                     @if (count($reviewImages) > 1)
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -71,7 +71,7 @@
                 @endif
             </div>
             
-            {{-- COLONNA DETTAGLI ARTICOLO --}}
+            {{-- Colonna dettagli articolo --}}
             <div class="col-12 col-md-6 mb-3 text-center">
                 {{-- Titolo --}}
                 <h2 class="display-5">
@@ -99,24 +99,24 @@
                     </span>
                     @endif
                     
-                    {{-- COLONNA BOTTONI --}}
+                    {{-- Colonna bottoni --}}
                     <div class="button-column-wrapper mt-3">
                         
-                        {{-- Bottone CHIUDI --}}
+                        {{-- Bottone chiudi --}}
                         <a href="{{ request('back') ?? route('article.index') }}" class="btn-close-detail btn-detail-action">
                             {{ __('ui.close_article_detail') }}
                         </a>
                         
-                        {{-- Bottone MODIFICA e CANCELLA (solo per proprietario o revisore) --}}
+                        {{-- Bottone modifica e cancella (solo per proprietario o revisore) --}}
                         @auth
                         @if(Auth::id() === $article->user_id || Auth::user()->is_revisor)
                         
-                        {{-- Bottone MODIFICA --}}
+                        {{-- Bottone modifica --}}
                         <a href="{{ route('article.edit', $article) }}" class="btn-edit-custom btn-detail-action mt-2">
                             {{ __('ui.edit_article') }}
                         </a>
                         
-                        {{-- Form CANCELLA --}}
+                        {{-- Form cancella --}}
                         <form method="POST" action="{{ route('article.destroy', $article) }}"
                         onsubmit="return confirm('{{ __('ui.confirm_delete') }}')">
                             @csrf
@@ -129,7 +129,6 @@
                         @endif
                         @endauth
                     </div>
-                    {{-- FINE COLONNA BOTTONI --}}
                 </div>
                 
                 {{-- Autore dell'articolo --}}

@@ -59,7 +59,6 @@ return [
     'want_to_become_revisor' => 'Quisiera ser revisor',
     'revisor_request_thank_you' => 'Gracias por enviar la solicitud y por querer unirte a nuestro equipo de revisores. Le contactaremos al correo con el que se registró para concertar una entrevista.',
     'article_deleted' => "El artículo ha sido eliminado porque no fue aprobado.",
-
     
     // Categorías
     'categories_list' => [
@@ -137,20 +136,16 @@ return [
     'review_sent_successfully' => '¡Reseña enviada con éxito!',
     'reviews' => 'Reseñas',
     
-    // Envíos
+    // Envíos y Devoluciones
 'shipping_worldwide' => 'Envíos internacionales garantizados',
 'shipping_description' => 'En Presto.it ofrecemos un servicio de envío confiable y profesional, tanto a nivel nacional como internacional. Gracias a nuestros socios logísticos de confianza, garantizamos entregas rápidas, rastreables y puntuales, sin importar dónde se encuentren nuestros clientes. Confía en nosotros para una gestión eficiente y segura de tus envíos.',
 'approfondisci' => 'Más información',
-    
     'shipping_detail_1' => 'Enviamos a más de 50 países con mensajeros confiables.',
 'shipping_detail_2' => 'Los tiempos de entrega oscilan entre 2 y 7 días laborables según el destino.',
 'shipping_detail_3' => 'Cada paquete es rastreado y asegurado para tu tranquilidad.',
-    
 'returns_detail_1' => 'Tienes 14 días para devolver un artículo si no cumple con tus expectativas.',
 'returns_detail_2' => 'Para solicitar una devolución, contacta con atención al cliente e indica el número de pedido.',
 'returns_detail_3' => 'Los reembolsos se procesan en un plazo de 5–7 días laborables tras recibir la devolución.',
-    
-    // Envíos y Devoluciones
     'shipping_and_returns' => 'Envíos y Devoluciones',
     'shipping_and_returns_description' => 'Descubre toda la información sobre nuestras políticas de envío y devolución.',
     'shipping_title' => 'Información de envío',
@@ -160,25 +155,18 @@ return [
     
     // FAQ
     'faq_title' => 'Preguntas Frecuentes',
-    
     'faq_q1' => '¿Cuánto tiempo tarda el envío?',
 'faq_a1' => 'Los envíos nacionales tardan entre 2 y 5 días hábiles. Los envíos internacionales varían según el destino. Recibirás un correo con el enlace de seguimiento.',
-    
 'faq_q2' => '¿Cómo puedo rastrear mi pedido?',
 'faq_a2' => 'Una vez que tu pedido sea enviado, recibirás un correo electrónico con el enlace de seguimiento. También puedes consultarlo desde tu cuenta.',
-    
 'faq_q3' => '¿Qué métodos de pago aceptan?',
 'faq_a3' => 'Aceptamos varios métodos de pago seguros: tarjetas de crédito y débito (Visa, Mastercard, American Express), PayPal, transferencia bancaria, Google Pay, Apple Pay y criptomonedas como Bitcoin.',
-    
 'faq_q4' => '¿Hay costos de devolución?',
 'faq_a4' => 'Las devoluciones son gratuitas si el producto está dañado o es incorrecto. En otros casos, los gastos de devolución corren por cuenta del cliente.',
-    
 'faq_q5' => '¿Cuáles son los requisitos para trabajar en Presto.it?',
 'faq_a5' => 'Siempre buscamos colaboradores motivados. Es necesario ser mayor de edad, tener buen manejo de herramientas digitales y pasión por el comercio electrónico. Puedes postularte desde la sección "Trabaja con nosotros" y te contactaremos para una entrevista.',
-    
 'faq_q6' => '¿Cuánto tarda Presto.it en seleccionar a los candidatos?',
 'faq_a6' => 'Nuestro equipo de selección revisa las solicitudes en un plazo de 5 a 7 días hábiles. Si tu perfil es adecuado, te contactaremos por correo electrónico para concertar una entrevista.',
-    
 'faq_q7' => '¿En cuánto tiempo responde el servicio de atención al cliente?',
 'faq_a7' => 'Nuestro equipo de atención al cliente responde normalmente en un plazo de 24 a 48 horas hábiles. En casos urgentes, podrías recibir una llamada lo antes posible.',
     
@@ -193,6 +181,7 @@ return [
     'english' => 'Inglés',
     'spanish' => 'Español',
     
+    // Filtros
     'explore_latest_ads' => 'Explora los últimos anuncios',
     'apply_filters' => 'Aplicar filtros',
     'reset_filters' => 'Restablecer filtros',
@@ -209,12 +198,27 @@ return [
     // Mensajes de éxito al crear un artículo
     'article_created_successfully' => 'Artículo creado con éxito.',
     'article_submitted_for_review' => 'Artículo enviado para revisión.', 
-
+    'article_deleted_successfully' => 'Artículo eliminado con éxito.',
+    
     // Login
     'login_failed' => 'Las credenciales proporcionadas no son correctas.',
-
+    
+    //Register
+    'name_required' => 'El nombre es obligatorio.',
+    'email_required' => 'El correo electrónico es obligatorio.',
+    'email_invalid' => 'La dirección de correo no es válida.',
+    'email_taken' => 'La dirección de correo ya está registrada.',
+    'passwords_do_not_match' => 'Las contraseñas no coinciden.',
+    
     // id de usuario creator
     'created_by' => 'Creado por',
-
-
+    
+    // Métodos de pago
+    'visa' => 'Visa',
+    'mastercard' => 'MasterCard',
+    'amex' => 'American Express',
+    'paypal' => 'PayPal',
+    'bank_transfer' => 'Transferencia bancaria',
+    'google_pay' => 'Google Pay',
+    'apple_pay' => 'Apple Pay',
 ];

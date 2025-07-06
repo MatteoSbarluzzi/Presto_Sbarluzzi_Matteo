@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
+    // Attributi assegnabili in massa
     protected $fillable = [
         'name',
         'slug',
@@ -19,7 +20,7 @@ class Category extends Model
         return $this->hasMany(Article::class);
     }
 
-    // Hook Eloquent: genera automaticamente lo slug dal nome se non esiste
+    // Hook Eloquent: genera automaticamente lo slug dal nome se non già presente
     protected static function booted()
     {
         static::creating(function ($category) {
@@ -29,7 +30,7 @@ class Category extends Model
         });
     }
 
-    // Restituisce il nome della categoria tradotto in base alla lingua corrente
+    // Restituisce il nome della categoria tradotto (in base al file ui.php e alla lingua corrente)
     public function getTranslatedName()
     {
         return __('ui.categories_list.' . $this->slug);

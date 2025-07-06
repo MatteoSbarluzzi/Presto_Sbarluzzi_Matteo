@@ -14,7 +14,7 @@ class Image extends Model
         'path',
     ];
 
-   //Processo conversione automatica dei dati tra formati diversi che serve a convertire il campo   'labels' JSON in un array PHP automaticamente.
+   // Processo conversione automatica dei dati tra formati diversi che serve a convertire il campo   'labels' JSON in un array PHP automaticamente.
     protected $casts = [
         'labels' => 'array',
     ];
@@ -33,9 +33,7 @@ class Image extends Model
             return Storage::url($filePath);
         }
 
-        // Costruisce un nuovo percorso del file con il nome
-        // crop_{w}x{h}_{filename}, che è la stessa struttura
-        // impostata in ResizeImage
+        // Costruisce un nuovo percorso del file con il nome crop_{w}x{h}_{filename}, che è la stessa struttura impostata in ResizeImage
         $path = dirname($filePath);
         $filename = basename($filePath);
         $file = "{$path}/crop_{$w}x{$h}_{$filename}";
@@ -46,9 +44,7 @@ class Image extends Model
     // Metodo di istanza: consente alle istanze della classe Image di recuperare facilmente l'URL dell'immagine
     public function getUrl($w = null, $h = null)
     {
-        // Fornisce la logica principale per recuperare l'URL
-        // dell'immagine, gestendo sia le immagini originali
-        // che quelle ritagliate
+        // Fornisce la logica principale per recuperare l'URL dell'immagine, gestendo sia le immagini originali che quelle ritagliate
         return self::getUrlByFilePath($this->path, $w, $h);
     }
 }

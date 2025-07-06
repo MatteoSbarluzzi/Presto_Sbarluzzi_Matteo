@@ -1,15 +1,16 @@
 <x-layout>
-    {{-- Contenitore principale con padding e sfondo personalizzato --}}
+    
+    {{-- Contenitore principale --}}
     <div class="container-fluid py-5 bg-sky-blue text-beige">
 
-        {{-- TITOLO DELLA PAGINA CON RISULTATO DELLA RICERCA --}}
+        {{-- Titolo della pagina con risultato della ricerca --}}
         <div class="row mb-5">
             <div class="col-12 text-center mt-4">
                 <h1 class="display-4 slide-from-bottom-slow mt-4 mt-sm-5">
                     {{ __('ui.search_results_for') }}: "{{ $query }}"
                 </h1>
 
-                {{-- EVENTUALE MESSAGGIO DI SUCCESSO --}}
+                {{-- Messaggio di successo --}}
                 @if (session('message'))
                     <div class="alert alert-success text-center my-4 shadow rounded w-75 mx-auto">
                         {{ session('message') }}
@@ -18,14 +19,14 @@
             </div>
         </div>
 
-        {{-- SEZIONE: FILTRI + RISULTATI --}}
+        {{-- Sezione: filtri + risultati --}}
         <div class="row justify-content-center align-items-start">
 
-            {{-- COLONNA SINISTRA: FILTRI --}}
+            {{-- Colonna sinistra: filtri --}}
             <div class="col-12 col-md-3 px-4 sticky-filter filter-box">
                 <h4 class="mb-4">{{ __('ui.filter_by') }}</h4>
 
-                {{-- FORM PER FILTRI --}}
+                {{-- Form per filtri --}}
                 <form method="GET" action="{{ route('article.search') }}">
 
                     {{-- Selezione categoria --}}
@@ -87,13 +88,13 @@
                         >
                     </div>
 
-                    {{-- BOTTONI: Applica e Resetta --}}
+                    {{-- Pulsanti: applica e resetta --}}
                     <div class="d-grid gap-2 mb-4">
                         <button type="submit" class="btn btn-apply-filters">
                             {{ __('ui.apply_filters') }}
                         </button>
 
-                        {{-- Pulsante Reset: decide dove reindirizzare in base alla categoria selezionata --}}
+                        {{-- Pulsante reset --}}
                         @if(request('category') && request('category') !== 'all')
                             <a href="{{ route('byCategory', ['category' => request('category')]) }}" class="btn btn-reset-filters text-center">
                                 {{ __('ui.reset_filters') }}
@@ -107,7 +108,7 @@
                 </form>
             </div>
 
-            {{-- COLONNA DESTRA: RISULTATI ARTICOLI --}}
+            {{-- Colonna destra: risultati articoli --}}
             <div class="col-12 col-md-9">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center" id="cardWrapper">
 

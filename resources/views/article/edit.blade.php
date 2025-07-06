@@ -1,6 +1,6 @@
 <x-layout>
 
-    {{-- Contenitore principale: sfondo azzurro chiaro, testo beige, minimo altezza viewport, centrato --}}
+    {{-- Contenitore principale --}}}
     <div class="container-fluid bg-light-blue text-beige min-vh-100 d-flex flex-column justify-content-center">
 
         {{-- Titolo della pagina --}}
@@ -97,7 +97,7 @@
                         >
                     </div>
 
-                    {{-- ANTEPRIMA nuove immagini caricate --}}
+                    {{-- Anteprima nuove immagini caricate --}}
                     <div class="mb-3" id="newImagePreview" style="display:flex; flex-wrap:wrap;"></div>
 
                     {{-- Mostra immagini esistenti con pulsante X --}}

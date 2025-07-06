@@ -24,10 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
 
  
-    //Controllo se la tabella categories esiste, se si, condivido la variabile categories con tutte le view
+    // Controllo se la tabella categories esiste, se si, condivido la variabile categories con tutte le view
     public function boot(): void
     {
-        Paginator::useBootstrap();//per usare Bootstrap al posto di TailwindCSS, quella di default
+        Paginator::useBootstrap();// Per usare Bootstrap al posto di TailwindCSS, quella di default
 
         if (Schema::hasTable('categories')){
             View::share('categories', Category::all());
