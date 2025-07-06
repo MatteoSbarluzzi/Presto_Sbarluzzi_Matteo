@@ -1,6 +1,6 @@
 <x-layout>
 
-    {{-- Contenitore principale --}}}
+    {{-- Contenitore principale --}}
     <div class="container-fluid bg-light-blue text-beige min-vh-100 d-flex flex-column justify-content-center">
 
         {{-- Titolo della pagina --}}
