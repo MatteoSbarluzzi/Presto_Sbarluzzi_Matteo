@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container-fluid bg-sky-blue py-5 pt-5 mt-5 vh-100">
+    <div class="container-fluid bg-sky-blue py-5 pt-5 mt-5">
         
         {{-- Titolo e sottotitolo --}}
         <div class="row justify-content-center mb-5">

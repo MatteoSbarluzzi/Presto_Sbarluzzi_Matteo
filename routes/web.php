@@ -7,7 +7,6 @@ use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Auth\LoginController;
 
-
 // Homepage
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 
