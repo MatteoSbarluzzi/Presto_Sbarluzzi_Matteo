@@ -1,5 +1,5 @@
 <x-layout>
-
+    
     <div id="backgroundpresto" class="container-fluid text-center d-flex align-items-center justify-content-center bg-dark-blue text-white py-5">
         <div class="row w-100">
             <div class="col-12">
@@ -16,9 +16,12 @@
                 
                 @if (session()->has('message'))
                 <div class="alert alert-success text-center shadow rounded w-50 mx-auto">
-                    {{ __('ui.' . session('message')) }}
+                    {{ __('ui.' . session('message')) != 'ui.' . session('message') 
+                    ? __('ui.' . session('message')) 
+                    : session('message') }}
                 </div>
                 @endif
+                
                 
                 {{-- Pulsante pubblica articolo --}}
                 <div class="my-3">
